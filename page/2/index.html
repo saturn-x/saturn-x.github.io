@@ -437,6 +437,62 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
+      <a href="/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/">
+        深入理解计算机系统-链接
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <h1 id="1-编译器驱动程序"><a href="#1-编译器驱动程序" class="headerlink" title="1.编译器驱动程序"></a>1.编译器驱动程序</h1><p>大多数编译系统提供<strong>编译器驱动程序</strong>，它代表用户在需要时调用语言预处理器、编译器、汇编器和链接器。</p>
+<p><img src="/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/20170214151600306" class="lazyload" data-srcset="/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/20170214151600306" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h3 id="1-预处理"><a href="#1-预处理" class="headerlink" title="1.预处理"></a>1.预处理</h3><p><strong>将源程序<code>main.c</code>翻译成一个ASCII码的中间文件<code>main.i</code></strong></p>
+<p>预处理命令：输出的文件是<code>main.i</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpp [other arguments] main.c main.i</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-编译"><a href="#2-编译" class="headerlink" title="2.编译"></a>2.编译</h3><p><strong>将<code>main.i</code>翻译成一个ASCII汇编语言文件<code>main.s</code></strong></p>
+<p>编译命令：输出的文件是<code>main.s</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cc1 main.i -Og [other argunments] -o main.s</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-汇编"><a href="#3-汇编" class="headerlink" title="3.汇编"></a>3.汇编</h3><p><strong>将<code>main.s</code>翻译成一个可重定位目标文件</strong></p>
+<p>汇编命令：输出的文件是<code>main.o</code>，该文件是一个可重定位的目标文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">as [other arguments] -o main.o main.s</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-链接"><a href="#4-链接" class="headerlink" title="4.链接"></a>4.链接</h3><p>链接命令：创造一个可执行目标文件 elf；<code>main.o</code>和<code>sum.o</code>文件是需要链接的重定位目标文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld -o elf [system object files and args] main.o sum.o </span><br></pre></td></tr></table></figure>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-12-21</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
         汇编语言
       </a>
@@ -841,52 +897,6 @@ vexnum为顶点的个数，arcnum为弧的个数
       
         <div>
           <a class='readmore' href='/2020/11/07/C%E3%80%81C++/c++%E6%96%87%E4%BB%B6%E6%B5%81%E7%9A%84%E8%AF%BB%E5%86%99/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/">
-        Pwn-程序内存布局
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        程序启动时，加载器会将程序文件数据加载到内存里，在运行过程中，程序也会开辟部分动态内存。在程序运行的生命周期中，内存中比较重要的四部分数据是程序数据、堆、库数据、栈。另外，内核空间也会映射到程序内存中。
-程序数据一般映射在内存的较低地址处，然后依次为堆数据、库数据及栈等，其中还映射一部分起保护作用的不可访问区域
-
-1.Proc程序数据代码段、数据段、BSS段程序数据主要包含三部分，其中代码段...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/'>
             Read More
           </a>
         </div>

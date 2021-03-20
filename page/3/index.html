@@ -437,6 +437,52 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
+      <a href="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/">
+        Pwn-程序内存布局
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        程序启动时，加载器会将程序文件数据加载到内存里，在运行过程中，程序也会开辟部分动态内存。在程序运行的生命周期中，内存中比较重要的四部分数据是程序数据、堆、库数据、栈。另外，内核空间也会映射到程序内存中。
+程序数据一般映射在内存的较低地址处，然后依次为堆数据、库数据及栈等，其中还映射一部分起保护作用的不可访问区域
+
+1.Proc程序数据代码段、数据段、BSS段程序数据主要包含三部分，其中代码段...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-10-30</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/">
         Pwn-常见利用方法
       </a>
@@ -825,50 +871,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div>
           <a class='readmore' href='/2020/09/24/Android/Android-%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/22/Android/Android-ListView%E6%8E%A7%E4%BB%B6/">
-        Android-ListView控件
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        1.简单应用布局文件：
-12345678&lt;LinearLayout    android:layout_width=&quot;match_parent&quot;    android:layout_height=&quot;match_parent&quot;&gt;    &lt;ListView        android:id=&quot;@+id/list_view&qu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-22</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/22/Android/Android-ListView%E6%8E%A7%E4%BB%B6/'>
             Read More
           </a>
         </div>

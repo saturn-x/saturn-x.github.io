@@ -529,9 +529,50 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+        计算机网络
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-20</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -934,62 +975,6 @@ complex（复数）
       
         <div>
           <a class='readmore' href='/2020/12/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%96%87%E6%A1%A3%E7%9B%B8%E4%BC%BC%E6%80%A7/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/">
-        深入理解计算机系统-链接
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <h1 id="1-编译器驱动程序"><a href="#1-编译器驱动程序" class="headerlink" title="1.编译器驱动程序"></a>1.编译器驱动程序</h1><p>大多数编译系统提供<strong>编译器驱动程序</strong>，它代表用户在需要时调用语言预处理器、编译器、汇编器和链接器。</p>
-<p><img src="/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/20170214151600306" class="lazyload" data-srcset="/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/20170214151600306" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
-<h3 id="1-预处理"><a href="#1-预处理" class="headerlink" title="1.预处理"></a>1.预处理</h3><p><strong>将源程序<code>main.c</code>翻译成一个ASCII码的中间文件<code>main.i</code></strong></p>
-<p>预处理命令：输出的文件是<code>main.i</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpp [other arguments] main.c main.i</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-编译"><a href="#2-编译" class="headerlink" title="2.编译"></a>2.编译</h3><p><strong>将<code>main.i</code>翻译成一个ASCII汇编语言文件<code>main.s</code></strong></p>
-<p>编译命令：输出的文件是<code>main.s</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cc1 main.i -Og [other argunments] -o main.s</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-汇编"><a href="#3-汇编" class="headerlink" title="3.汇编"></a>3.汇编</h3><p><strong>将<code>main.s</code>翻译成一个可重定位目标文件</strong></p>
-<p>汇编命令：输出的文件是<code>main.o</code>，该文件是一个可重定位的目标文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">as [other arguments] -o main.o main.s</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-链接"><a href="#4-链接" class="headerlink" title="4.链接"></a>4.链接</h3><p>链接命令：创造一个可执行目标文件 elf；<code>main.o</code>和<code>sum.o</code>文件是需要链接的重定位目标文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld -o elf [system object files and args] main.o sum.o </span><br></pre></td></tr></table></figure>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-21</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/'>
             Read More
           </a>
         </div>
