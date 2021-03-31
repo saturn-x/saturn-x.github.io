@@ -484,12 +484,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="1-建立mysql数据库"><a href="#1-建立mysql数据库" class="headerlink" title="1.建立mysql数据库"></a>1.建立mysql数据库</h1><p>查找软件：</p>
+  <h1 id="Centos安装时软件库"><a href="#Centos安装时软件库" class="headerlink" title="Centos安装时软件库"></a>Centos安装时软件库</h1><p><img src="/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/image-20210329165431245.png" class="lazyload" data-srcset="/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/image-20210329165431245.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210329165431245"></p>
+<h1 id="建立mysql数据库"><a href="#建立mysql数据库" class="headerlink" title="建立mysql数据库"></a>建立mysql数据库</h1><p>查找软件：</p>
 <p> <code>sudo apt-cache search all | grep mysql</code></p>
-<h3 id="1-删除之前的版本"><a href="#1-删除之前的版本" class="headerlink" title="1.删除之前的版本"></a>1.删除之前的版本</h3><p><code>sudo apt-get autoremove mysql* --purge</code></p>
+<h3 id="删除之前的版本"><a href="#删除之前的版本" class="headerlink" title="删除之前的版本"></a>删除之前的版本</h3><p><code>sudo apt-get autoremove mysql* --purge</code></p>
 <p>删除mysql所有的依赖</p>
-<h3 id="2-安装mysql"><a href="#2-安装mysql" class="headerlink" title="2.安装mysql"></a>2.安装mysql</h3><p><code>sudo apt-get install mysql-server mysql-common</code></p>
-<h3 id="3-设置远程登录"><a href="#3-设置远程登录" class="headerlink" title="3.设置远程登录"></a>3.设置远程登录</h3><p><code>netstat -an|grep 3306</code></p>
+<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><p><code>sudo apt-get install mysql-server mysql-common</code></p>
+<h3 id="设置远程登录"><a href="#设置远程登录" class="headerlink" title="设置远程登录"></a>设置远程登录</h3><p><code>netstat -an|grep 3306</code></p>
 <p>查看端口3306是否打开</p>
 <img src="/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/image-20210318132131050.png" class="lazyload" data-srcset="/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/image-20210318132131050.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210318132131050" style="zoom: 67%;">
 
@@ -505,7 +506,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <img src="/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/image-20210318133515248.png" class="lazyload" data-srcset="/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/image-20210318133515248.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210318133515248" style="zoom:67%;">
 
-<h3 id="5-mysql8-0设置"><a href="#5-mysql8-0设置" class="headerlink" title="5.mysql8.0设置"></a>5.mysql8.0设置</h3><p>下载MySQL提供的套件管理设定档至<code>/tmp</code>资料夹：</p>
+<h3 id="mysql8-0设置"><a href="#mysql8-0设置" class="headerlink" title="mysql8.0设置"></a>mysql8.0设置</h3><p>下载MySQL提供的套件管理设定档至<code>/tmp</code>资料夹：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -OL https:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql-apt-config_0.8.12-1_all.deb</span><br></pre></td></tr></table></figure>
 
 <p>下载完成后，<code>.deb</code>的软体套件包需以<code>dpkg</code>指令安装：</p>
@@ -530,8 +531,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;newuser&#39;@&#39;%&#39;;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 
 <p>以及更上面一样注释监听端口</p>
-<h1 id="2-下载python"><a href="#2-下载python" class="headerlink" title="2.下载python"></a>2.下载python</h1><h3 id="1-安装python"><a href="#1-安装python" class="headerlink" title="1.安装python"></a>1.安装python</h3><p><code>apt-get install python</code></p>
-<h3 id="2-安装pip"><a href="#2-安装pip" class="headerlink" title="2.安装pip"></a>2.安装pip</h3><p>安装低版本的pip：</p>
+<h1 id="下载python"><a href="#下载python" class="headerlink" title="下载python"></a>下载python</h1><h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h3><p><code>apt-get install python</code></p>
+<h3 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h3><p>安装低版本的pip：</p>
 <p><code>sudo apt-get install python-pip</code></p>
 <p>然后根据网上的命令 <code>python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple/</code></p>
 <p>更新完后出现了各种错误，经过各种尝试之后发现这个应该是windows才能用的更新</p>
@@ -547,12 +548,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 删除软件及其配置文件</span><br><span class="line">apt-get --purge remove &lt;package&gt;</span><br><span class="line"># 删除没用的依赖包</span><br><span class="line">apt-get autoremove &lt;package&gt;</span><br><span class="line"># 此时dpkg的列表中有“rc”状态的软件包，可以执行如下命令做最后清理：</span><br><span class="line">dpkg -l |grep ^rc|awk &#39;&#123;print $2&#125;&#39; |sudo xargs dpkg -P</span><br><span class="line"># 当然如果要删除暂存的软件安装包，也可以再使用clean命令。</span><br><span class="line">apt-get clean &lt;package&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">安装2版本的pip</span><br><span class="line">&#96;https:&#x2F;&#x2F;bootstrap.pypa.io&#x2F;pip&#x2F;2.7&#x2F;get-pip.py&#96;</span><br><span class="line">&#96;python get-pip.py&#96;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-python2安装pymysql"><a href="#3-python2安装pymysql" class="headerlink" title="3.python2安装pymysql"></a>3.python2安装pymysql</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、下载pymysql包</span><br><span class="line">wget https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;44&#x2F;39&#x2F;6bcb83cae0095a31b6be4511707fdf2009d3e29903a55a0494d3a9a2fac0&#x2F;PyMySQL-0.8.1.tar.gz</span><br><span class="line">2、解压</span><br><span class="line">tar -zxvf PyMySQL-0.8.1.tar.gz</span><br><span class="line">3、安装</span><br><span class="line">进入PyMySQL-0.8.1目录,执行：</span><br><span class="line">python2 setup.py install</span><br></pre></td></tr></table></figure>
+<h3 id="python2安装pymysql"><a href="#python2安装pymysql" class="headerlink" title="python2安装pymysql"></a>python2安装pymysql</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、下载pymysql包</span><br><span class="line">wget https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;44&#x2F;39&#x2F;6bcb83cae0095a31b6be4511707fdf2009d3e29903a55a0494d3a9a2fac0&#x2F;PyMySQL-0.8.1.tar.gz</span><br><span class="line">2、解压</span><br><span class="line">tar -zxvf PyMySQL-0.8.1.tar.gz</span><br><span class="line">3、安装</span><br><span class="line">进入PyMySQL-0.8.1目录,执行：</span><br><span class="line">python2 setup.py install</span><br></pre></td></tr></table></figure>
 
-<h1 id="3-查询命令"><a href="#3-查询命令" class="headerlink" title="3.查询命令"></a>3.查询命令</h1><p><code>opkg -l | grep &quot;xxx&quot;</code></p>
-<h1 id="4-’ascii’-codec-can’t-encode"><a href="#4-’ascii’-codec-can’t-encode" class="headerlink" title="4.’ascii’ codec can’t encode"></a>4.’ascii’ codec can’t encode</h1><p>执行python时使用了ascii编码 </p>
+<h1 id="查询命令"><a href="#查询命令" class="headerlink" title="查询命令"></a>查询命令</h1><p><code>opkg -l | grep &quot;xxx&quot;</code></p>
+<h1 id="‘ascii’-codec-can’t-encode"><a href="#‘ascii’-codec-can’t-encode" class="headerlink" title="‘ascii’ codec can’t encode"></a>‘ascii’ codec can’t encode</h1><p>执行python时使用了ascii编码 </p>
 <p><code>PYTHONIOENCODING=utf-8 nohup python3 -u querydianfei.py &gt; dianfei.out &amp;</code></p>
-<h1 id="5-后台执行命令"><a href="#5-后台执行命令" class="headerlink" title="5.后台执行命令"></a>5.后台执行命令</h1>
+<h1 id="后台执行命令"><a href="#后台执行命令" class="headerlink" title="后台执行命令"></a>后台执行命令</h1>
   
   
     
@@ -586,10 +587,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-18T22:07:24+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-29T20:58:52+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 18, 2021</p>
+    <p>更新于：Mar 29, 2021</p>
   </a>
 </div>
 
@@ -671,10 +672,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         </a>
       
       
-        <a class='next' href='/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/'>
-          <p class='title'>操作系统<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.进程的数据结构描述和控制进程运行的数据结构：**进程控制块PCB(Process Control Block)**，是操作系统中最重要的记录型数据结构。
-1）PCB是进程存在的唯一标志，系统...</p>
+        <a class='next' href='/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/'>
+          <p class='title'>1.进程与线程<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>1.进程1.进程的定义
+进程是指一个具有一定独立功能的程序在一个数据集合上的一次动态执行的过程
+
+进程的特点：动态性、并发性、独立性、制约性
+
+程序=文化（静态的可执行文件）
+
+进程=执行中的程...</p>
         </a>
       
     </div>
@@ -717,7 +724,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%A0%E9%99%A4%E4%B9%8B%E5%89%8D%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-text">1.删除之前的版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85mysql"><span class="toc-text">2.安装mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95"><span class="toc-text">3.设置远程登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-mysql8-0%E8%AE%BE%E7%BD%AE"><span class="toc-text">5.mysql8.0设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85python"><span class="toc-text">1.安装python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85pip"><span class="toc-text">2.安装pip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-python2%E5%AE%89%E8%A3%85pymysql"><span class="toc-text">3.python2安装pymysql</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E4%B9%8B%E5%89%8D%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-text">删除之前的版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="toc-text">安装mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95"><span class="toc-text">设置远程登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql8-0%E8%AE%BE%E7%BD%AE"><span class="toc-text">mysql8.0设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85python"><span class="toc-text">安装python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85pip"><span class="toc-text">安装pip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python2%E5%AE%89%E8%A3%85pymysql"><span class="toc-text">python2安装pymysql</span></a></li></ol>
     </div>
   </section>
 
