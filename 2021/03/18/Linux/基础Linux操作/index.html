@@ -485,7 +485,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   <h1 id="Centos安装时软件库"><a href="#Centos安装时软件库" class="headerlink" title="Centos安装时软件库"></a>Centos安装时软件库</h1><p><img src="/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/image-20210329165431245.png" class="lazyload" data-srcset="/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/image-20210329165431245.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210329165431245"></p>
-<h1 id="建立mysql数据库"><a href="#建立mysql数据库" class="headerlink" title="建立mysql数据库"></a>建立mysql数据库</h1><p>查找软件：</p>
+<h1 id="配置ubuntu18-04环境"><a href="#配置ubuntu18-04环境" class="headerlink" title="配置ubuntu18.04环境"></a>配置ubuntu18.04环境</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/longgeaisisi/article/details/78448525">https://blog.csdn.net/longgeaisisi/article/details/78448525</a></p>
+<h3 id="web目录-var-www-html"><a href="#web目录-var-www-html" class="headerlink" title="web目录:/var/www/html"></a>web目录:/var/www/html</h3><h1 id="建立mysql数据库"><a href="#建立mysql数据库" class="headerlink" title="建立mysql数据库"></a>建立mysql数据库</h1><p>查找软件：</p>
 <p> <code>sudo apt-cache search all | grep mysql</code></p>
 <h3 id="删除之前的版本"><a href="#删除之前的版本" class="headerlink" title="删除之前的版本"></a>删除之前的版本</h3><p><code>sudo apt-get autoremove mysql* --purge</code></p>
 <p>删除mysql所有的依赖</p>
@@ -587,10 +588,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-29T20:58:52+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T17:44:08+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 29, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -724,7 +725,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E4%B9%8B%E5%89%8D%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-text">删除之前的版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="toc-text">安装mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95"><span class="toc-text">设置远程登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql8-0%E8%AE%BE%E7%BD%AE"><span class="toc-text">mysql8.0设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85python"><span class="toc-text">安装python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85pip"><span class="toc-text">安装pip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python2%E5%AE%89%E8%A3%85pymysql"><span class="toc-text">python2安装pymysql</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#web%E7%9B%AE%E5%BD%95-var-www-html"><span class="toc-text">web目录:&#x2F;var&#x2F;www&#x2F;html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E4%B9%8B%E5%89%8D%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-text">删除之前的版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="toc-text">安装mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95"><span class="toc-text">设置远程登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql8-0%E8%AE%BE%E7%BD%AE"><span class="toc-text">mysql8.0设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85python"><span class="toc-text">安装python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85pip"><span class="toc-text">安装pip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python2%E5%AE%89%E8%A3%85pymysql"><span class="toc-text">python2安装pymysql</span></a></li></ol>
     </div>
   </section>
 
@@ -1387,7 +1388,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz# your appId","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,
