@@ -686,7 +686,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0yum"><span class="toc-text">更新yum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E7%89%88%E6%9C%AC%EF%BC%8C%E5%B9%B6%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC"><span class="toc-text">查看仓库版本，并安装指定版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker-compose"><span class="toc-text">安装docker-compose</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E7%BB%84%E6%88%90"><span class="toc-text">Docker组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%90%AF%E5%8A%A8%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">Docker启动以及常用命令</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#centos8Docker%E5%AE%89%E8%A3%85"><span class="toc-text">centos8Docker安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0yum"><span class="toc-text">更新yum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E7%89%88%E6%9C%AC%EF%BC%8C%E5%B9%B6%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC"><span class="toc-text">查看仓库版本，并安装指定版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker-compose"><span class="toc-text">安装docker-compose</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E7%BB%84%E6%88%90"><span class="toc-text">Docker组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%90%AF%E5%8A%A8%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">Docker启动以及常用命令</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -1349,7 +1349,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

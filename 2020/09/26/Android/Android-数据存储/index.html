@@ -484,8 +484,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h2 id="1-Android数据持久化"><a href="#1-Android数据持久化" class="headerlink" title="1.Android数据持久化"></a>1.Android数据持久化</h2><p>Android主要提供了三种方式数据持久：文件存储、SharePreference或数据库来保存数据</p>
-<h2 id="2-文件存储"><a href="#2-文件存储" class="headerlink" title="2.文件存储"></a>2.文件存储</h2><p>Context类中提供了一个openFileOutput( )方法，可以将数据存到指定文件，该方法有两个参数</p>
+  <h1 id="Android数据持久化"><a href="#Android数据持久化" class="headerlink" title="Android数据持久化"></a>Android数据持久化</h1><p>Android主要提供了三种方式数据持久：文件存储、SharePreference或数据库来保存数据</p>
+<h2 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h2><p>Context类中提供了一个openFileOutput( )方法，可以将数据存到指定文件，该方法有两个参数</p>
 <p>第一个参数是文件名，在文件创建的时候使用的就是这个名词，这里指定的文件名不包含路径，因为所有的文件都是默认存到/data/data/&lt;packagename&gt;/files目录下，第二个参数文件的操作模式，主要有两种模式可选MODE_PRIVATE和MODE_APPEND</p>
 <p>MODE_PRIVATE是默认操作模式，表示指定同样文件名，所写入的内容将会覆盖源文件的内容</p>
 <p>MODE_APPEND则表示如果文件已经存在，就往里面追加内容，不存在就创建新文件</p>
@@ -499,7 +499,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <p>先打开一个文件输入流，缓存读取去活动文件输入流，然后处理缓存的内容</p>
 <p>此项的StringBuilder跟String类似，不过StringBuilder可以直接对内存空间进行一个持续的添加与修改，最后再转化为String，这样效率会相同较高</p>
-<h2 id="3-SharePreferences存储"><a href="#3-SharePreferences存储" class="headerlink" title="3.SharePreferences存储"></a>3.SharePreferences存储</h2><p>不同文件的存储方式，sharepreferences是使用 <code>键值对</code> 的方式来存储数据的，意思就是当保存一条数据的时候，需要给这条数据提供一个对应的键，这样读取数据的时候就可以通过这个键把相应的值取出来，而SharePrefences还支持多种不同的数据类型存储，如果存储的数据类型是整型，那么读出来的数据也是整形，如果存储的数据是一个字符串，那么读取出来的数据仍是字符串</p>
+<h2 id="SharePreferences存储"><a href="#SharePreferences存储" class="headerlink" title="SharePreferences存储"></a>SharePreferences存储</h2><p>不同文件的存储方式，sharepreferences是使用 <code>键值对</code> 的方式来存储数据的，意思就是当保存一条数据的时候，需要给这条数据提供一个对应的键，这样读取数据的时候就可以通过这个键把相应的值取出来，而SharePrefences还支持多种不同的数据类型存储，如果存储的数据类型是整型，那么读出来的数据也是整形，如果存储的数据是一个字符串，那么读取出来的数据仍是字符串</p>
 <h4 id="a、Context类中的getSharePreferens-方法"><a href="#a、Context类中的getSharePreferens-方法" class="headerlink" title="a、Context类中的getSharePreferens( )方法"></a>a、Context类中的getSharePreferens( )方法</h4><p>该方法两个参数，第一个参数用于指定SharedPreferences文件的名称，如果指定的文件不存在则会创建一个，SharedPreferens文件都是存放在/data/data/&lt;package name&gt;/shared_prefs/目录下；第二个参数是用于指定一操作模式，只有MODE_PRIVATE一种模式可以选</p>
 <h4 id="b、Activity类中的getPreferences-方法"><a href="#b、Activity类中的getPreferences-方法" class="headerlink" title="b、Activity类中的getPreferences( )方法"></a>b、Activity类中的getPreferences( )方法</h4><p>与上面很相似，不过这个方法只接收一个操作模式的参数，使用这个方法会自动将当前活动的类名作为SharedPreferences的文件名</p>
 <h4 id="c、PreferenceManger类中的getDefalutSharePreferences-方法"><a href="#c、PreferenceManger类中的getDefalutSharePreferences-方法" class="headerlink" title="c、PreferenceManger类中的getDefalutSharePreferences( )方法"></a>c、PreferenceManger类中的getDefalutSharePreferences( )方法</h4><p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926160850196.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926160850196.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200926160850196"></p>
@@ -519,7 +519,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">editor.clear();</span><br></pre></td></tr></table></figure>
 
 <p>会清除所有该数据表的内容，所以不能随便乱用</p>
-<h2 id="4-使用SQLite语言"><a href="#4-使用SQLite语言" class="headerlink" title="4.使用SQLite语言"></a>4.使用SQLite语言</h2><p><em>了解SQLiteOpenHelper帮助类，以及两个实例方法，实例方法返回的是一个SQLiteDatabse对象，一般用帮助类进行一个建表以及更新表的操作，用SQLiteDatabase对象进行一个增删改查的操作</em></p>
+<h2 id="使用SQLite语言"><a href="#使用SQLite语言" class="headerlink" title="使用SQLite语言"></a>使用SQLite语言</h2><p><em>了解SQLiteOpenHelper帮助类，以及两个实例方法，实例方法返回的是一个SQLiteDatabse对象，一般用帮助类进行一个建表以及更新表的操作，用SQLiteDatabase对象进行一个增删改查的操作</em></p>
 <p><strong>创建数据库</strong></p>
 <p>Android为了更加方便管理数据库，专门提供了一个SQLiteOpenHelper帮助类，借助这类可以非常简单对数据库进行创建和升级。</p>
 <p>SQLiteOpenHelper是一个抽象类，使用的话肯定需要帮助类进行一个继承，SQLiteOpenHelper中有两个抽象方法，分别是onCreate( )和onUpgrade( )，这两个方法必须进行一个重写，然后在这两个方法中去实现创建以及升级数据库的逻辑。</p>
@@ -585,8 +585,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">query_data.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        SQLiteDatabase db=dbhelper.getWritableDatabase();</span><br><span class="line">        Cursor cursor=db.query(<span class="string">&quot;Book&quot;</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line">           <span class="keyword">if</span>(cursor.moveToFirst())&#123;</span><br><span class="line">               <span class="keyword">do</span>&#123;</span><br><span class="line">                   String id=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">                   String author=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;author&quot;</span>));</span><br><span class="line">                   String price=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;price&quot;</span>));</span><br><span class="line">                   String pages=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;pages&quot;</span>));</span><br><span class="line">                   String name=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">                   Toast.makeText(MainActivity.<span class="keyword">this</span>,id+<span class="string">&quot; &quot;</span>+author+<span class="string">&quot; &quot;</span>+price+<span class="string">&quot; &quot;</span>+pages+<span class="string">&quot; &quot;</span>+name,Toast.LENGTH_SHORT).show();</span><br><span class="line">               &#125;<span class="keyword">while</span> (cursor.moveToNext());</span><br><span class="line">           &#125;</span><br><span class="line">           cursor.close();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>首先获取一个SQLiteDatabase对象，然后使用<code>db.query( )</code>方法将数据存在一个Cursor对象，最后对Cursor进行处理， <code>cursor.moveToFirst( )</code>方法将指针移到第一个数据，<code>cursor.getString(cursor.getColumnIndex(&quot;id&quot;))</code>获取数据是列索引为id的数据，一行一行去读数据通过方法<code>cursor.moveToNext()</code>实现，最后 <code>cursor.close()</code>关闭该对象<img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184654029.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184654029.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929184654029"></p>
-<h5 id="使用SQL语言操作数据库"><a href="#使用SQL语言操作数据库" class="headerlink" title="使用SQL语言操作数据库"></a>使用SQL语言操作数据库</h5><p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184829755.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184829755.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929184829755"></p>
-<h2 id="5-使用LitePal操作数据库"><a href="#5-使用LitePal操作数据库" class="headerlink" title="5.使用LitePal操作数据库"></a>5.使用LitePal操作数据库</h2><p>LitePal是一款开源的Android数据库框架,它采用了对象关系映射(ORM)的模式,并将我们平时开发最常用到的一些数据库功能进行了封装,使得不用编写一行SQL语句就可以完成各种建表和增删改查的操作，并且LitePal很“轻”，jar包大小不到100k，而且近乎零配置，这一点和Hibernate这类的框架有很大区别。</p>
+<h2 id="使用SQL语言操作数据库"><a href="#使用SQL语言操作数据库" class="headerlink" title="使用SQL语言操作数据库"></a>使用SQL语言操作数据库</h2><p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184829755.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184829755.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929184829755"></p>
+<h2 id="使用LitePal操作数据库"><a href="#使用LitePal操作数据库" class="headerlink" title="使用LitePal操作数据库"></a>使用LitePal操作数据库</h2><p>LitePal是一款开源的Android数据库框架,它采用了对象关系映射(ORM)的模式,并将我们平时开发最常用到的一些数据库功能进行了封装,使得不用编写一行SQL语句就可以完成各种建表和增删改查的操作，并且LitePal很“轻”，jar包大小不到100k，而且近乎零配置，这一点和Hibernate这类的框架有很大区别。</p>
 <p>1.添加依赖</p>
 <p>在app/build.gradle文件中添加依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#x27;org.litepal.guolindev:core:3.2.2&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -662,10 +662,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T16:16:51+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T21:53:30+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -743,15 +743,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/10/04/Android/Android-%E7%9B%B4%E8%BF%9E%E6%95%B0%E6%8D%AE%E5%BA%93/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Android-直连数据库</p>
-          <p class='content'>1.导入包实现直连MySql数据库需要导入mysql-connector-java-5.1.30-binjar包（百度网盘提取码为：ctxa）
-2.主窗口代码123456789101112131...</p>
+          <p class='content'>导入包实现直连MySql数据库需要导入mysql-connector-java-5.1.30-binjar包（百度网盘提取码为：ctxa）
+主窗口代码1234567891011121314151...</p>
         </a>
       
       
         <a class='next' href='/2020/09/24/Android/Android-%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/'>
           <p class='title'>Android-广播机制<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.广播机制标准广播
-标准广播是一种完全异步执行的而广播，在广播发出之后，所有的广播接收器几乎都在同一个时候接受到这条广播消息，因此它们之前没有任何先后顺序，这种广播的效率都会比较高，但同时也意...</p>
+          <p class='content'>广播机制标准广播
+标准广播是一种完全异步执行的而广播，在广播发出之后，所有的广播接收器几乎都在同一个时候接受到这条广播消息，因此它们之前没有任何先后顺序，这种广播的效率都会比较高，但同时也意味同...</p>
         </a>
       
     </div>
@@ -794,7 +794,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Android%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">1.Android数据持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="toc-text">2.文件存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-SharePreferences%E5%AD%98%E5%82%A8"><span class="toc-text">3.SharePreferences存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a%E3%80%81Context%E7%B1%BB%E4%B8%AD%E7%9A%84getSharePreferens-%E6%96%B9%E6%B3%95"><span class="toc-text">a、Context类中的getSharePreferens( )方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b%E3%80%81Activity%E7%B1%BB%E4%B8%AD%E7%9A%84getPreferences-%E6%96%B9%E6%B3%95"><span class="toc-text">b、Activity类中的getPreferences( )方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c%E3%80%81PreferenceManger%E7%B1%BB%E4%B8%AD%E7%9A%84getDefalutSharePreferences-%E6%96%B9%E6%B3%95"><span class="toc-text">c、PreferenceManger类中的getDefalutSharePreferences( )方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8SQLite%E8%AF%AD%E8%A8%80"><span class="toc-text">4.使用SQLite语言</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SQL%E8%AF%AD%E8%A8%80%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">使用SQL语言操作数据库</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8LitePal%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">5.使用LitePal操作数据库</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">Android数据持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="toc-text">文件存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SharePreferences%E5%AD%98%E5%82%A8"><span class="toc-text">SharePreferences存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a%E3%80%81Context%E7%B1%BB%E4%B8%AD%E7%9A%84getSharePreferens-%E6%96%B9%E6%B3%95"><span class="toc-text">a、Context类中的getSharePreferens( )方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b%E3%80%81Activity%E7%B1%BB%E4%B8%AD%E7%9A%84getPreferences-%E6%96%B9%E6%B3%95"><span class="toc-text">b、Activity类中的getPreferences( )方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c%E3%80%81PreferenceManger%E7%B1%BB%E4%B8%AD%E7%9A%84getDefalutSharePreferences-%E6%96%B9%E6%B3%95"><span class="toc-text">c、PreferenceManger类中的getDefalutSharePreferences( )方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SQLite%E8%AF%AD%E8%A8%80"><span class="toc-text">使用SQLite语言</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-text">增加数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">修改数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">删除数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">查询数据</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SQL%E8%AF%AD%E8%A8%80%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">使用SQL语言操作数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8LitePal%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">使用LitePal操作数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#litepal%E6%94%AF%E6%8C%81%E7%9A%84%E5%AE%9E%E4%BD%93%E7%B1%BB%E5%AD%97%E6%AE%B5%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B%E4%B8%BA-int%EF%BC%8Clong%EF%BC%8Cdouble%EF%BC%8Cfloat%EF%BC%8Cbyte-%EF%BC%8Cboolean%EF%BC%8CString%EF%BC%8CDate%EF%BC%9B%E4%B8%8D%E6%94%AF%E6%8C%81String-%E6%95%B0%E7%BB%84%E5%9E%8B"><span class="toc-text">litepal支持的实体类字段映射类型为 int，long，double，float，byte[]，boolean，String，Date；不支持String[]数组型</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -1457,7 +1457,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

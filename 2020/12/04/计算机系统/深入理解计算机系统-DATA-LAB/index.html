@@ -448,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">深入理解计算机系统</a>
+    </a>
+  </div>
+
 
           
         
@@ -622,10 +629,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T17:35:43+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:11:11+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -761,7 +768,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-bitXOr"><span class="toc-text">1.bitXOr</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-tmin"><span class="toc-text">2.tmin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-SpecialBits-x"><span class="toc-text">3.SpecialBits(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-fitshort"><span class="toc-text">4.fitshort</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-isTmax-x"><span class="toc-text">5.isTmax(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-allOddBits-x"><span class="toc-text">6.allOddBits(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-anyEvenBit-x"><span class="toc-text">7.anyEvenBit(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-negate-x"><span class="toc-text">8.negate(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-isAsciiDigit-x"><span class="toc-text">9.isAsciiDigit(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-conditional%EF%BC%88x-y-z"><span class="toc-text">10.conditional（x,y,z)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-isLessOrEqual-x-y"><span class="toc-text">11.isLessOrEqual(x,y)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-ezTreeFourths-x"><span class="toc-text">12.ezTreeFourths(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-logicalNeg-x"><span class="toc-text">13.logicalNeg(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-howmanyBits-x"><span class="toc-text">14.howmanyBits(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-bitParity-x"><span class="toc-text">15.bitParity(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16-intLog2-x"><span class="toc-text">16.intLog2(x)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17-floatNegate-unsigned-uf"><span class="toc-text">17.floatNegate(unsigned uf)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#18-floatScale-unsigned-uf"><span class="toc-text">18.floatScale(unsigned uf)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-floatFloat2Int-uf"><span class="toc-text">19.floatFloat2Int(uf)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#20-floatPower-x"><span class="toc-text">20.floatPower(x)</span></a></li></ol>
     </div>
   </section>
 
@@ -1424,7 +1431,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

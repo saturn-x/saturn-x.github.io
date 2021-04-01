@@ -448,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/NodeJs/">NodeJs</a>
+    </a>
+  </div>
+
 
           
         
@@ -484,7 +491,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="1-STACK-Canary栈溢出保护"><a href="#1-STACK-Canary栈溢出保护" class="headerlink" title="1.STACK Canary栈溢出保护"></a>1.STACK Canary栈溢出保护</h1><p>1.当启用栈保护后，函数开始执行的时候会先往栈底插入 cookie 信息，当函数真正返回的时候会验证 cookie 信息是否合法 (栈帧销毁前测试该值是否被改变)，如果不合法就停止程序运行 (栈溢出发生)。<strong>攻击者在覆盖返回地址的时候往往也会将 cookie 信息给覆盖掉</strong>，导致栈保护检查失败而阻止 shellcode 的执行，避免漏洞利用成功。在 Linux 中我们将 cookie 信息称为 Canary。</p>
+  <h1 id="STACK-Canary栈溢出保护"><a href="#STACK-Canary栈溢出保护" class="headerlink" title="STACK Canary栈溢出保护"></a>STACK Canary栈溢出保护</h1><p>1.当启用栈保护后，函数开始执行的时候会先往栈底插入 cookie 信息，当函数真正返回的时候会验证 cookie 信息是否合法 (栈帧销毁前测试该值是否被改变)，如果不合法就停止程序运行 (栈溢出发生)。<strong>攻击者在覆盖返回地址的时候往往也会将 cookie 信息给覆盖掉</strong>，导致栈保护检查失败而阻止 shellcode 的执行，避免漏洞利用成功。在 Linux 中我们将 cookie 信息称为 Canary。</p>
 <p>Canary 不管是实现还是设计思想都比较简单高效，就是插入一个值在 stack overflow 发生的高危区域的尾部。当函数返回之时检测 Canary 的值是否经过了改变，以此来判断 stack/buffer overflow 是否发生。</p>
 <p>2.在GCC编译器中使用以下参数设置Canary:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-fstack-protector 启用保护，不过只为局部变量中含有数组的函数插入保护</span><br><span class="line">-fstack-protector-all 启用保护，为所有函数插入保护</span><br><span class="line">-fstack-protector-strong</span><br><span class="line">-fstack-protector-explicit 只对有明确 stack_protect attribute 的函数开启保护</span><br><span class="line">-fno-stack-protector 禁用保护</span><br></pre></td></tr></table></figure>
@@ -498,12 +505,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov    rdx,QWORD PTR [rbp-0x8]</span><br><span class="line">xor    rdx,QWORD PTR fs:0x28</span><br><span class="line">je     0x4005d7 &lt;main+65&gt;</span><br><span class="line">call   0x400460 &lt;__stack_chk_fail@plt&gt;</span><br></pre></td></tr></table></figure>
 
 <p>如果此时Canary已经非法修改，此时程序流程会走到<code>__stack_chk_fail</code></p>
-<h1 id="2-NX数据执行保护"><a href="#2-NX数据执行保护" class="headerlink" title="2.NX数据执行保护"></a>2.NX数据执行保护</h1><p>数据执行保护，即DEP（Data Execution Prevention），是指禁止程序在非可执行的内存区中执行指令。在80x86的体系中，操作系统的内存管理是通过页面表(page table)存储方式来实现的，其最后一位就是NX位，<strong>0表示允许执行代码，1表示禁止执行代码</strong>。一般来说，NX主要是防止在栈或者堆上运行shellcode代码。gcc默认开启不可执行栈功能，添加编译选项<code>-z execstack</code>即可开启栈可执行功能。</p>
-<h1 id="3-ASLR地址空间随机化"><a href="#3-ASLR地址空间随机化" class="headerlink" title="3.ASLR地址空间随机化"></a>3.ASLR地址空间随机化</h1><p>/proc/sys/kernel/randomize_va_space里的值可以控制系统级的ASLR。使用root权限可以进行修改，有三个值可以设置，具体说明：</p>
+<h1 id="NX数据执行保护"><a href="#NX数据执行保护" class="headerlink" title="NX数据执行保护"></a>NX数据执行保护</h1><p>数据执行保护，即DEP（Data Execution Prevention），是指禁止程序在非可执行的内存区中执行指令。在80x86的体系中，操作系统的内存管理是通过页面表(page table)存储方式来实现的，其最后一位就是NX位，<strong>0表示允许执行代码，1表示禁止执行代码</strong>。一般来说，NX主要是防止在栈或者堆上运行shellcode代码。gcc默认开启不可执行栈功能，添加编译选项<code>-z execstack</code>即可开启栈可执行功能。</p>
+<h1 id="ASLR地址空间随机化"><a href="#ASLR地址空间随机化" class="headerlink" title="ASLR地址空间随机化"></a>ASLR地址空间随机化</h1><p>/proc/sys/kernel/randomize_va_space里的值可以控制系统级的ASLR。使用root权限可以进行修改，有三个值可以设置，具体说明：</p>
 <p>-0：关闭ASLR。</p>
 <p>-1：mmap base、stack、vdso page将随机化。这意味着”.so“文件将被加载到随机地址。链接时指定了-pie选项的可执行程序，其代码段加载地址将被随机化。配置内核时如果指定了CONFIG_COMPAT_BRK,则randomize_va_space默认为1，此时heap没有随机化。</p>
 <p>-2：在1的举出上增加了heap随机化。配置内核时如果禁用CONFIG_COMPAT_BRK，则randomize_va_space默认为2。ASLR可以保证在每次程序加载的时候自身和所加载的库文件都会被映射到虚拟地址空间的不同地址处。</p>
-<h1 id="4-PIE：代码段随机化"><a href="#4-PIE：代码段随机化" class="headerlink" title="4.PIE：代码段随机化"></a>4.PIE：代码段随机化</h1><h1 id="5-RELRO：重定位"><a href="#5-RELRO：重定位" class="headerlink" title="5.RELRO：重定位"></a>5.RELRO：重定位</h1><p>有两种情况，即partial relro和full relro，具体区别就是前者重定位信息（如got表）可写，后者不可写。</p>
+<h1 id="PIE：代码段随机化"><a href="#PIE：代码段随机化" class="headerlink" title="PIE：代码段随机化"></a>PIE：代码段随机化</h1><h1 id="RELRO：重定位"><a href="#RELRO：重定位" class="headerlink" title="RELRO：重定位"></a>RELRO：重定位</h1><p>有两种情况，即partial relro和full relro，具体区别就是前者重定位信息（如got表）可写，后者不可写。</p>
 
   
   
@@ -538,10 +545,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T17:48:08+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:04:22+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -619,17 +626,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Pwn-基础ROP</p>
-          <p class='content'>1.基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Prog...</p>
+          <p class='content'>基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Progra...</p>
         </a>
       
       
         <a class='next' href='/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/'>
           <p class='title'>Pwn-栈溢出<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.实现栈溢出的两个条件:
+          <p class='content'>实现栈溢出的两个条件:
 程序有向栈写入数据的行为
 程序并不限制写入数据的长度
 
-2.ESP和EBP两个寄存器如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要...</p>
+ESP和EBP两个寄存器如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要将程序控...</p>
         </a>
       
     </div>
@@ -672,7 +679,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#STACK-Canary%E6%A0%88%E6%BA%A2%E5%87%BA%E4%BF%9D%E6%8A%A4"><span class="toc-text">STACK Canary栈溢出保护</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NX%E6%95%B0%E6%8D%AE%E6%89%A7%E8%A1%8C%E4%BF%9D%E6%8A%A4"><span class="toc-text">NX数据执行保护</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ASLR%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E9%9A%8F%E6%9C%BA%E5%8C%96"><span class="toc-text">ASLR地址空间随机化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIE%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%AE%B5%E9%9A%8F%E6%9C%BA%E5%8C%96"><span class="toc-text">PIE：代码段随机化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RELRO%EF%BC%9A%E9%87%8D%E5%AE%9A%E4%BD%8D"><span class="toc-text">RELRO：重定位</span></a></li></ol>
     </div>
   </section>
 
@@ -1335,7 +1342,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

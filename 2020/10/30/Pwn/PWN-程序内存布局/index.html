@@ -448,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Pwn/">Pwn</a>
+    </a>
+  </div>
+
 
           
         
@@ -487,10 +494,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <p>程序启动时，加载器会将程序文件数据加载到内存里，在运行过程中，程序也会开辟部分动态内存。在程序运行的生命周期中，内存中比较重要的四部分数据是程序数据、堆、库数据、栈。另外，内核空间也会映射到程序内存中。</p>
 <p>程序数据一般映射在内存的较低地址处，然后依次为堆数据、库数据及栈等，其中还映射一部分起保护作用的不可访问区域</p>
 <p><img src="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/image-20201030193035277.png" class="lazyload" data-srcset="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/image-20201030193035277.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201030193035277"></p>
-<h1 id="1-Proc程序数据"><a href="#1-Proc程序数据" class="headerlink" title="1.Proc程序数据"></a>1.Proc程序数据</h1><h3 id="代码段、数据段、BSS段"><a href="#代码段、数据段、BSS段" class="headerlink" title="代码段、数据段、BSS段"></a>代码段、数据段、BSS段</h3><p>程序数据主要包含三部分，其中<strong>代码段（Text段）</strong>主要用来存放可执行文件的代码指令，是可执行程序在内存中的镜像，代码段一般是只读的；<strong>数据段</strong>则用来存放可执行文件中已经初始化的变量，包含静态分配的变量和全局变量等；<strong>BSS段</strong>主要函数程序中未初始化的全局变量，在内存中BSS段全部</p>
-<h1 id="2-Heap堆"><a href="#2-Heap堆" class="headerlink" title="2.Heap堆"></a>2.Heap堆</h1><p>堆主要用于存放进程运行过程中动态申请的内存段。进程调用malloc、alloca、new等函数来申请内存，利用free、delete等函数释放内存。这部分的大小不固定，以方便程序灵活使用内存。</p>
-<h1 id="3-Memory-Mapping库数据"><a href="#3-Memory-Mapping库数据" class="headerlink" title="3.Memory Mapping库数据"></a>3.Memory Mapping库数据</h1><p>这部分数据很多是映射的系统库文件，其中比较重要的是libc库，很多程序所使用的系统函数都会动态地链接到libc库中去。</p>
-<h1 id="4-Stack栈"><a href="#4-Stack栈" class="headerlink" title="4.Stack栈"></a>4.Stack栈</h1><p>栈存放程序临时创建的局部变量，包括函数内部的临时变量和调用函数时压入的参数。由于栈具有后进先出的特点，因此可以很方便地用来保存和恢复函数调用现场。</p>
+<h1 id="Proc程序数据"><a href="#Proc程序数据" class="headerlink" title="Proc程序数据"></a>Proc程序数据</h1><h2 id="代码段、数据段、BSS段"><a href="#代码段、数据段、BSS段" class="headerlink" title="代码段、数据段、BSS段"></a>代码段、数据段、BSS段</h2><p>程序数据主要包含三部分，其中<strong>代码段（Text段）</strong>主要用来存放可执行文件的代码指令，是可执行程序在内存中的镜像，代码段一般是只读的；<strong>数据段</strong>则用来存放可执行文件中已经初始化的变量，包含静态分配的变量和全局变量等；<strong>BSS段</strong>主要函数程序中未初始化的全局变量，在内存中BSS段全部</p>
+<h1 id="Heap堆"><a href="#Heap堆" class="headerlink" title="Heap堆"></a>Heap堆</h1><p>堆主要用于存放进程运行过程中动态申请的内存段。进程调用malloc、alloca、new等函数来申请内存，利用free、delete等函数释放内存。这部分的大小不固定，以方便程序灵活使用内存。</p>
+<h1 id="Memory-Mapping库数据"><a href="#Memory-Mapping库数据" class="headerlink" title="Memory Mapping库数据"></a>Memory Mapping库数据</h1><p>这部分数据很多是映射的系统库文件，其中比较重要的是libc库，很多程序所使用的系统函数都会动态地链接到libc库中去。</p>
+<h1 id="Stack栈"><a href="#Stack栈" class="headerlink" title="Stack栈"></a>Stack栈</h1><p>栈存放程序临时创建的局部变量，包括函数内部的临时变量和调用函数时压入的参数。由于栈具有后进先出的特点，因此可以很方便地用来保存和恢复函数调用现场。</p>
 <p><img src="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/image-20201030194557970.png" class="lazyload" data-srcset="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/image-20201030194557970.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201030194557970"></p>
 <p><img src="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/image-20201030194604058.png" class="lazyload" data-srcset="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/image-20201030194604058.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201030194604058"></p>
 
@@ -527,10 +534,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T17:48:07+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:04:45+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -608,13 +615,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/11/07/C%E3%80%81C++/c++%E6%96%87%E4%BB%B6%E6%B5%81%E7%9A%84%E8%AF%BB%E5%86%99/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>c++文件流的读写</p>
-          <p class='content'>1.从csv文件读入小数1234567891011121314151617181920212223242526272829303132333435363738#include&lt;fstrea...</p>
+          <p class='content'>从csv文件读入小数源码：
+1234567891011121314151617181920212223242526272829303132333435363738#include&lt;fstr...</p>
         </a>
       
       
         <a class='next' href='/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/'>
           <p class='title'>Pwn-常见利用方法<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.Shellcode 一般指获取shell代码，针对数据未开启可执行保护NX，可以将shellcode直接布置在堆栈等可写可执行区域保护NX，可以将shellcode直接布置在堆栈等可写可执行...</p>
+          <p class='content'>Shellcode 一般指获取shell代码，针对数据未开启可执行保护NX，可以将shellcode直接布置在堆栈等可写可执行区域保护NX，可以将shellcode直接布置在堆栈等可写可执行区域...</p>
         </a>
       
     </div>
@@ -657,7 +665,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%AE%B5%E3%80%81%E6%95%B0%E6%8D%AE%E6%AE%B5%E3%80%81BSS%E6%AE%B5"><span class="toc-text">代码段、数据段、BSS段</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Proc%E7%A8%8B%E5%BA%8F%E6%95%B0%E6%8D%AE"><span class="toc-text">Proc程序数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%AE%B5%E3%80%81%E6%95%B0%E6%8D%AE%E6%AE%B5%E3%80%81BSS%E6%AE%B5"><span class="toc-text">代码段、数据段、BSS段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Heap%E5%A0%86"><span class="toc-text">Heap堆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Memory-Mapping%E5%BA%93%E6%95%B0%E6%8D%AE"><span class="toc-text">Memory Mapping库数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Stack%E6%A0%88"><span class="toc-text">Stack栈</span></a></li></ol>
     </div>
   </section>
 
@@ -1320,7 +1328,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

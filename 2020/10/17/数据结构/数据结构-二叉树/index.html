@@ -448,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    </a>
+  </div>
+
 
           
         
@@ -526,10 +533,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-30T19:53:00+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:11:54+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 30, 2020</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -607,11 +614,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Pwn-栈溢出</p>
-          <p class='content'>1.实现栈溢出的两个条件:
+          <p class='content'>实现栈溢出的两个条件:
 程序有向栈写入数据的行为
 程序并不限制写入数据的长度
 
-2.ESP和EBP两个寄存器如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要...</p>
+ESP和EBP两个寄存器如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要将程序控...</p>
         </a>
       
       
@@ -660,7 +667,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%EF%BC%9A"><span class="toc-text">1.树的节点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%8A%82%E7%82%B9%E7%9A%84%E5%BA%A6%E5%92%8C%E5%B1%82%E6%AC%A1"><span class="toc-text">2.节点的度和层次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%89%E5%BA%8F%E6%A0%91%E5%92%8C%E6%97%A0%E5%BA%8F%E6%A0%91%EF%BC%9A"><span class="toc-text">3.有序树和无序树：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%A3%AE%E6%9E%97"><span class="toc-text">4.森林</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.树的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%EF%BC%9A"><span class="toc-text">1.树的节点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%8A%82%E7%82%B9%E7%9A%84%E5%BA%A6%E5%92%8C%E5%B1%82%E6%AC%A1"><span class="toc-text">2.节点的度和层次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%89%E5%BA%8F%E6%A0%91%E5%92%8C%E6%97%A0%E5%BA%8F%E6%A0%91%EF%BC%9A"><span class="toc-text">3.有序树和无序树：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%A3%AE%E6%9E%97"><span class="toc-text">4.森林</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -1323,7 +1330,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

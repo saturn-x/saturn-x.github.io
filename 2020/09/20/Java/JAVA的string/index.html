@@ -448,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Java/">Java</a>
+    </a>
+  </div>
+
 
           
         
@@ -484,15 +491,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h3 id="1-创建字符串"><a href="#1-创建字符串" class="headerlink" title="1.创建字符串"></a>1.创建字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringDemo</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      <span class="keyword">char</span>[] helloArray = &#123; <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&#125;;</span><br><span class="line">      String helloString = <span class="keyword">new</span> String(helloArray);  </span><br><span class="line">      System.out.println( helloString );</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <h1 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringDemo</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      <span class="keyword">char</span>[] helloArray = &#123; <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&#125;;</span><br><span class="line">      String helloString = <span class="keyword">new</span> String(helloArray);  </span><br><span class="line">      System.out.println( helloString );</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-字符串长度"><a href="#2-字符串长度" class="headerlink" title="2.字符串长度"></a>2.字符串长度</h3><p>String 类的一个访问器方法是 length() 方法，它返回字符串对象包含的字符数。</p>
+<h1 id="字符串长度"><a href="#字符串长度" class="headerlink" title="字符串长度"></a>字符串长度</h1><p>String 类的一个访问器方法是 length() 方法，它返回字符串对象包含的字符数。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        String site = <span class="string">&quot;ccccc&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> len = site.length();</span><br><span class="line">        System.out.println( <span class="string">&quot; : &quot;</span> + len );</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-连接字符串"><a href="#3-连接字符串" class="headerlink" title="3.连接字符串"></a>3.连接字符串</h3><p>string1.concat(string2);</p>
+<h1 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h1><p>string1.concat(string2);</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[] )</span></span>&#123;</span><br><span class="line">		   <span class="comment">//string1.concat(string2);</span></span><br><span class="line">		   String str1=<span class="string">&quot;abc&quot;</span>;</span><br><span class="line">		   String str2=<span class="string">&quot;def&quot;</span>;</span><br><span class="line">		   String str3=str1.concat(str2);</span><br><span class="line">		   System.out.print(str3);</span><br><span class="line">		   	   </span><br><span class="line">		   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-创建格式化字符串"><a href="#4-创建格式化字符串" class="headerlink" title="4.创建格式化字符串"></a>4.创建格式化字符串</h3><p>String 类使用静态方法 format() 返回一个String 对象而不是 PrintStream 对象。</p>
+<h1 id="创建格式化字符串"><a href="#创建格式化字符串" class="headerlink" title="创建格式化字符串"></a>创建格式化字符串</h1><p>String 类使用静态方法 format() 返回一个String 对象而不是 PrintStream 对象。</p>
 <p>String 类的静态方法 format() 能用来创建可复用的格式化字符串，而不仅仅是用于一次打印输出。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[] )</span></span>&#123;</span><br><span class="line">		   <span class="keyword">float</span> a=<span class="number">3.33f</span>;</span><br><span class="line">		   <span class="keyword">int</span> intVar=<span class="number">3</span>;</span><br><span class="line">		   String stringVar=<span class="string">&quot;abc&quot;</span>;</span><br><span class="line">		   System.out.printf(<span class="string">&quot;浮点型变量的值为 &quot;</span> +</span><br><span class="line">	                  <span class="string">&quot;%3f, 整型变量的值为 &quot;</span> +</span><br><span class="line">	                  <span class="string">&quot; %d, 字符串变量的值为 &quot;</span> +</span><br><span class="line">	                  <span class="string">&quot;is %s&quot;</span>, a, intVar, stringVar);</span><br><span class="line">		   </span><br><span class="line">		   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -537,10 +544,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T17:34:04+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T21:56:58+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -618,18 +625,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/09/20/Java/JAVA%E7%9A%84%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>JAVA的日期时间</p>
-          <p class='content'>1.先导入java.util.Date的类第一个构造函数使用当前日期和时间来初始化对象。
+          <p class='content'>先导入java.util.Date的类第一个构造函数使用当前日期和时间来初始化对象。
 Date( )
 第二个构造函数接收一个参数，该参数是从1970年1月1日起的毫秒数。
-Date(long...</p>
+Date(long m...</p>
         </a>
       
       
         <a class='next' href='/2020/09/20/Java/JAVA%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/'>
           <p class='title'>JAVA基础语法<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.Java 基础语法一个 Java 程序可以认为是一系列对象的集合，而这些对象通过调用彼此的方法来协同工作。下面简要介绍下类、对象、方法和实例变量的概念。
+          <p class='content'>Java 基础语法一个 Java 程序可以认为是一系列对象的集合，而这些对象通过调用彼此的方法来协同工作。下面简要介绍下类、对象、方法和实例变量的概念。
 
-对象：对象是类的一个实例，有状态和...</p>
+对象：对象是类的一个实例，有状态和行为...</p>
         </a>
       
     </div>
@@ -672,7 +679,7 @@ Date(long...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">1.创建字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-text">2.字符串长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">3.连接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BA%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">4.创建格式化字符串</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">创建字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-text">字符串长度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">连接字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">创建格式化字符串</span></a></li></ol>
     </div>
   </section>
 
@@ -1335,7 +1342,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

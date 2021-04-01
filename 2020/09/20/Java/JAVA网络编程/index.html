@@ -484,7 +484,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h3 id="1-Java-网络编程"><a href="#1-Java-网络编程" class="headerlink" title="1.Java 网络编程"></a>1.Java 网络编程</h3><p>网络编程是指编写运行在多个设备（计算机）的程序，这些设备都通过网络连接起来。</p>
+  <h1 id="Java-网络编程"><a href="#Java-网络编程" class="headerlink" title="Java 网络编程"></a>Java 网络编程</h1><p>网络编程是指编写运行在多个设备（计算机）的程序，这些设备都通过网络连接起来。</p>
 <p>java.net 包中 J2SE 的 API 包含有类和接口，它们提供低层次的通信细节。你可以直接使用这些类和接口，来专注于解决问题，而不用关注通信细节。</p>
 <p>java.net 包中提供了两种常见的网络协议的支持：</p>
 <ul>
@@ -495,7 +495,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li><strong>Socket 编程</strong>：这是使用最广泛的网络概念，它已被解释地非常详细。</li>
 </ul>
-<h3 id="2-Socket-编程"><a href="#2-Socket-编程" class="headerlink" title="2.Socket 编程"></a>2.Socket 编程</h3><p>Socket使用TCP提供了两台计算机之间的通信机制。 客户端程序创建一个Socket，并尝试连接服务器的Socket。</p>
+<h1 id="Socket-编程"><a href="#Socket-编程" class="headerlink" title="Socket 编程"></a>Socket 编程</h1><p>Socket使用TCP提供了两台计算机之间的通信机制。 客户端程序创建一个Socket，并尝试连接服务器的Socket。</p>
 <p>当连接建立时，服务器会创建一个 Socket 对象。客户端和服务器现在可以通过对 Socket 对象的写入和读取来进行通信。</p>
 <p>java.net.Socket 类代表一个套接字，并且 java.net.ServerSocket 类为服务器程序提供了一种来<strong>监听</strong>客户端，并与他们建立连接的机制。</p>
 <p>以下步骤在两台计算机之间使用套接字建立TCP连接时会出现：</p>
@@ -508,7 +508,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <p>连接建立后，通过使用 I/O 流在进行通信，每一个Socket都有一个输出流和一个输入流，客户端的输出流连接到服务器端的输入流，而客户端的输入流连接到服务器端的输出流。</p>
 <p>TCP 是一个双向的通信协议，因此数据可以通过两个数据流在同一时间发送.以下是一些类提供的一套完整的有用的方法来实现 Socket。</p>
-<h3 id="3-ServerSocket-类的方法-服务器端的Socket"><a href="#3-ServerSocket-类的方法-服务器端的Socket" class="headerlink" title="3.ServerSocket 类的方法(服务器端的Socket)"></a>3.ServerSocket 类的方法(服务器端的Socket)</h3><p>服务器应用程序通过使用 java.net.ServerSocket 类以获取一个端口,并且侦听客户端请求。</p>
+<h1 id="ServerSocket-类的方法-服务器端的Socket"><a href="#ServerSocket-类的方法-服务器端的Socket" class="headerlink" title="ServerSocket 类的方法(服务器端的Socket)"></a>ServerSocket 类的方法(服务器端的Socket)</h1><p>服务器应用程序通过使用 java.net.ServerSocket 类以获取一个端口,并且侦听客户端请求。</p>
 <p>ServerSocket 类有四个构造方法：</p>
 <table>
 <thead>
@@ -560,7 +560,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td><strong>public void bind(SocketAddress host, int backlog)</strong> 将 ServerSocket 绑定到特定地址（IP 地址和端口号）。</td>
 </tr>
 </tbody></table>
-<h3 id="4-Socket-类的方法（客户端的Socket）"><a href="#4-Socket-类的方法（客户端的Socket）" class="headerlink" title="4.Socket 类的方法（客户端的Socket）"></a>4.Socket 类的方法（客户端的Socket）</h3><p>java.net.Socket 类代表客户端和服务器都用来互相沟通的套接字。客户端要获取一个 Socket 对象通过实例化 ，而 服务器获得一个 Socket 对象则通过 accept() 方法的返回值。</p>
+<h1 id="Socket-类的方法（客户端的Socket）"><a href="#Socket-类的方法（客户端的Socket）" class="headerlink" title="Socket 类的方法（客户端的Socket）"></a>Socket 类的方法（客户端的Socket）</h1><p>java.net.Socket 类代表客户端和服务器都用来互相沟通的套接字。客户端要获取一个 Socket 对象通过实例化 ，而 服务器获得一个 Socket 对象则通过 accept() 方法的返回值。</p>
 <p>Socket 类有五个构造方法.</p>
 <table>
 <thead>
@@ -590,7 +590,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td><strong>public Socket()</strong> 通过系统默认类型的 SocketImpl 创建未连接套接字</td>
 </tr>
 </tbody></table>
-<h3 id="5-InetAddress-类的方法"><a href="#5-InetAddress-类的方法" class="headerlink" title="5.InetAddress 类的方法"></a>5.InetAddress 类的方法</h3><p>这个类表示互联网协议(IP)地址。下面列出了 Socket 编程时比较有用的方法：</p>
+<h1 id="InetAddress-类的方法"><a href="#InetAddress-类的方法" class="headerlink" title="InetAddress 类的方法"></a>InetAddress 类的方法</h1><p>这个类表示互联网协议(IP)地址。下面列出了 Socket 编程时比较有用的方法：</p>
 <table>
 <thead>
 <tr>
@@ -627,7 +627,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td><strong>String toString()</strong> 将此 IP 地址转换为 String。</td>
 </tr>
 </tbody></table>
-<h3 id="6-例子"><a href="#6-例子" class="headerlink" title="6.例子"></a><strong>6.例子</strong></h3><p>客户端代码：</p>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h1><p>客户端代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> GreetingClient;</span><br><span class="line"><span class="keyword">import</span> java.net.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"> <span class="comment">//客户端代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreetingClient</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span></span><br><span class="line"><span class="function">	   </span>&#123;</span><br><span class="line">		   <span class="comment">//ip地址</span></span><br><span class="line">	      String serverName = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">	       <span class="comment">//端口</span></span><br><span class="line">	      <span class="keyword">int</span> port = <span class="number">8888</span>;</span><br><span class="line">	      <span class="keyword">try</span></span><br><span class="line">	      &#123;</span><br><span class="line">	         System.out.println(<span class="string">&quot;连接到主机：&quot;</span> + serverName + <span class="string">&quot; ，端口号：&quot;</span> + port);</span><br><span class="line">	         <span class="comment">//建立一个socket对象（ip以及端口号）</span></span><br><span class="line">	         Socket client = <span class="keyword">new</span> Socket(serverName, port);</span><br><span class="line">	         System.out.println(<span class="string">&quot;远程主机地址：&quot;</span> + client.getRemoteSocketAddress());</span><br><span class="line">	         <span class="comment">//获得socket对象的输出流</span></span><br><span class="line">	         OutputStream outToServer = client.getOutputStream();</span><br><span class="line">	         DataOutputStream out = <span class="keyword">new</span> DataOutputStream(outToServer);</span><br><span class="line">	         <span class="comment">//输出获取的输出流和本地的ip以及端口</span></span><br><span class="line">	         out.writeUTF(<span class="string">&quot;Hello from &quot;</span> + client.getLocalSocketAddress());</span><br><span class="line">	         <span class="comment">//获取socket对象的输入流</span></span><br><span class="line">	         InputStream inFromServer = client.getInputStream();</span><br><span class="line">	         DataInputStream in = <span class="keyword">new</span> DataInputStream(inFromServer);</span><br><span class="line">	         </span><br><span class="line">	         System.out.println(<span class="string">&quot;服务器响应： &quot;</span> + in.readUTF());</span><br><span class="line">	         client.close();</span><br><span class="line">	      &#125;<span class="keyword">catch</span>(IOException e)</span><br><span class="line">	      &#123;</span><br><span class="line">	         e.printStackTrace();</span><br><span class="line">	      &#125;</span><br><span class="line">	   &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <p>服务端代码：</p>
@@ -667,10 +667,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T17:34:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T21:58:37+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -755,10 +755,10 @@ Android 的应用程序通常涉及用...</p>
       
         <a class='next' href='/2020/09/20/Java/JAVA%E7%9A%84%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/'>
           <p class='title'>JAVA的日期时间<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.先导入java.util.Date的类第一个构造函数使用当前日期和时间来初始化对象。
+          <p class='content'>先导入java.util.Date的类第一个构造函数使用当前日期和时间来初始化对象。
 Date( )
 第二个构造函数接收一个参数，该参数是从1970年1月1日起的毫秒数。
-Date(long...</p>
+Date(long m...</p>
         </a>
       
     </div>
@@ -801,7 +801,7 @@ Date(long...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-text">1.Java 网络编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Socket-%E7%BC%96%E7%A8%8B"><span class="toc-text">2.Socket 编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ServerSocket-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E7%9A%84Socket"><span class="toc-text">3.ServerSocket 类的方法(服务器端的Socket)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Socket-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%88%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84Socket%EF%BC%89"><span class="toc-text">4.Socket 类的方法（客户端的Socket）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-InetAddress-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">5.InetAddress 类的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E4%BE%8B%E5%AD%90"><span class="toc-text">6.例子</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-text">Java 网络编程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket-%E7%BC%96%E7%A8%8B"><span class="toc-text">Socket 编程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ServerSocket-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E7%9A%84Socket"><span class="toc-text">ServerSocket 类的方法(服务器端的Socket)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%88%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84Socket%EF%BC%89"><span class="toc-text">Socket 类的方法（客户端的Socket）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#InetAddress-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">InetAddress 类的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子</span></a></li></ol>
     </div>
   </section>
 
@@ -1464,7 +1464,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

@@ -448,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Pwn/">Pwn</a>
+    </a>
+  </div>
+
 
           
         
@@ -484,13 +491,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="1-Shellcode"><a href="#1-Shellcode" class="headerlink" title="1.Shellcode"></a>1.Shellcode</h1><p> 一般指获取shell代码，针对数据未开启可执行保护NX，可以将shellcode直接布置在堆栈等可写可执行区域保护NX，可以将shellcode直接布置在堆栈等可写可执行区域，然后劫持控制流，跳转过去即可。另外，可以通过其他手段如（rop）将数据区的NX关闭（mprotect设置页属性），或者将代码部分的也属性设置为可写，并在这里布置shellcode，然后执行shellcode。</p>
+  <h1 id="Shellcode"><a href="#Shellcode" class="headerlink" title="Shellcode"></a>Shellcode</h1><p> 一般指获取shell代码，针对数据未开启可执行保护NX，可以将shellcode直接布置在堆栈等可写可执行区域保护NX，可以将shellcode直接布置在堆栈等可写可执行区域，然后劫持控制流，跳转过去即可。另外，可以通过其他手段如（rop）将数据区的NX关闭（mprotect设置页属性），或者将代码部分的也属性设置为可写，并在这里布置shellcode，然后执行shellcode。</p>
 <p>payload: padding1+address of shellcode +padding2+shellcoede<img src="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201103205234868.png" class="lazyload" data-srcset="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201103205234868.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201103205234868"></p>
 <p><strong>address of shellcode</strong>是后面shellcode起始处的地址，用来覆盖返回地址。</p>
 <p><strong>shellcode</strong>应该为十六进制的机器码的格式</p>
 <p><strong>shellcode</strong>起始地址：在padding2里填充若干长度的“\x90”，这个机器码对应的指令是NOP，也就是告诉CPU什么也不做，然后跳到吓一跳指令，有了这一段NOP的填充，只要返回地址能够命中这一段的任意位置，都可以副作用跳到shellcode，这种方法被成为<strong>“NOP Sled”</strong></p>
 <p>这个方法的前提是系统关闭了NX以及</p>
-<h1 id="2-rop-Return-Oriented-Programming"><a href="#2-rop-Return-Oriented-Programming" class="headerlink" title="2.rop(Return Oriented Programming)"></a>2.rop(Return Oriented Programming)</h1><p>修改放回地址，让其指向内存中已有的一段指令</p>
+<h1 id="rop-Return-Oriented-Programming"><a href="#rop-Return-Oriented-Programming" class="headerlink" title="rop(Return Oriented Programming)"></a>rop(Return Oriented Programming)</h1><p>修改放回地址，让其指向内存中已有的一段指令</p>
 <p>rop即放回地址导向编程，通常是利用动态链接库和可执行文件中可利用指令片段（gadget），这些指令片段均以ret指令结尾，即用ret指令可以实现指令片段执行流的衔接，一般针对程序开启了NX属性，但可以控制栈上数据的情况，利用栈结构中的返回地址可以实现控制流的构造。</p>
 <p><img src="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201030190941336.png" class="lazyload" data-srcset="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201030190941336.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201030190941336"></p>
 <p>执行完gadget1，通过ret返回，进入gadget2，从而使得所有的gadget得到有序执行，为了简化rop实现，很多时候有很多libc库函数可以直接利用，从而出现了ret2libc。</p>
@@ -500,15 +507,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>ROP常见的拼凑效果是实现一次系统调用，Linux系统下对应的汇编指令是<code>int 0x80</code>，执行这条指令时，被调用函数的编号存入eax，调用参数应按顺序存入ebx，ecx，edx，esi，edi中。</p>
 <p>例如：编号125对应函数mprotect（void &amp;addr,size_t len,int prot），可用该函数将栈的属性改为可执行，这样就可以使用shellcode了。假如利用系统调用执行这个函数，<strong>eax</strong>、<strong>ebx</strong>，<strong>ecx</strong>、<strong>edx</strong>应该分别为“<strong>125“</strong>、<strong>内存栈的分段地址（可以通过调试工具确定）</strong>、**”0x10000“(需要修改的空间长度，也许需要更长)<strong>、</strong>”7“(RWX权限)**。</p>
 <p>对于上面提到的mprotect函数，我们需要将参数传输到寄存器，所以可以用pop指令将栈顶数据弹如寄存器，如果在内存中能找到直接可用的数据，也可以用mov指令进行传输，不过写入数据再pop要比mov来的简单，如果要用pop指令来传输调用参数，就需要在溢出数据内包含这些参数，所以上面的溢出数据格式需要一点修改。</p>
-<h1 id="3-Magic-Addr"><a href="#3-Magic-Addr" class="headerlink" title="3.Magic_Addr"></a>3.Magic_Addr</h1><p>Magic_Addr是指专门通过一个地址获取shell的地址，一般位于system函数的实现代码中的one_gadget。在libc的system函数中，有多出调用了execve(“/bin/sh”,”sh”,ebv)函数对应的反编译代码和反汇编代码。</p>
+<h1 id="Magic-Addr"><a href="#Magic-Addr" class="headerlink" title="Magic_Addr"></a>Magic_Addr</h1><p>Magic_Addr是指专门通过一个地址获取shell的地址，一般位于system函数的实现代码中的one_gadget。在libc的system函数中，有多出调用了execve(“/bin/sh”,”sh”,ebv)函数对应的反编译代码和反汇编代码。</p>
 <p><img src="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201030191646499.png" class="lazyload" data-srcset="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201030191646499.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201030191646499"></p>
 <p><img src="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201030191654581.png" class="lazyload" data-srcset="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201030191654581.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201030191654581"></p>
-<h1 id="4-Return-to-dl-resolve"><a href="#4-Return-to-dl-resolve" class="headerlink" title="4.Return-to-dl_resolve"></a>4.Return-to-dl_resolve</h1><p>核心思想是利用_dl_runtime_resolve函数解析出system函数的地址，通常能够在没有提供libc库情况看下使用。</p>
+<h1 id="Return-to-dl-resolve"><a href="#Return-to-dl-resolve" class="headerlink" title="Return-to-dl_resolve"></a>Return-to-dl_resolve</h1><p>核心思想是利用_dl_runtime_resolve函数解析出system函数的地址，通常能够在没有提供libc库情况看下使用。</p>
 <p>其适用情况需要满足如下三个条件。</p>
 <p>1.未给出libc库。</p>
 <p>2.没有开启PIE保护，如果开启了PIE保护，则还需要通过泄露获取基地址。</p>
 <p>3.没有开启FULL RELRO。</p>
-<h1 id="5-Return2libc"><a href="#5-Return2libc" class="headerlink" title="5.Return2libc"></a>5.Return2libc</h1><p>修改返回地址，让其指向内存中已有的某个函数</p>
+<h1 id="Return2libc"><a href="#Return2libc" class="headerlink" title="Return2libc"></a>Return2libc</h1><p>修改返回地址，让其指向内存中已有的某个函数</p>
 <p>要完成的任务包括：在内存中确定某个函数的地址，覆盖掉返回地址，由于libc动态链接库中的函数被广泛应用，所以有很大概率在内存中找到该动态库。同时由于该库包含了一些系统级的函数（例如system()等），所以通常使用这些系统级函数来获得当前进程的控制权，鉴于要执行函数可能需要参数，比如调用system( )函数打开shell的完整形式为<code>system(&quot;/bin/sh&quot;)</code>，所以溢出数据也要包括必要的参数 。</p>
 <p>payload：padding1+address of system() +padding2+ address of “/bin/sh”</p>
 <p><img src="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201103211630588.png" class="lazyload" data-srcset="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/image-20201103211630588.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201103211630588"></p>
@@ -548,10 +555,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T17:48:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:04:05+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -635,7 +642,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='next' href='/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/'>
           <p class='title'>Pwn-基础ROP<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Prog...</p>
+          <p class='content'>基本ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Progra...</p>
         </a>
       
     </div>
@@ -678,7 +685,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shellcode"><span class="toc-text">Shellcode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rop-Return-Oriented-Programming"><span class="toc-text">rop(Return Oriented Programming)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Magic-Addr"><span class="toc-text">Magic_Addr</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Return-to-dl-resolve"><span class="toc-text">Return-to-dl_resolve</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Return2libc"><span class="toc-text">Return2libc</span></a></li></ol>
     </div>
   </section>
 
@@ -1341,7 +1348,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

@@ -448,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/NodeJs/">NodeJs</a>
+    </a>
+  </div>
+
 
           
         
@@ -484,7 +491,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="1-闭包与变量锁定"><a href="#1-闭包与变量锁定" class="headerlink" title="1. 闭包与变量锁定"></a>1. 闭包与变量锁定</h1><p>闭包=内部函数+外部代码（外部函数变量）</p>
+  <h1 id="闭包与变量锁定"><a href="#闭包与变量锁定" class="headerlink" title="闭包与变量锁定"></a>闭包与变量锁定</h1><p>闭包=内部函数+外部代码（外部函数变量）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopWatch</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> starttime=<span class="built_in">Date</span>.now()</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getDelay</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> usingtime=<span class="built_in">Date</span>.now()-starttime;</span><br><span class="line">            alert(usingtime);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> getDelay;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//先调用整个函数，然后变量拿到getDelay的入口</span></span><br><span class="line">    <span class="keyword">var</span> timer=stopWatch();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">1000000</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> foo=<span class="built_in">Math</span>.random()*<span class="number">10000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//最后使用getDealy入口显示延迟时间 此时的starttime并没有被消灭</span></span><br><span class="line">    timer();</span><br></pre></td></tr></table></figure>
 
 <img src="/2021/03/11/JavaScript/JavaScript%E5%BC%80%E5%8F%91/image-20210311200738176.png" class="lazyload" data-srcset="/2021/03/11/JavaScript/JavaScript%E5%BC%80%E5%8F%91/image-20210311200738176.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210311200738176" style="zoom: 50%;">
@@ -498,13 +505,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <p>运行结果：<img src="/2021/03/11/JavaScript/JavaScript%E5%BC%80%E5%8F%91/image-20210311203041496.png" class="lazyload" data-srcset="/2021/03/11/JavaScript/JavaScript%E5%BC%80%E5%8F%91/image-20210311203041496.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210311203041496" style="zoom:50%;"></p>
 <p>变量i作为立即函数的参数输入，这里的参数index引用到了立即函数内部， 变量i成为了函数内部的变量，之前作为外部的变量的i被锁定了，类似于重新复制了一份，外部的i不会影响函数内的i</p>
-<h1 id="2-文档对象模型DOM"><a href="#2-文档对象模型DOM" class="headerlink" title="2.文档对象模型DOM"></a>2.文档对象模型DOM</h1><p>DOM结构不止有HTML元素，用一个更上层的概念来说，所有组成DOM结构的东西被称作节点。</p>
+<h1 id="文档对象模型DOM"><a href="#文档对象模型DOM" class="headerlink" title="文档对象模型DOM"></a>文档对象模型DOM</h1><p>DOM结构不止有HTML元素，用一个更上层的概念来说，所有组成DOM结构的东西被称作节点。</p>
 <p>这些节点可以是HTML元素、属性、文本内容、注释、与文件相关的内容。’</p>
 <p>DOM的最顶层由window、document、html三个元素组成</p>
 <img src="/2021/03/11/JavaScript/JavaScript%E5%BC%80%E5%8F%91/image-20210311210208898.png" class="lazyload" data-srcset="/2021/03/11/JavaScript/JavaScript%E5%BC%80%E5%8F%91/image-20210311210208898.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210311210208898" style="zoom: 67%;">
 
-<h3 id="1-window对象"><a href="#1-window对象" class="headerlink" title="1.window对象"></a>1.window对象</h3><p>DOM结构的根节点就是window对象，这个window对象包含许多作用浏览器的属性和方法，window对象处理的是浏览器窗口</p>
-<h3 id="2-Document对象"><a href="#2-Document对象" class="headerlink" title="2.Document对象"></a>2.Document对象</h3><p>document对象是通往构成网页HTML元素的大门，需要记住的是document对象并非只能访问HTML只读文件，可以通过document对象对HTML文件进行读取和编辑。</p>
+<h2 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h2><p>DOM结构的根节点就是window对象，这个window对象包含许多作用浏览器的属性和方法，window对象处理的是浏览器窗口</p>
+<h2 id="Document对象"><a href="#Document对象" class="headerlink" title="Document对象"></a>Document对象</h2><p>document对象是通往构成网页HTML元素的大门，需要记住的是document对象并非只能访问HTML只读文件，可以通过document对象对HTML文件进行读取和编辑。</p>
 
   
   
@@ -539,10 +546,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-11T21:20:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:03:24+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 11, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -626,7 +633,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='next' href='/2021/03/07/JavaScript/JavaScript-NodeJs%E5%BC%80%E5%8F%91/'>
           <p class='title'>JavaScript-Node.js开发<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.使用webStorm编写第一个Node.js程序123456var http=require(&#x27;http&#x27;);console.log(&quot;请打开浏览器&quot;...</p>
+          <p class='content'>使用webStorm编写第一个Node.js程序123456var http=require(&#x27;http&#x27;);console.log(&quot;请打开浏览器&quot;);...</p>
         </a>
       
     </div>
@@ -669,7 +676,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-window%E5%AF%B9%E8%B1%A1"><span class="toc-text">1.window对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Document%E5%AF%B9%E8%B1%A1"><span class="toc-text">2.Document对象</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E4%B8%8E%E5%8F%98%E9%87%8F%E9%94%81%E5%AE%9A"><span class="toc-text">闭包与变量锁定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8BDOM"><span class="toc-text">文档对象模型DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#window%E5%AF%B9%E8%B1%A1"><span class="toc-text">window对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Document%E5%AF%B9%E8%B1%A1"><span class="toc-text">Document对象</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -1332,7 +1339,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

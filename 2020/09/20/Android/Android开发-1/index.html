@@ -448,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Android/">Android</a>
+    </a>
+  </div>
+
 
           
         
@@ -487,7 +494,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <p><a target="_blank" rel="noopener" href="http://c.biancheng.net/android/">Android</a> 作为一个移动设备的开发平台，其软件层次结构包含操作系统 (OS)、中间件 (MiddleWare) 和应用程序 (Application)。</p>
 <p>Android 的应用程序通常涉及用户界面和用户交互，这类程序是用户实实在在能感受到的。目前 Android 本身提供了桌面、联系人、电话和浏览器等众多的核心应用，同时还允许开发者使用应用程序框架层的 API 实现自己的程序</p>
 <p>Android 系统没有使用常见的应用程序入口点的方法（例如C语言中的 main() 方法），应用程序是由组件组成的，组件可以调用相互独立的基本功能模块。根据完成的功能不同，Android 划分了 4 类核心组件，即 Activity、Service、BroadcastReceiver 和 ContentProvider，各组件之间的消息传递通过 Intent 完成。</p>
-<h2 id="Activity（窗口）"><a href="#Activity（窗口）" class="headerlink" title="Activity（窗口）"></a>Activity（窗口）</h2><p>Activity 是 Android 应用程序核心组件中最基本的一种，是用户和应用程序交互的窗口。</p>
+<h1 id="Activity（窗口）"><a href="#Activity（窗口）" class="headerlink" title="Activity（窗口）"></a>Activity（窗口）</h1><p>Activity 是 Android 应用程序核心组件中最基本的一种，是用户和应用程序交互的窗口。</p>
 <p>在 Android 应用程序中，一个 Activity 通常对应一个单独的视图。一个 Android 应用程序是由一个或多个 Activity 组成的，这些 Activity 相当于 Web 应用程序中的网页，用于显示信息，并且相互之间可以进行跳转。和网页跳转不同的是，Activity 之间的跳转可以有返回值。</p>
 <p>新打开一个视图时，之前的那个视图会被置为暂停状态，并且压入<strong>历史堆栈</strong>中，用户可以通过回退操作返回以前打开过的视图。Activity 是由 Android 系统进行维护的，它有自己的生命周期，即“产生、运行、销毁”，但是在这个过程中会调用许多方法，如创建 onCreate()、激活 onStart()、恢复 onResume()、暂停 onPause()、停止 onStop()、销毁 onDestroy()和重启 onRestart() 等。</p>
 <h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>Service 是一种类似于 Activity 但是没有视图的程序，它没有用户界面，可以在后台运行很长时间，相当于操作系统中的一个服务。</p>
@@ -620,10 +627,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-05T16:16:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T21:51:47+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 5, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -712,8 +719,8 @@ V...</p>
       
         <a class='next' href='/2020/09/20/Java/JAVA%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/'>
           <p class='title'>JAVA网络编程<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.Java 网络编程网络编程是指编写运行在多个设备（计算机）的程序，这些设备都通过网络连接起来。
-java.net 包中 J2SE 的 API 包含有类和接口，它们提供低层次的通信细节。你可以...</p>
+          <p class='content'>Java 网络编程网络编程是指编写运行在多个设备（计算机）的程序，这些设备都通过网络连接起来。
+java.net 包中 J2SE 的 API 包含有类和接口，它们提供低层次的通信细节。你可以直接...</p>
         </a>
       
     </div>
@@ -756,7 +763,7 @@ java.net 包中 J2SE 的 API 包含有类和接口，它们提供低层次的通
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity%EF%BC%88%E7%AA%97%E5%8F%A3%EF%BC%89"><span class="toc-text">Activity（窗口）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Service"><span class="toc-text">Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BroadcastReceiver"><span class="toc-text">BroadcastReceiver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ContentProvider"><span class="toc-text">ContentProvider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Intent"><span class="toc-text">Intent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">1.创建一个空的项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BB%E8%A6%81%E7%9A%84XML%E6%96%87%E4%BB%B6"><span class="toc-text">2.主要的XML文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BB%E8%A6%81%E7%9A%84Java%E6%96%87%E4%BB%B6"><span class="toc-text">3.主要的Java文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-res-drawable%E7%9B%AE%E5%BD%95"><span class="toc-text">4.res-drawable目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-res-layout%E7%9B%AE%E5%BD%95"><span class="toc-text">5.res-layout目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-values%E7%9B%AE%E5%BD%95"><span class="toc-text">6.values目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Android-Activity%E7%BB%84%E4%BB%B6%E5%8F%8A%E5%85%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">7.Android Activity组件及其生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Activity 的生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%BF%90%E8%A1%8C%E6%80%81"><span class="toc-text">1) 运行态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9A%82%E5%81%9C%E6%80%81"><span class="toc-text">2) 暂停态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%81%9C%E6%AD%A2%E6%80%81"><span class="toc-text">3) 停止态</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity%EF%BC%88%E7%AA%97%E5%8F%A3%EF%BC%89"><span class="toc-text">Activity（窗口）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Service"><span class="toc-text">Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BroadcastReceiver"><span class="toc-text">BroadcastReceiver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ContentProvider"><span class="toc-text">ContentProvider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Intent"><span class="toc-text">Intent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">1.创建一个空的项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BB%E8%A6%81%E7%9A%84XML%E6%96%87%E4%BB%B6"><span class="toc-text">2.主要的XML文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BB%E8%A6%81%E7%9A%84Java%E6%96%87%E4%BB%B6"><span class="toc-text">3.主要的Java文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-res-drawable%E7%9B%AE%E5%BD%95"><span class="toc-text">4.res-drawable目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-res-layout%E7%9B%AE%E5%BD%95"><span class="toc-text">5.res-layout目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-values%E7%9B%AE%E5%BD%95"><span class="toc-text">6.values目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Android-Activity%E7%BB%84%E4%BB%B6%E5%8F%8A%E5%85%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">7.Android Activity组件及其生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Activity 的生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%BF%90%E8%A1%8C%E6%80%81"><span class="toc-text">1) 运行态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9A%82%E5%81%9C%E6%80%81"><span class="toc-text">2) 暂停态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%81%9C%E6%AD%A2%E6%80%81"><span class="toc-text">3) 停止态</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -1419,7 +1426,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"sqTMFb0PVPGr3O8jFPjCPlRd-gzGzoHsz","appKey":"c8anwbejIe6cHBJju8X7Wt3U","meta":["nick","mail"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,
