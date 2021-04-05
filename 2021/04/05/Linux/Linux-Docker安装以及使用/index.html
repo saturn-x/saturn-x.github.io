@@ -22,7 +22,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hello-World - Hexo</title>
+  <title>Linux-Docker安装以及使用 - Hexo</title>
+  
+    <meta name="keywords" content="Linux">
   
 
   
@@ -429,7 +431,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        Hello-World
+        Linux-Docker安装以及使用
       </h1>
       <div class='new-meta-box'>
         
@@ -446,6 +448,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Linux/">Linux</a>
+    </a>
+  </div>
+
 
           
         
@@ -453,7 +462,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 2, 2021</p>
+    <p>发布于：Apr 5, 2021</p>
   </a>
 </div>
 
@@ -464,7 +473,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Hello-World" data-path="/2021/04/02/Hello-World/">
+      <div id="lc-pv" data-title="Linux-Docker安装以及使用" data-path="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -482,7 +491,55 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  
+  <h1 id="docker是什么"><a href="#docker是什么" class="headerlink" title="docker是什么"></a>docker是什么</h1><p>Docker是一个开放源代码软件项目，让应用程序布署在软件容器下的工作可以自动化进行，借此在Linux操作系统上，提供一个额外的软件抽象层，以及操作系统层虚拟化的自动管理机制。Docker利用Linux核心中的资源分离机制，例如cgroups，以及Linux核心命名空间（name space），来建立独立的软件容器（containers）。这可以在单一Linux实体下运作，避免启动一个虚拟机器造成的额外负担。</p>
+<p><img src="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20210405123928706.png" class="lazyload" data-srcset="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20210405123928706.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210405123928706" style="zoom: 25%;"><img src="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20210405123950254.png" class="lazyload" data-srcset="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20210405123950254.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210405123950254" style="zoom:25%;"></p>
+<h1 id="安装（Ubuntu）"><a href="#安装（Ubuntu）" class="headerlink" title="安装（Ubuntu）"></a>安装（Ubuntu）</h1><h2 id="更新apt软件包索引并安装软件包以允许apt通过HTTPS使用存储库："><a href="#更新apt软件包索引并安装软件包以允许apt通过HTTPS使用存储库：" class="headerlink" title="更新apt软件包索引并安装软件包以允许apt通过HTTPS使用存储库："></a>更新<code>apt</code>软件包索引并安装软件包以允许<code>apt</code>通过HTTPS使用存储库：</h2><p>大多数用户会 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">设置Docker的存储库</a>并从中进行安装，以简化安装和升级任务。这是推荐的方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install \</span><br><span class="line">   apt-transport-https \</span><br><span class="line">   ca-certificates \</span><br><span class="line">   curl \</span><br><span class="line">   gnupg \</span><br><span class="line">   lsb-release</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加官方的GPG密钥"><a href="#添加官方的GPG密钥" class="headerlink" title="添加官方的GPG密钥"></a>添加官方的GPG密钥</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用以下命令来设置稳定的存储库。要添加-夜间或测试存储库，请在下面的命令中在单词后面添加nightly或test（或两者）stable。"><a href="#使用以下命令来设置稳定的存储库。要添加-夜间或测试存储库，请在下面的命令中在单词后面添加nightly或test（或两者）stable。" class="headerlink" title="使用以下命令来设置稳定的存储库。要添加 夜间或测试存储库，请在下面的命令中在单词后面添加nightly或test（或两者）stable。"></a>使用以下命令来设置<strong>稳定的</strong>存储库。要添加 <strong>夜间</strong>或<strong>测试</strong>存储库，请在下面的命令中在单词后面添加<code>nightly</code>或<code>test</code>（或两者）<code>stable</code>。</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo \</span><br><span class="line"> &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \</span><br><span class="line"><span class="meta"> $</span><span class="bash">(lsb_release -cs) stable<span class="string">&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Docker引擎"><a href="#安装Docker引擎" class="headerlink" title="安装Docker引擎"></a>安装Docker引擎</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行helloword测试是否安装成功"><a href="#运行helloword测试是否安装成功" class="headerlink" title="运行helloword测试是否安装成功"></a>运行helloword测试是否安装成功</h2><img src="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20210405125028874.png" class="lazyload" data-srcset="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20210405125028874.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210405125028874" style="zoom: 67%;">
+
+<h1 id="Registry——镜像仓库"><a href="#Registry——镜像仓库" class="headerlink" title="Registry——镜像仓库"></a>Registry——镜像仓库</h1><ul>
+<li>Docker Hub 是Docker官方的镜像站，类似Github一般的存在，注册后我们也可以往上面上传镜像</li>
+<li>registry 是存放和分发Docker镜像的一个服务</li>
+</ul>
+<ol>
+<li>Docker hub 可以类比为 Github，是一个公共的镜像服务中心</li>
+<li>搭建 Registry 可以类比为搭建 GitLab 服务器，是一个私有的镜像服务中心</li>
+<li>自建 Registry 可以让镜像私有化，也可以提高镜像拉取速度</li>
+</ol>
+<h1 id="基础容器操作"><a href="#基础容器操作" class="headerlink" title="基础容器操作"></a>基础容器操作</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangjiaweizk/article/details/108605185">https://blog.csdn.net/zhangjiaweizk/article/details/108605185</a></p>
+<h2 id="查看运行的容器"><a href="#查看运行的容器" class="headerlink" title="查看运行的容器"></a><strong>查看运行的容器</strong></h2><p>CONTAINER ID:容器ID</p>
+<p>IMAGE:使用镜像</p>
+<p>COMMAND:启用镜像使用命令</p>
+<p>STATUS:容器状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dokcer ps</span><br><span class="line">-a：显示所有的容器，包括未运行的。</span><br><span class="line"></span><br><span class="line">-f：根据条件过滤现实的内容。</span><br><span class="line"></span><br><span class="line">–format：指定返回值的模板文件。</span><br><span class="line"></span><br><span class="line">-l：显示最近创建的容器。</span><br><span class="line"></span><br><span class="line">-n：列出最近创建的n个容器。</span><br><span class="line"></span><br><span class="line">–no-trunc：不截断输出。</span><br><span class="line"></span><br><span class="line">-q：静默模式，只显示容器编号。</span><br><span class="line"></span><br><span class="line">-s：显示总的文件大小。</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20210405141153758.png" class="lazyload" data-srcset="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20210405141153758.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210405141153758" style="zoom:50%;">
+
+<h2 id="容器运行"><a href="#容器运行" class="headerlink" title="容器运行"></a><strong>容器运行</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">docker run</span><br><span class="line">-a stdin : 制定标准输入输出内容类型，可选STDIN&#x2F;STDOUT&#x2F;STDERR三项；</span><br><span class="line"></span><br><span class="line">-d ：后台运行容器，并返回容器ID；</span><br><span class="line"></span><br><span class="line">-i：以交互式运行容器，通常与-t同时使用；</span><br><span class="line"></span><br><span class="line">-P：随机端口映射，容器内部端口随机映射到主机的端口</span><br><span class="line"></span><br><span class="line">-p：指定端口映射，格式为:主机（宿主）端口：容器端口</span><br><span class="line"></span><br><span class="line">-t：为容器重新分配一个伪输入终端，通常与-i同时使用；</span><br><span class="line"></span><br><span class="line">–name&#x3D;“nginx-lb”：为容器指定一个名称；</span><br><span class="line"></span><br><span class="line">–dns 8.8.8.8：指定容器使用的DNS服务器，默认和宿主一致；</span><br><span class="line"></span><br><span class="line">–dns-search example.com：指定容器DNS搜索域名，默认和宿主一致；</span><br><span class="line"></span><br><span class="line">-h “mars&quot;：指定容器的hostname；</span><br><span class="line"></span><br><span class="line">-e username&#x3D;“ritchie”：设置环境变量；</span><br><span class="line"></span><br><span class="line">–env-file&#x3D;[]：从指定文件读入环境变量；</span><br><span class="line"></span><br><span class="line">–cpuset&#x3D;”0-2“ or --cpuset&#x3D;“0,1,2”：绑定容器到指定CPU运行；</span><br><span class="line"></span><br><span class="line">-m：设置容器使用内存最大值；</span><br><span class="line"></span><br><span class="line">–net&#x3D;“bridge”：指定容器的网络链接类型，支持bridge&#x2F;host&#x2F;none&#x2F;container 四种类型；</span><br><span class="line"></span><br><span class="line">–link&#x3D;[]：添加链接到另一个容器；</span><br><span class="line"></span><br><span class="line">–expose&#x3D;[]：开放一个端口或一组端口；</span><br><span class="line"></span><br><span class="line">–volume ，-v：绑定一个卷</span><br></pre></td></tr></table></figure>
+
+<h2 id="docker-start-stop-restart"><a href="#docker-start-stop-restart" class="headerlink" title="docker start/stop/restart"></a><strong>docker start/stop/restart</strong></h2><p>docker start ：启动一个或多个已经被停止的容器</p>
+<p>docker stop：停止一个运行的容器</p>
+<p>docker restart：重启容器</p>
+<h2 id="docker-kill"><a href="#docker-kill" class="headerlink" title="docker kill"></a>docker kill</h2><p>docker kill：杀掉一个运行中的容器</p>
+<h2 id="docker-rm"><a href="#docker-rm" class="headerlink" title="docker rm"></a>docker rm</h2><p>docker rm：删除一个或多个容器。</p>
+<p>-f：通过SIGKILL信号强制删除一个运行中的容器。</p>
+<p>-l：移除容器间的网络连接，而非容器本身。</p>
+<p>-v：删除与容器关联的卷。</p>
+<h2 id="docker-pause-unpause"><a href="#docker-pause-unpause" class="headerlink" title="docker pause/unpause"></a>docker pause/unpause</h2><p>docker pause：暂停容器中所有的进程。</p>
+<p>docker unpause：回复容器中所有的进程。</p>
+<h1 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<h2 id="docker使用命令"><a href="#docker使用命令" class="headerlink" title="docker使用命令"></a>docker使用命令</h2><p>docker是根据里面的docker-compose.yaml文件构建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+
   
   
     
@@ -499,7 +556,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2021/04/02/Hello-World/>http://example.com/2021/04/02/Hello-World/</a></p>
+                <p>本文永久链接是：<a href=http://example.com/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/>http://example.com/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/</a></p>
               
             
           </blockquote>
@@ -516,10 +573,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-02T10:31:53+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-05T15:51:29+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 2, 2021</p>
+    <p>更新于：Apr 5, 2021</p>
   </a>
 </div>
 
@@ -527,6 +584,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Linux/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Linux</p></a></div>
+
 
         
       
@@ -538,7 +598,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/04/02/Hello-World/&title=Hello-World - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/&title=Linux-Docker安装以及使用 - Hexo&summary="
           
           >
           
@@ -550,7 +610,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/04/02/Hello-World/&title=Hello-World - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/&title=Linux-Docker安装以及使用 - Hexo&summary="
           
           >
           
@@ -562,7 +622,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/04/02/Hello-World/&title=Hello-World - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/&title=Linux-Docker安装以及使用 - Hexo&summary="
           
           >
           
@@ -593,12 +653,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="prev-next">
       
       
-        <a class='next' href='/2021/04/01/%E5%8D%9A%E5%AE%A2/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/'>
-          <p class='title'>博客配置<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>设置一个评论系统注册leanCloud账号https://www.leancloud.cn/ 创建一个应用拿到里面的AppleID AppKey
-
-
-使用配置文档1234567891011121...</p>
+        <a class='next' href='/2021/04/04/%E5%8D%9A%E5%AE%A2/Lychee-web%E7%9B%B8%E5%86%8C/'>
+          <p class='title'>Lychee-web相册<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>该图床使用docker以及docker-compose
+安装以上两个后https://github.com/LycheeOrg/Lychee-Docker
+1docker-compose up ...</p>
         </a>
       
     </div>
@@ -631,6 +690,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">docker是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%EF%BC%88Ubuntu%EF%BC%89"><span class="toc-text">安装（Ubuntu）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0apt%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%B4%A2%E5%BC%95%E5%B9%B6%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%BB%A5%E5%85%81%E8%AE%B8apt%E9%80%9A%E8%BF%87HTTPS%E4%BD%BF%E7%94%A8%E5%AD%98%E5%82%A8%E5%BA%93%EF%BC%9A"><span class="toc-text">更新apt软件包索引并安装软件包以允许apt通过HTTPS使用存储库：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%AE%98%E6%96%B9%E7%9A%84GPG%E5%AF%86%E9%92%A5"><span class="toc-text">添加官方的GPG密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%A5%E4%B8%8B%E5%91%BD%E4%BB%A4%E6%9D%A5%E8%AE%BE%E7%BD%AE%E7%A8%B3%E5%AE%9A%E7%9A%84%E5%AD%98%E5%82%A8%E5%BA%93%E3%80%82%E8%A6%81%E6%B7%BB%E5%8A%A0-%E5%A4%9C%E9%97%B4%E6%88%96%E6%B5%8B%E8%AF%95%E5%AD%98%E5%82%A8%E5%BA%93%EF%BC%8C%E8%AF%B7%E5%9C%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%91%BD%E4%BB%A4%E4%B8%AD%E5%9C%A8%E5%8D%95%E8%AF%8D%E5%90%8E%E9%9D%A2%E6%B7%BB%E5%8A%A0nightly%E6%88%96test%EF%BC%88%E6%88%96%E4%B8%A4%E8%80%85%EF%BC%89stable%E3%80%82"><span class="toc-text">使用以下命令来设置稳定的存储库。要添加 夜间或测试存储库，请在下面的命令中在单词后面添加nightly或test（或两者）stable。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Docker%E5%BC%95%E6%93%8E"><span class="toc-text">安装Docker引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8Chelloword%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-text">运行helloword测试是否安装成功</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Registry%E2%80%94%E2%80%94%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93"><span class="toc-text">Registry——镜像仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">基础容器操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%90%E8%A1%8C%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="toc-text">查看运行的容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C"><span class="toc-text">容器运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-start-stop-restart"><span class="toc-text">docker start&#x2F;stop&#x2F;restart</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-kill"><span class="toc-text">docker kill</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-rm"><span class="toc-text">docker rm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-pause-unpause"><span class="toc-text">docker pause&#x2F;unpause</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-compose"><span class="toc-text">docker-compose</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">docker使用命令</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -646,7 +719,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Hello-World";
+  pdata.postTitle="Linux-Docker安装以及使用";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
