@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -24,7 +22,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2020/11 - Hexo</title>
+  <title>Solidity语言基础 - Hexo</title>
+  
+    <meta name="keywords" content="区块链">
   
 
   
@@ -364,7 +364,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  featured' style="display: ;">
+        <div id="half" class='cover-wrapper post featured' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="img/tmp.jpg"></div>
           
@@ -421,270 +421,262 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
-      
+    
+    
+      <h1 class="title">
+        Solidity语言基础
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1.3/logo/256/telegram.png">
+    <p>Gzhu_RuIop</p>
+  </a>
+</div>
+
           
         
           
-        
+            
+
           
         
           
-        
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Apr 10, 2021</p>
+  </a>
+</div>
+
           
         
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/24/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/">
-        密码学-分组密码体制
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        分组密码概述分组密码是许多系统安全的一个重要组成部分。可用于构造
-伪随机数生成器 
-流密码 
-消息认证码和杂凑函数 
-消息认证技术、数据完整性机制、实体认证协议以及单钥数字签字体制
-
-通常n=m。若n&gt;m，则为有数据扩展的分组密码；若n&lt;m，则为有数据压缩的分组密码
-安全性设计原则混淆原则混淆原则就是将密文、明文、密钥三者之间的统计关系和代数关系变得尽可能复杂，使得低手即使获得了...
-      
-    
+      <div id="lc-pv" data-title="Solidity语言基础" data-path="/2021/04/10/%E5%8C%BA%E5%9D%97%E9%93%BE/Solidity%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  
+  <h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><h2 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function (&lt;parameter types&gt;) &#123;internal|external&#125; [pure|constant|view|payable] [returns (&lt;return types&gt;)]</span><br></pre></td></tr></table></figure>
+
+<p>与参数类型相反，返回类型不能为空 —— 如果函数类型不需要返回，则需要删除整个 <code>returns (&lt;return types&gt;)</code> 部分。</p>
+<p><strong>返回变量</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity &gt;=<span class="number">0.4</span><span class="number">.16</span> &lt;<span class="number">0.9</span><span class="number">.0</span>;</span><br><span class="line">contract Simple &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">arithmetic</span>(<span class="params">uint _a, uint _b</span>)</span></span><br><span class="line"><span class="function">        <span class="title">public</span></span></span><br><span class="line"><span class="function">        <span class="title">pure</span></span></span><br><span class="line"><span class="function">        <span class="title">returns</span> (<span class="params">uint o_sum, uint o_product</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        o_sum = _a + _b;</span><br><span class="line">        o_product = _a * _b;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">arithmetic</span>(<span class="params">uint _a, uint _b</span>)</span></span><br><span class="line"><span class="function">        <span class="title">public</span></span></span><br><span class="line"><span class="function">        <span class="title">pure</span></span></span><br><span class="line"><span class="function">        <span class="title">returns</span> (<span class="params">uint o_sum, uint o_product</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (_a + _b, _a * _b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>两个返回方式相同，返回多个变量用(a,b····)</p>
+<ul>
+<li><p>View视图函数：<strong>保证不修改状态</strong></p>
+<p>下面的语句被认为是修改状态：</p>
+<ol>
+<li>修改状态变量。</li>
+<li><a target="_blank" rel="noopener" href="https://learnblockchain.cn/docs/solidity/contracts.html#events">产生事件</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://learnblockchain.cn/docs/solidity/control-structures.html#creating-contracts">创建其它合约</a>。</li>
+<li>使用 <code>selfdestruct</code>。</li>
+<li>通过调用发送以太币。</li>
+<li>调用任何没有标记为 <code>view</code> 或者 <code>pure</code> 的函数。</li>
+<li>使用低级调用。</li>
+<li>使用包含特定操作码的内联汇编。</li>
+</ol>
+</li>
+<li><p>Pure纯函数</p>
+<p>函数可以声明为 <code>pure</code> ，在这种情况下，<strong>承诺不读取也不修改状态</strong>。</p>
+<p>除了上面解释的状态修改语句列表之外，以下被认为是读取状态：</p>
+<ol>
+<li>读取状态变量。</li>
+<li>访问 <code>address(this).balance</code> 或者 <code>&lt;address&gt;.balance</code>。</li>
+<li>访问 <code>block</code>，<code>tx</code>， <code>msg</code> 中任意成员 （除 <code>msg.sig</code> 和 <code>msg.data</code> 之外）。</li>
+<li>调用任何未标记为 <code>pure</code> 的函数。</li>
+<li>使用包含某些操作码的内联汇编。</li>
+</ol>
+</li>
+<li><p>receive接受一台函数</p>
+</li>
+<li><p>Fallback回退函数</p>
+</li>
+</ul>
+<h2 id="地址类型Address"><a href="#地址类型Address" class="headerlink" title="地址类型Address"></a>地址类型Address</h2><p><code>address</code>：保存一个20字节的值（地址的大小）</p>
+<p><code>address payable</code> ：可支付地址，与 <code>address</code> 相同，不过有成员函数 <code>transfer</code> 和 <code>send</code></p>
+<h2 id="可见性和getter函数"><a href="#可见性和getter函数" class="headerlink" title="可见性和getter函数"></a>可见性和getter函数</h2><p>由于 Solidity 有两种函数调用（内部调用不会产生实际的 EVM 调用或称为“消息调用”，而<strong>外部调用</strong>则会产生一个 EVM 调用）， 函数和状态变量有四种可见性类型。 函数可以指定为 <code>external</code> ，<code>public</code> ，<code>internal</code> 或者 <code>private</code>。 对于状态变量，不能设置为 <code>external</code> ，默认是 <code>internal</code> 。</p>
+<h3 id="getter函数"><a href="#getter函数" class="headerlink" title="getter函数"></a>getter函数</h3><p>编译器自动为所有 <strong>public</strong> 状态变量创建 getter 函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity  &gt;=<span class="number">0.4</span><span class="number">.16</span> &lt;<span class="number">0.9</span><span class="number">.0</span>;</span><br><span class="line">contract C &#123;</span><br><span class="line">    uint <span class="keyword">public</span> data = <span class="number">42</span>;</span><br><span class="line">&#125;</span><br><span class="line">contract Caller &#123;</span><br><span class="line">    C c = <span class="keyword">new</span> C();</span><br><span class="line">    <span class="function">function <span class="title">f</span><span class="params">()</span> <span class="keyword">public</span> </span>&#123;</span><br><span class="line">        uint local = c.data();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于Caller合约，编译器会生成一个data的函数，该函数没有参数，返回值是一个<code>uint</code>类型，即状态变量<code>data</code>的值，getter 函数具有外部（external）可见性。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>一个元素类型为 <code>T</code>，固定长度为 <code>k</code> 的数组可以声明为 <code>T[k]</code>，而动态数组声明为 <code>T[]</code></p>
+<p> 举个例子，一个长度为 5，元素类型为 <code>uint</code> 的动态数组的数组（二维数组），应声明为 <code>uint[][5]</code> （注意这里跟其它语言比，数组长度的声明位置是反的）。</p>
+<h1 id="函数修饰器"><a href="#函数修饰器" class="headerlink" title="函数修饰器"></a>函数修饰器</h1><p>使用 修改器modifier 可以轻松改变函数的行为</p>
+<p>修改器modifier 是合约的可继承属性，并可能被派生合约覆盖 , 但前提是它们被标记为 <code>virtual</code>.</p>
+<h1 id="投票例子"><a href="#投票例子" class="headerlink" title="投票例子"></a>投票例子</h1><p>数据结构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示一个选民</span></span><br><span class="line">struct Voter &#123;</span><br><span class="line">        uint weight; <span class="comment">// 计票的权重</span></span><br><span class="line">        bool voted;  <span class="comment">// 若为真，代表该人已投票</span></span><br><span class="line">        address delegate; <span class="comment">// 被委托人</span></span><br><span class="line">        uint vote;   <span class="comment">// 投票提案的索引</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 提案的类型</span></span><br><span class="line">struct Proposal &#123;</span><br><span class="line">        string name;   <span class="comment">// 简称（最长32个字节）</span></span><br><span class="line">        uint voteCount; <span class="comment">// 得票数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//提案人</span></span><br><span class="line">address public chairperson;</span><br><span class="line"><span class="comment">//投票者的map图</span></span><br><span class="line">mapping(<span class="function"><span class="params">address</span> =&gt;</span> Voter) public voters;</span><br><span class="line"><span class="comment">//提案数组</span></span><br><span class="line">Proposal[] public proposals</span><br></pre></td></tr></table></figure>
+
+
+
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/11/24/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2021/04/10/%E5%8C%BA%E5%9D%97%E9%93%BE/Solidity%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/>http://example.com/2021/04/10/%E5%8C%BA%E5%9D%97%E9%93%BE/Solidity%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-11T11:50:51+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Apr 11, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/">
-        深入理解计算机系统-程序的机器级表示
-      </a>
-    </h2>
-  
-  <div class='md'>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>区块链</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        1.程序编码1.gcc -0g -o p p1.c p2.c
-编译选项-Og告诉表一起使用生成符合原始C代码的整体结构的机器代码的优先优化等级，使用较高优化产生的代码会严重变形，以至于产生的机器代码和初始源代码之间的关系非常难以理解。实际使用中，从得到的程序性能考虑，较高级别的的优化-O1，-O2被认为是较好的选择。编译器产生两个源文件的汇编代码，名字分别叫做p1.s和p2.s。接下来编译器...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/04/10/%E5%8C%BA%E5%9D%97%E9%93%BE/Solidity%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/&title=Solidity语言基础 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/04/10/%E5%8C%BA%E5%9D%97%E9%93%BE/Solidity%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/&title=Solidity语言基础 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/04/10/%E5%8C%BA%E5%9D%97%E9%93%BE/Solidity%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/&title=Solidity语言基础 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">深入理解计算机系统</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/">
-        数据结构-图的遍历
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        1.深度优先搜索1.定义图的类型
-其中matrix为一个二维指针，存一个二维数组用于临接矩阵，vex为int的一个一维数组，用于存顶点信息。
-vexnum为顶点的个数，arcnum为弧的个数
-123456789101112131415161718192021class MGraph&#123;  public:int **matrix;  public:int *vex;  //顶点数以及弧...
-      
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-17</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2020/11/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/'>
+          <p class='title'>Linux-Docker安装以及使用<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>docker是什么Docker是一个开放源代码软件项目，让应用程序布署在软件容器下的工作可以自动化进行，借此在Linux操作系统上，提供一个额外的软件抽象层，以及操作系统层虚拟化的自动管理机制。...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/14/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6-m%E5%BA%8F%E5%88%97%E4%BA%A7%E7%94%9F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%B6%E6%80%A7%E8%B4%A8/">
-        密码学-m序列产生原理及其性质
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        m序列的简介1、m序列是最长线性移位寄存器序列的简称。顾名思义，m序列是由多级移位寄存器或其延迟元件通过线性反馈产生的最长的码序列。在二进制移位寄存器中，若n为移位寄存器的级数，n级移位寄存器共有 2n 个状态，除去全0状态外还剩下 2n-1 中状态，因此它能产生的最大长度的码序列为 2n-1 位，也就是说，一个n级线性反馈移位寄存器产生的最长周期等于 2n-1 。在码分多址系统中主要采用两...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/14/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6-m%E5%BA%8F%E5%88%97%E4%BA%A7%E7%94%9F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%B6%E6%80%A7%E8%B4%A8/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/07/C%E3%80%81C++/c++%E6%96%87%E4%BB%B6%E6%B5%81%E7%9A%84%E8%AF%BB%E5%86%99/">
-        c++文件流的读写
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        从csv文件读入小数源码：
-1234567891011121314151617181920212223242526272829303132333435363738#include&lt;fstream&gt;#include&lt;sstream&gt;#include&lt;vector&gt;int main()&#123;    fstream r_in;    r_in.open(&...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-07</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/07/C%E3%80%81C++/c++%E6%96%87%E4%BB%B6%E6%B5%81%E7%9A%84%E8%AF%BB%E5%86%99/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -692,206 +684,28 @@ vexnum为顶点的个数，arcnum为弧的个数
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle# circle, rectangle' href='/about/'>
-          <img no-lazy src='/img/head.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Android/" href="/categories/Android/"
-            id="categoriesAndroid"
-            ><div class='name'>Android</div><div class='badge'>(10)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Java/" href="/categories/Java/"
-            id="categoriesJava"
-            ><div class='name'>Java</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            id="categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/NodeJs/" href="/categories/NodeJs/"
-            id="categoriesNodeJs"
-            ><div class='name'>NodeJs</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Pwn/" href="/categories/Pwn/"
-            id="categoriesPwn"
-            ><div class='name'>Pwn</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Python/" href="/categories/Python/"
-            id="categoriesPython"
-            ><div class='name'>Python</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" href="/categories/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"
-            id="categoriesE5AE9EE9AA8CE68AA5E5918A"
-            ><div class='name'>实验报告</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"
-            id="categoriesE5AF86E7A081E5ADA6"
-            ><div class='name'>密码学</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-            id="categoriesE6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>操作系统</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
-            id="categoriesE695B0E68DAEE5BA93"
-            ><div class='name'>数据库</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
-            id="categoriesE695B0E68DAEE7BB93E69E84"
-            ><div class='name'>数据结构</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AE%97%E6%B3%95/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AE%97%E6%B3%95/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E7AE97E6B395"
-            ><div class='name'>算法</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"
-            id="categoriesE6B187E7BC96E8AFADE8A880"
-            ><div class='name'>汇编语言</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/"
-            id="categoriesE6B7B1E585A5E79086E8A7A3E8AEA1E7AE97E69CBAE7B3BBE7BB9F"
-            ><div class='name'>深入理解计算机系统</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"
-            id="categoriesE78EAFE5A283E9858DE7BDAE"
-            ><div class='name'>环境配置</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395"
-            ><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
-            id="categoriesE8AEA1E7AE97E69CBAE7BD91E7BB9C"
-            ><div class='name'>计算机网络</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-text">类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">函数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%B1%BB%E5%9E%8BAddress"><span class="toc-text">地址类型Address</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8Cgetter%E5%87%BD%E6%95%B0"><span class="toc-text">可见性和getter函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getter%E5%87%BD%E6%95%B0"><span class="toc-text">getter函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BF%AE%E9%A5%B0%E5%99%A8"><span class="toc-text">函数修饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%95%E7%A5%A8%E4%BE%8B%E5%AD%90"><span class="toc-text">投票例子</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/C%E3%80%81C/" style="font-size: 14px; color: #999">C、C++</a> <a href="/tags/Java/" style="font-size: 22px; color: #636363">Java</a> <a href="/tags/JavaScript/" style="font-size: 16px; color: #8b8b8b">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/Mysql/" style="font-size: 14px; color: #999">Mysql</a> <a href="/tags/Pwn/" style="font-size: 22px; color: #636363">Pwn</a> <a href="/tags/Python/" style="font-size: 22px; color: #636363">Python</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 18px; color: #7e7e7e">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 16px; color: #8b8b8b">博客</a> <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" style="font-size: 14px; color: #999">实验报告</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px; color: #8b8b8b">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px; color: #707070">数据结构</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 16px; color: #8b8b8b">环境配置</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16px; color: #8b8b8b">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 20px; color: #707070">计算机系统</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
 		  
@@ -900,8 +714,8 @@ vexnum为顶点的个数，arcnum为弧的个数
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Solidity语言基础";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
