@@ -491,7 +491,112 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  
+  <h1 id="查询数据库的属性字段"><a href="#查询数据库的属性字段" class="headerlink" title="查询数据库的属性字段"></a>查询数据库的属性字段</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">describe 表名;</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据库复杂查询"><a href="#数据库复杂查询" class="headerlink" title="数据库复杂查询"></a>数据库复杂查询</h1><h2 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h2><p>如果两个分数相同，则两个分数排名（<code>Rank</code>）相同。</p>
+<p>情况一：平分后的下一个名次是下一个连续的整数值。换句话说，名次之间不应该有“间隔”。例：<code>1、1、2、3、4、4。</code></p>
+<p>情况二：排名是非连续的。例：<code>1、1、1、4、4、6。</code></p>
+<p><code>score</code>表结构信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>3.52</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3.65</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4.23</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3.85</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4.23</td>
+</tr>
+<tr>
+<td>6</td>
+<td>3.65</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT Score,(SELECT COUNT(DISTINCT Score) FROM score WHERE score&gt;&#x3D;s.score) AS Rank FROM score s ORDER BY score DESC;</span><br><span class="line">SELECT Score,(SELECT COUNT(Score)+1 FROM score WHERE score&gt;s.score) AS Rank FROM score s ORDER BY score DESC;</span><br></pre></td></tr></table></figure>
+
+<p>第一行括号内表示子查询中<strong>没有相同score的表</strong>有多少个大于等于父查询的s.score，假设父查询的score为3.52，而此时的子查询的表中，应该都是大于3.52,所以此时rank应该为4(4.23,3.85,3.65,3.52)</p>
+<p>第二行括号内表示子查询中<strong>与父查询相同的表</strong>有多少个大于父查询的score，假设父查询的score为3.65，而此时的子查询表中，应该有(4.23,3.85,4.23)三个是大于3.65的，所以+1可以得到情况二的rank为4</p>
+<img src="/2021/03/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210509133813072.png" class="lazyload" data-srcset="/2021/03/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210509133813072.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210509133813072" style="zoom:33%;">
+
+<h2 id="区间查询"><a href="#区间查询" class="headerlink" title="区间查询"></a>区间查询</h2><p>某市建了一个新的体育馆，每日人流量信息被记录在<code>gymnasium</code>表中：序号 (<code>id</code>)、日期 (<code>date</code>)、 人流量 (<code>visitors_flow</code>)。</p>
+<p>请编写一个查询语句，找出人流量处于高峰的记录 id、日期 date 和人流量 visitors_flow，其中高峰定义为前后连续三天人流量均不少于 100。</p>
+<p><code>gymnasium</code>表结构数据如下：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>date</th>
+<th>visitors_flow</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>2019-01-01</td>
+<td>58</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2019-01-02</td>
+<td>110</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2019-01-03</td>
+<td>123</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2019-01-04</td>
+<td>67</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2019-01-05</td>
+<td>168</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2019-01-06</td>
+<td>1352</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2019-01-07</td>
+<td>382</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2019-01-08</td>
+<td>326</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2019-01-09</td>
+<td>99</td>
+</tr>
+</tbody></table>
+<p>提示：每天只有一行记录，日期随着 <code>id</code> 的增加而增加。</p>
+<p><strong>基本思路</strong>：先找出三个连续日期人流量都是超过100的子表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#找出三个刘旭日期人流量都是超过100的子表</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
   
   
     
@@ -525,10 +630,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:12:37+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-09T15:37:29+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 1, 2021</p>
+    <p>更新于：May 9, 2021</p>
   </a>
 </div>
 
@@ -606,7 +711,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2021/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>计算机网络</p>
-          <p class='content'></p>
+          <p class='content'>网络层IP数据报1.IP数据报格式
+
+IP数据报由首部和数据两部分组成。
+1.首部组成：
+
+固定部分：20字节
+
+可选字段：最多40字节，每4字节加一次，不满4个字节填充
+
+
+2.固定部分中的各...</p>
         </a>
       
       
@@ -646,6 +761,20 @@ web目录:/va...</p>
     
 
 
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%B1%9E%E6%80%A7%E5%AD%97%E6%AE%B5"><span class="toc-text">查询数据库的属性字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2"><span class="toc-text">数据库复杂查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="toc-text">排序查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="toc-text">区间查询</span></a></li></ol></li></ol>
+    </div>
+  </section>
 
 
   
