@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="preload" href="/css/first.css" as="style">
+  
+
+  <!-- 页面元数据 -->
+  
+  <title>汇编语言 - Hexo</title>
+  
+    <meta name="keywords" content="汇编语言">
+  
+
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style>
+    <div class="kill-noscript">
+        <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
+        <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+</head>
+
+  <body>
+    
+
+<header id="l_header" class="l_header  shadow blur "  >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              
+                <li>
+                  <a class="menuitem flat-box">
+                    <i class='fas fa-compact-disc fa-fw music'></i>背景音乐
+                  </a>
+                  <ul class="list-v">
+                    <li>
+                      <div class="aplayer-container">
+                        
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='song'
+      id='1498076242'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+                      </div>
+                    </li>
+                  </ul>
+                <li>
+              
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+        <div id="half" class='cover-wrapper post featured' style="display: ;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="img/tmp.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">FIGHTING······</p>
+    
+    
+      <p class="subtitle">记录一些学习笔记</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a target="_blank" rel="noopener" href="http://www.gzhu.club:90"
+              
+              
+              id="http:wwwgzhuclub:90">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>摄影日记</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>学习笔记</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              id="contributors">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0.1/assets/svg/1f6e0.svg'><p>折腾记录</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        汇编语言
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1.3/logo/256/telegram.png">
+    <p>Gzhu_RuIop</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Dec 15, 2020</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="汇编语言" data-path="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <h1 id="1-指令集-CISC-RISC"><a href="#1-指令集-CISC-RISC" class="headerlink" title="1.指令集(CISC RISC)"></a><strong>1.指令集</strong>(CISC RISC)</h1><p><strong>x86指令集：</strong></p>
+<ul>
+<li><p><strong>向下兼容；</strong></p>
+</li>
+<li><p><strong>变长指令：1-15字节，多数为2-3字节长度；</strong></p>
+</li>
+<li><p><strong>多种寻址方式(可访问不对齐的内存地址)<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215134155576.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215134155576.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201215134155576" style="zoom:50%;"></strong></p>
+</li>
+<li><p><strong>指令集的通用寄存器个数有限</strong></p>
+<p><strong>X86-32系统下拥有8个通用寄存器(X86-64扩张到16个)</strong></p>
+</li>
+<li><p><strong>至多<code>只有一个操作数在内存</code>中，另一个操作数为立即数或者寄存器</strong></p>
+</li>
+</ul>
+<h1 id="2-数的机器表示"><a href="#2-数的机器表示" class="headerlink" title="2.数的机器表示"></a>2.数的机器表示</h1><ul>
+<li><p><strong>机器字长：</strong>一般指计算机进行一次整数运算所能处理的二进制数据的位数(包括数据地址长度)</p>
+</li>
+<li><p><strong>地址按照字节来定位：</strong>机器字中第一个字节的地址；相邻机器字的地址相差4或者8字节<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215135843106.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215135843106.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201215135843106" style="zoom:33%;"></p>
+</li>
+<li><p><strong>机器字内的各个字节的排列：</strong>小端法：机器在内存中按照从最低有效字节到最高有效字节的顺序存储对象；大端法：机器在内存中按照从最高有效字节到最低有效字节的顺序存储对象</p>
+</li>
+</ul>
+<p>存储变量<code>0x1234567</code>，高位字节的十六进制值为0x01，而低位字节值为0x67</p>
+<p>大端法（低位地址存数据高位；高位地址存数据低位）：<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/20190624162418741.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/20190624162418741.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>小端法（低位地址存数据低位；高位地址存数据高位）：<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/20190624162727576.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/20190624162727576.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><strong>小端模式低存低 高存高</strong></p>
+<p>Windows Linux Android IOS基本都是运行小端模式</p>
+<ul>
+<li><strong>有符号数和无符号进行比较的时候是将bit位转化为无符号再进行比较</strong></li>
+</ul>
+<p><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215145148744.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215145148744.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201215145148744"></p>
+<h1 id="3-80386三种工作模式"><a href="#3-80386三种工作模式" class="headerlink" title="3.80386三种工作模式"></a>3.80386三种工作模式</h1><ul>
+<li><strong>实模式：</strong>操作相当于一个可进行32位快速运算的8086</li>
+<li><strong>保护模式：</strong>是80x86设计目标全部达到的工作模式，通过对程序使用的存储区采用<strong>分段、分页的存储管理机制</strong>，通过分级使用、互不干扰的的保护目的。能为每个任务提供一台虚拟处理器，使得各个任务单独执行，快速切换。</li>
+<li><strong>虚拟8086模式</strong>：保护模式下同时模拟多个8086处理器</li>
+</ul>
+<p>通过保护模式，可以把虚拟地址空间映射到不同的物理地址空间，且在超出预设的空间范围会报错（一种保护机制的体现），且可以保证处于低特权级的代码无法访问搞特权级的数据（另外一种保护机制的体现）。 只有在保护模式下，80386的全部32位地址才能有效，<strong>可寻址高达4G字节的线性地址空间和物理地址空间</strong>，可访问64TB（有2^14^个段，每个段最大空间为2^32^字节）的虚拟地址空间，可采用分段存储管理机制和分页存储管理机制。</p>
+<ul>
+<li><strong>80386处理器6个段寄存器：</strong>CS DS SS ES FS GS</li>
+</ul>
+<p>段寄存器长度为16位，其中13位代表内存段的一个编号，称为”段选择器”。将段寄存器中的高13位值作为索引来访问该表，从而获得64位的描述符表。</p>
+<h1 id="4-分段机制的地址转换"><a href="#4-分段机制的地址转换" class="headerlink" title="4.分段机制的地址转换"></a>4.分段机制的地址转换</h1><ul>
+<li><strong>段选择子的结构</strong></li>
+<li><strong>段描述符结构</strong></li>
+</ul>
+<p>分段机制将内存划分成以<strong>起始地址</strong>和长度限制这两个参数表示的内存块，这些内存块就称之为段。编译器把源程序编译成执行程序时用到的代码段、数据段、堆和栈等概念在这里可以与段联系起来，二者在含义上是一致的。</p>
+<p>在保护模式下，特权级总共有4个，编号从0（最高特权）到3（最低特权）。有3种主要的资源受到保护：内存，I/O地址空间以及执行特殊机器指令的能力。在任一时刻，intel 80386 CPU都是在一个特定的特权级下运行的，从而决定了代码可以做什么，不可以做什么。这些特权级经常被称为为保护环（protection ring），最内的环（ring 0）对应于最高特权0，最外面的环（ring 3）一般给应用程序使用，对应最低特权3。在保护模式下，我们可以通过查看CS寄存器的最低两位来了解当前正在运行的处理器是处于哪个特权级。</p>
+<p>从操作系统原理上看，编译器实际上采用基于分段的虚拟管理方式来生成执行程序的，即应用程序员看到的逻辑地址和位于计算机上的物理地址之间有映射关系，二者可以是不同的。</p>
+<h3 id="4-1分段模式的具体硬件操作过程如下："><a href="#4-1分段模式的具体硬件操作过程如下：" class="headerlink" title="4.1分段模式的具体硬件操作过程如下："></a>4.1分段模式的具体硬件操作过程如下：</h3><ol>
+<li><p>根据指令的内容确定应该使用的<strong>段寄存器</strong>，比如取内存指令的内存地址所对应的数据段寄存器为DS；</p>
+</li>
+<li><p>根据段寄存器DS的值作为选择子，以此选择子值为**<code>索引</code><strong>，在</strong>段描述符表<strong>（可理解为一个大数组）找到</strong>索引指向的段描述符**（可理解为数组中的元素）；</p>
+</li>
+<li><p>在段描述符中取出<strong>基地址域</strong>（段的起始地址）和<strong>地址范围域</strong>（段的长度）的值；</p>
+</li>
+<li><p>将指令内容确定的<strong>地址偏移</strong>，与<strong>地址范围域</strong>的值比较，确保地址偏移小于地址范围，这样是为了确保地址范围不会跨出段的范围；（第一层保护）</p>
+</li>
+<li><p>根据指令的性质（当前指令的CS值的低两位）确定当前指令的特权级，需要高于当前指令访问的数据段的特权级；（第二层保护）；</p>
+</li>
+<li><p>根据指令的性质(指令是做读还是写操作)，需要当前指令访问的数据段可读或可写；（第三层保护）</p>
+</li>
+<li><p>将DS指向的段描述符中<strong>基地址域</strong>的值加上指令内容中指定的访存<strong>地址段内偏移值</strong>，形成实际的物理地址（实现地址转换），发到数据地址总线上，到物理内存中寻址，并取回该地址对应的数据内容。 </p>
+<p>分段机制涉及4个关键内容：逻辑地址（Logical Address,应用程序员看到的地址，在操作系统原理上称为虚拟地址，以后提到虚拟地址就是指逻辑地址）、物理地址（Physical Address, 实际的物理内存地址）、段描述符表（包含多个段描述符的“数组”）、段描述符（描述段的属性，及段描述符表这个“数组”中的“数组元素”）、段选择子（即<strong>段寄存器中的值</strong>，用于定位段描述符表中段描述符表项的索引）。 虚拟地址到物理地址的转换主要分以下两步：</p>
+</li>
+<li><p>分段地址转换：CPU把虚拟地址（由段选择子selector和段偏移offset组成）中的<strong>段选择子值</strong>作为<strong>段描述符表的索引</strong>，找到表中对应的<strong>段描述符</strong>，然后把段描述符中保存的<strong>段基址</strong>加上<strong>段偏移值</strong>，形成线性地址（Linear Address，在操作系统原理上没有直接对应的描述，在没有启动分页机制的情况下，可认为就是物理地址；如果启动了分页机制，则可理解为第二级虚拟地址）。如果不启动分页存储管理机制，则线性地址等于物理地址。</p>
+</li>
+<li><p>分页地址转换，这一步中把线性地址转换为物理地址。（注意：这一步是可选的，由操作系统决定是否需要。） 上述转换过程对于应用程序员来说是不可见的。线性地址空间由一维的线性地址构成，在分段机制下的线性地址空间和物理地址空间对等。线性地址32位长，线性地址空间容量为4G字节。分段机制中虚拟地址到线性地址转换转换的基本过程如下图所示。</p>
+</li>
+</ol>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/3.15.1.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/3.15.1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="3.15.1" style="zoom:67%;">
+
+<h3 id="4-2段选择子结构-段寄存器中的值16位-："><a href="#4-2段选择子结构-段寄存器中的值16位-：" class="headerlink" title="4.2段选择子结构(段寄存器中的值16位)："></a><strong>4.2段选择子结构(段寄存器中的值16位)：</strong></h3><p>是用来选择哪个描述表和该表中索引哪个描述符。选择子可以做为指针变量的一部分，从而对应用程序员是可见的，但是一般是由编译器和链接工具来设置的。段选择子的内容一般放在段寄存器中，选择子的格式如下图所示：</p>
+<p><img src="https://chyyuu.gitbooks.io/simple_os_book/content/zh/chapter-1/figures/3.15.2.png" class="lazyload" data-srcset="https://chyyuu.gitbooks.io/simple_os_book/content/zh/chapter-1/figures/3.15.2.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="3.15.2"></p>
+<p><strong>索引（Index）</strong>：段寄存器中的高13位值作为索引，在描述符表中从8192个描述符中选择一个描述符。<strong>处理器自动将这个索引值乘以8（描述符的长度位8字节）</strong>，再<strong>加上描述符表(GDTR)的基址</strong>来索引描述符表，从而选出一个合适的描述符。</p>
+<p><strong>表指示位（Table Indicator，TI）</strong>：选择应该访问哪一个描述符表。0代表应该访问全局描述符表（GDT）；1代表应该访问局部描述符表（LDT）。</p>
+<p><strong>请求特权级（Requested Privilege Level，RPL）</strong>：用于段级的保护机制，比如，段选择子是CS，则这两位表示当前执行指令的处理器所处的特权级的值，从而你可以了解到当前处理器是处于用户态（Ring 3）还是内核态（Ring 0）。</p>
+<h3 id="4-3段描述符结构-8个字节64位"><a href="#4-3段描述符结构-8个字节64位" class="headerlink" title="4.3段描述符结构(8个字节64位)"></a>4.3段描述符结构(8个字节64位)</h3><p>在分段存储管理机制的保护模式下，每个段由如下三个参数进行定义：段基地址(Base Address)、段界限(Limit)和段属性(Attributes)。</p>
+<p><strong>段基地址：</strong>即线性地址空间中段的起始地址。在80386保护模式下，段基地址长32位。基地址长度与寻址地址的长度相同，所以任何一个段都可以从32位线性地址空间中的任何一个字节开始，而不像实模式下规定边界必须被16整除。</p>
+<p><strong>段界限：</strong>规定段的大小。在80386保护模式下，<strong>段界限用20位表示：2^12^=4096</strong>，而且段界限可以是以单字节为最小单位或以4k字节为最小单位。</p>
+<p><strong>类型（TYPE）</strong>：用于区别不同类型的描述符。可表示所描述的段是代码段还是数据段，所描述的段是否可读/写/执行，段的扩展方向等。</p>
+<p><strong>描述符特权级（Descriptor Privilege Level）（DPL）</strong>：用来实现保护机制。</p>
+<p><strong>段存在位（Segment-Present bit）</strong>：如果这一位为0，则此描述符为非法的，不能被用来实现地址转换。如果一个非法描述符被加载进一个段寄存器，处理器会立即产生异常。图2显示了当存在位为0时，描述符的格式。操作系统可以任意的使用被标识为可用（AVAILABLE）的位。</p>
+<p> <strong>已访问位（Accessed bit）</strong>：当处理器访问该段（当一个指向该段描述符的选择子被加载进一个段寄存器）时，将自动设置访问位。操作系统可清除该位。 </p>
+<p>上述表示段的属性的参数通过段描述符(Segment Descriptor)来表示，一个段描述符占8字节。段描述符的结构如下图所示：</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/3.15.3.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/3.15.3.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="3.15.3" style="zoom: 50%;">
+
+<h3 id="4-4全局描述符表-GDT"><a href="#4-4全局描述符表-GDT" class="headerlink" title="4.4全局描述符表(GDT)"></a>4.4全局描述符表(GDT)</h3><p>全局描述符表的是一个保存多个描述符的“数组”，其起始地址保存在全局描述符表<strong>寄存器GDTR</strong>。<strong>GDTR长48位，其中高32位为基地址，低16位为段界限。</strong>由于GDT 不能用GDT本身之内的描述符进行描述定义，所以采用GDTR寄存器来表示GDT这一特殊的系统段。注意，全部描述符表中第一个段描述符设定为空段描述符。GDTR中的<strong>段界限</strong>以字节为单位。对于含有N个描述符的描述符表的段描述符实际所占空间通常可设为8<em>N，若起始地址为gdt_base，则结束地址为gdt_base+8</em>N-1。 全局描述符表的第一项是不能被CPU使用，所以当一个段选择子的索引（Index）部分和表指示位（Table Indicator）都为0的时（即段选择子指向全局描述符表的第一项时），可以当做一个空的选择子。当一个段寄存器被加载一个空选择子时，处理器并不会产生一个异常。但是，当用一个空选择子去访问内存时，则会产生异常。</p>
+<p><strong>T1=0描述符n给出目的地址的基址与限长</strong><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215194008979.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215194008979.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201215194008979" style="zoom:67%;"></p>
+<p><strong>T1=1描述符x给出目的地址的基地址与限长</strong>(先访问GDT，再定位LDT的地址去拿到LDT中存的基地址)</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215194515845.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201215194515845.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201215194515845" style="zoom:50%;">
+
+<h3 id="4-4分段机制的系统寄存器"><a href="#4-4分段机制的系统寄存器" class="headerlink" title="4.4分段机制的系统寄存器"></a>4.4分段机制的系统寄存器</h3><p>80386有4个寄存器来寻址描述表等系统数据结构，用来实现段式内存管理。内存管理寄存器包括：</p>
+<ul>
+<li><strong>全局描述符表寄存器 (Global Descriptor Table Register，GDTR )48bit：</strong>指向全局段描述符表 GDT：主要存放操作系统和各任务公用的描述符</li>
+<li><strong>局部描述符表寄存器 (Local Descriptor Table Register，LDTR)：</strong>指向局部段描述符表 LDT （目前用不上）</li>
+<li><strong>中断门描述符表寄存器 (Interrupt Descriptor Table Register，IDTR)：</strong>指向一张包含中断处理子程序入口点的表（IDT）</li>
+<li><strong>任务寄存器 (Task Register，TR)：</strong>这个寄存器指向当前任务信息存放处，这些信息是处理器进行任务切换所需要的。（目前用不上） 80386有四个32位的控制寄存器，分别命名位CR0、CR1、CR2和CR3。CR0包含指示处理器工作方式、启用和禁止分页管理机制、控制浮点协处理器操作的控制位。具体描述如下：</li>
+<li><strong>PE（保护模式允许 Protection Enable，比特位 0）：</strong>设置PE 将让处理器工作在保护模式下。复位PE将返回到实模式工作。</li>
+<li><strong>PG（分页允许 Paging， 比特位 31）：</strong> PG 指明处理器是否通过页表来转换线性地址到物理地址。在后续试验中将讲述如何设置PG位。 CR0中的位5~位30是保留位，这些位的值必须为0。CR2及CR3由分页管理机制使用，将在后续试验中讲述。在80386中不能使用CR1，否则会引起无效指令操作异常。</li>
+</ul>
+<h1 id="5-一些特殊的命令"><a href="#5-一些特殊的命令" class="headerlink" title="5.一些特殊的命令"></a>5.一些特殊的命令</h1><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216091921827.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216091921827.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216091921827" style="zoom:67%;">
+
+<h3 id="5-1其中movs是符号扩展-movz是零扩展"><a href="#5-1其中movs是符号扩展-movz是零扩展" class="headerlink" title="5.1其中movs是符号扩展 movz是零扩展"></a>5.1其中movs是符号扩展 movz是零扩展</h3><h3 id="5-2加载有效地址lea"><a href="#5-2加载有效地址lea" class="headerlink" title="5.2加载有效地址lea"></a>5.2加载有效地址lea</h3><p>加载有效地址(load effective address)指令leaq实际上是movq指令的变形。它的指令形式是从内存读数据到寄存器，但实际上它根本就没有引用内存。</p>
+<p>下面是两种用法：</p>
+<p>1.它的第一个操作数看上去是一个内存引用，但该指令并不是从指定位置读入数据，而是将有效地址写入到目的操作数。这条指令可以为后面的内存引用产生指针</p>
+<p>2.它还可以简洁描述普通的算术操作。编译器经常发现leaq的一些灵活用法，根本就与有效地址计算无关。目的操作数必须是一个寄存器</p>
+<h1 id="6-条件码"><a href="#6-条件码" class="headerlink" title="6.条件码"></a>6.条件码</h1><table>
+<thead>
+<tr>
+<th>CF</th>
+<th>Carry(进位)Flag</th>
+<th>最近的操作使最高位产生了进位。可用来检查无符号操作的溢出。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SF</td>
+<td>Sign Flag</td>
+<td>最近的操作得出的结果为负数。</td>
+</tr>
+<tr>
+<td>ZF</td>
+<td>Zero Flag</td>
+<td>最近的操作得出的结果是0。</td>
+</tr>
+<tr>
+<td>OF</td>
+<td>Overflow Flag</td>
+<td>最近的操作导致一个补码溢出——正溢出或者负溢出。</td>
+</tr>
+</tbody></table>
+<p>条件码由算术指令隐含设置</p>
+<p><code>addl Src,Dest   addq Src,Dest</code></p>
+<p><code>t=a+b (a=Src,b=Dest)</code></p>
+<h6 id="CF-set-if-unsigned-t-lt-unsigned-a-无符号溢出"><a href="#CF-set-if-unsigned-t-lt-unsigned-a-无符号溢出" class="headerlink" title="CF set if (unsigned) t &lt; (unsigned) a 无符号溢出"></a>CF set if (unsigned) t &lt; (unsigned) a 无符号溢出</h6><h6 id="ZF-set-if-t-0-零"><a href="#ZF-set-if-t-0-零" class="headerlink" title="ZF set if t ==0    零"></a>ZF set if t ==0    零</h6><h6 id="SF-set-if-t-lt-0-负数"><a href="#SF-set-if-t-lt-0-负数" class="headerlink" title="SF set if t &lt;0    负数"></a>SF set if t &lt;0    负数</h6><h6 id="OF-set-if-a-lt-0-b-lt-0-amp-amp-t-lt-0-a-lt-0-有符号溢出"><a href="#OF-set-if-a-lt-0-b-lt-0-amp-amp-t-lt-0-a-lt-0-有符号溢出" class="headerlink" title="OF set if (a&lt;0==b&lt;0) &amp;&amp; (t&lt;0!=a&lt;0) 有符号溢出"></a>OF set if (a&lt;0==b&lt;0) &amp;&amp; (t&lt;0!=a&lt;0) 有符号溢出</h6><h3 id="CMP指令"><a href="#CMP指令" class="headerlink" title="CMP指令"></a>CMP指令</h3><p><code>cmpl src2,src1</code> (<code>cmpl b,a</code> 类似与计算<code>a-b</code>(但是不改变目的操作数))</p>
+<h6 id="ZF-1-cmp的结果为0，两数相等"><a href="#ZF-1-cmp的结果为0，两数相等" class="headerlink" title="ZF=1 cmp的结果为0，两数相等"></a>ZF=1 cmp的结果为0，两数相等</h6><h5 id="无符号："><a href="#无符号：" class="headerlink" title="无符号："></a>无符号：</h5><h6 id="CF-1-有进位或借位，由于cmp是减操作，所a-lt-b，此时的计算结果已经发生溢出"><a href="#CF-1-有进位或借位，由于cmp是减操作，所a-lt-b，此时的计算结果已经发生溢出" class="headerlink" title="CF=1 有进位或借位，由于cmp是减操作，所a&lt;b，此时的计算结果已经发生溢出"></a>CF=1 有进位或借位，由于cmp是减操作，所a&lt;b，此时的计算结果已经发生溢出</h6><h6 id="CF-0-则说明无借位，但要注意此时的ZF是否为0，若为0，则说明结果不为0，所以此时a-gt-b"><a href="#CF-0-则说明无借位，但要注意此时的ZF是否为0，若为0，则说明结果不为0，所以此时a-gt-b" class="headerlink" title="CF=0 则说明无借位，但要注意此时的ZF是否为0，若为0，则说明结果不为0，所以此时a&gt;b"></a>CF=0 则说明无借位，但要注意此时的ZF是否为0，若为0，则说明结果不为0，所以此时a&gt;b</h6><h5 id="有符号-SF是计算结果为负数置1-："><a href="#有符号-SF是计算结果为负数置1-：" class="headerlink" title="有符号(SF是计算结果为负数置1)："></a>有符号(SF是计算结果为负数置1)：</h5><h6 id="若SF-0，OF-0-则说明了此时的值为正数，没有溢出-a-gt-b"><a href="#若SF-0，OF-0-则说明了此时的值为正数，没有溢出-a-gt-b" class="headerlink" title="若SF=0，OF=0 则说明了此时的值为正数，没有溢出 a&gt;b"></a>若SF=0，OF=0 则说明了此时的值为正数，没有溢出 a&gt;b</h6><h6 id="若SF-1，OF-0-则说明了此时的值为负数，没有溢出，则为a-lt-b"><a href="#若SF-1，OF-0-则说明了此时的值为负数，没有溢出，则为a-lt-b" class="headerlink" title="若SF=1，OF=0 则说明了此时的值为负数，没有溢出，则为a&lt;b"></a>若SF=1，OF=0 则说明了此时的值为负数，没有溢出，则为a&lt;b</h6><h6 id="若SF-0，OF-1-则说明了此时的值为正数，有溢出，可以看出a-lt-b；此时的-a-lt-0-b-gt-0"><a href="#若SF-0，OF-1-则说明了此时的值为正数，有溢出，可以看出a-lt-b；此时的-a-lt-0-b-gt-0" class="headerlink" title="若SF=0，OF=1 则说明了此时的值为正数，有溢出，可以看出a&lt;b；此时的(a&lt;0 b&gt;0)"></a>若SF=0，OF=1 则说明了此时的值为正数，有溢出，可以看出a&lt;b；此时的(a&lt;0 b&gt;0)</h6><h6 id="若SF-1，OF-1则说明了此时的值为负数，有溢出，可以看出a-gt-b；此时的-a-gt-0-b-lt-0"><a href="#若SF-1，OF-1则说明了此时的值为负数，有溢出，可以看出a-gt-b；此时的-a-gt-0-b-lt-0" class="headerlink" title="若SF=1，OF=1则说明了此时的值为负数，有溢出，可以看出a&gt;b；此时的(a&gt;0,b&lt;0)"></a>若SF=1，OF=1则说明了此时的值为负数，有溢出，可以看出a&gt;b；此时的(a&gt;0,b&lt;0)</h6><h3 id="Test指令"><a href="#Test指令" class="headerlink" title="Test指令"></a>Test指令</h3><p><code>testl src2,src1</code>(计算<code>src1 &amp; src2</code> 并设置相应的条件码，不改变操作目的数)</p>
+<h6 id="ZF-set-if-a-amp-b-0"><a href="#ZF-set-if-a-amp-b-0" class="headerlink" title="ZF set if a&amp;b=0"></a>ZF set if a&amp;b=0</h6><h6 id="SF-set-if-a-amp-b-lt-0-最高位的符号位为1"><a href="#SF-set-if-a-amp-b-lt-0-最高位的符号位为1" class="headerlink" title="SF set if a&amp;b&lt;0 (最高位的符号位为1)"></a>SF set if a&amp;b&lt;0 (最高位的符号位为1)</h6><p>test指令同时使CF、OF为0</p>
+<p>test指令两个操作数一般都是一样的，主要来操作数是负数、零、正数</p>
+<h1 id="7-读取条件码-只存入一个字节"><a href="#7-读取条件码-只存入一个字节" class="headerlink" title="7.读取条件码(只存入一个字节)"></a>7.读取条件码(只存入一个字节)</h1><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216141609560.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216141609560.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216141609560" style="zoom:67%;">
+
+<p><strong>无符号数</strong>：大于等于ae(above equal) 小于等于be(below equal)</p>
+<p><strong>有符号数</strong>：大于等于ge(great equal)小于等于le(less equal)</p>
+<p><strong>SetX指令</strong>：读取当前的条件码(或者某些条件码的组合)，并存入目的“字节”寄存器</p>
+<p>余下的三个字节不会被修改</p>
+<p>通常使用move<strong>z</strong>bl指令对目的寄存器进行“0”扩展 b-&gt;double word</p>
+<p><strong>X86-64位机器：</strong></p>
+<p>SetX指令读取当前的条件码(或者某些条件码的组合)，并存入目的“字节”寄存器，并且余下的<strong>七个字节不会被修改</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gt</span><span class="params">(<span class="keyword">long</span> x,<span class="keyword">long</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&gt;y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xorl %eax,%eax #自身异或，将eax清0，由于x64的特性，对第32位的结果会自动进行0扩展，此时的rax整个为0</span><br><span class="line">cmpq %rsi,%rdi #compare x:y </span><br><span class="line">setg %al</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-跳转指令"><a href="#8-跳转指令" class="headerlink" title="8.跳转指令"></a>8.跳转指令</h1><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216143745438.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216143745438.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216143745438" style="zoom: 50%;">
+
+<h1 id="9-条件传送指令"><a href="#9-条件传送指令" class="headerlink" title="9.条件传送指令"></a>9.条件传送指令</h1><p><code>comvC src,dest</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmpl %esi,%edi #x:y</span><br><span class="line">cmovle %edx,%eax</span><br></pre></td></tr></table></figure>
+
+<p>条件传送指令：如果条件C满足，将数据从src传送到dest；比一般的条件跳转指令的效率高，因为其控制流可预测(即条件C是已知的)</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216145308599.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216145308599.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216145308599" style="zoom:50%;">
+
+<h1 id="10-循环的汇编表示"><a href="#10-循环的汇编表示" class="headerlink" title="10.循环的汇编表示"></a>10.循环的汇编表示</h1><p>所有循环模式都转换成do-while，再转换成汇编形式</p>
+<h3 id="1-”Do-Whlie”循环"><a href="#1-”Do-Whlie”循环" class="headerlink" title="1.”Do-Whlie”循环"></a><strong>1.”Do-Whlie”循环</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fact_do</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        result *=x;</span><br><span class="line">        x=x<span class="number">-1</span>;</span><br><span class="line">    &#125;<span class="keyword">while</span>(x&gt;<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>转化成goto版本:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fact_goto</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result=<span class="number">1</span>;</span><br><span class="line">loop:</span><br><span class="line">    result*=x;</span><br><span class="line">    x=x<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span>(X&gt;<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>汇编代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	movl	%edi, -20(%rbp) #x-&gt;-20(%rbp)</span><br><span class="line">	movl	$1, -4(%rbp) #1-&gt;-4(%rbp)</span><br><span class="line">.L2:</span><br><span class="line">	movl	-4(%rbp), %eax</span><br><span class="line">	imull	-20(%rbp), %eax #result*=x</span><br><span class="line">	movl	%eax, -4(%rbp) #result -&gt; -4(%rbp)</span><br><span class="line">	subl	$1, -20(%rbp) #x-1</span><br><span class="line">	cmpl	$1, -20(%rbp) # compare x:1</span><br><span class="line">	jle	.L3 #小于等于结束</span><br><span class="line">	jmp	.L2 #大于继续循环</span><br><span class="line">.L3:</span><br><span class="line">	movl	-4(%rbp), %eax</span><br><span class="line">	popq	%rbp</span><br><span class="line">	ret</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-“while”循环"><a href="#2-“while”循环" class="headerlink" title="2.“while”循环"></a>2.“while”循环</h3><p>while循环转成do while就是入口先做一层判断</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fact_while</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(x&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        result*=x;</span><br><span class="line">        x=x<span class="number">-1</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>转化成goto版本:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fact_while_goto</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result=<span class="number">1</span>;</span><br><span class="line">loop:</span><br><span class="line">    <span class="keyword">if</span>((!x&gt;<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">goto</span> done;</span><br><span class="line">    result*=x;</span><br><span class="line">    x=x<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">goto</span> loop;</span><br><span class="line">done:</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>汇编代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">	pushq	%rbp</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	movl	%edi, -20(%rbp)</span><br><span class="line">	movl	$1, -4(%rbp)</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$1, -20(%rbp)#先判断x是否大于1</span><br><span class="line">	jle	.L2</span><br><span class="line">	movl	-4(%rbp), %eax</span><br><span class="line">	imull	-20(%rbp), %eax</span><br><span class="line">	movl	%eax, -4(%rbp)</span><br><span class="line">	subl	$1, -20(%rbp)</span><br><span class="line">	jmp	.L3</span><br><span class="line">.L2:</span><br><span class="line">	movl	-4(%rbp), %eax</span><br><span class="line">	popq	%rbp</span><br><span class="line">	ret</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-“For”循环"><a href="#3-“For”循环" class="headerlink" title="3.“For”循环"></a>3.“For”循环</h3><p>For-&gt;while-&gt;Do_while</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result;</span><br><span class="line"><span class="keyword">for</span>(result=<span class="number">1</span>;p!=<span class="number">0</span>;p=&gt;&gt;<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(p&amp;<span class="number">0x1</span>)</span><br><span class="line">        result*=x;</span><br><span class="line">    x=x*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216153803951.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216153803951.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216153803951" style="zoom: 50%;">
+
+<h1 id="11-Switch的汇编表示"><a href="#11-Switch的汇编表示" class="headerlink" title="11.Switch的汇编表示"></a>11.Switch的汇编表示</h1><ul>
+<li>使用一组if-then-else语句来实现</li>
+<li>使用跳转表</li>
+</ul>
+<p><strong>表结构：</strong></p>
+<p>·每个表项(及跳转地址)占4个字节</p>
+<p>·基地址.L62</p>
+<p><code>jmp *.L62(,%edx,4)</code>把<code>.L62</code>做为起始地址，计算结果.<code>L62+%edx*4</code></p>
+<p>上面的*表明这个是一个间接跳转，即目标地址存于内存地址中</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216160707573.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216160707573.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216160707573" style="zoom:33%;">
+
+<p><strong>X86-64跳转表：</strong></p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216160832380.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216160832380.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216160832380" style="zoom: 25%;">
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">switch_eg</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> w=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">switch</span>(X)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            w=y*z;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            w=y/z;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            w+=z;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">            w-=z;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            w=<span class="number">2</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> w;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">	pushq	%rbp</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	movl	%edi, -20(%rbp) #x-&gt; -20(%rbp)</span><br><span class="line">	movl	%esi, -24(%rbp) #y-&gt; -24(%rbp)</span><br><span class="line">	movl	%edx, -28(%rbp) #z-&gt; -28(%rbp)</span><br><span class="line">	movq	$1, -8(%rbp)  #w-&gt; -8(%rbp)</span><br><span class="line">	cmpl	$6, -20(%rbp) #x:6</span><br><span class="line">	jg	.L2 #跳default</span><br><span class="line">	cmpl	$5, -20(%rbp)</span><br><span class="line">	jge	.L3 </span><br><span class="line">	cmpl	$3, -20(%rbp)</span><br><span class="line">	je	.L4</span><br><span class="line">	cmpl	$3, -20(%rbp)</span><br><span class="line">	jg	.L2</span><br><span class="line">	cmpl	$1, -20(%rbp)</span><br><span class="line">	je	.L5</span><br><span class="line">	cmpl	$2, -20(%rbp)</span><br><span class="line">	je	.L6</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L5:</span><br><span class="line">	movl	-24(%rbp), %eax</span><br><span class="line">	imull	-28(%rbp), %eax</span><br><span class="line">	cltq</span><br><span class="line">	movq	%rax, -8(%rbp)</span><br><span class="line">	jmp	.L7</span><br><span class="line">.L6:</span><br><span class="line">	movl	-24(%rbp), %eax</span><br><span class="line">	cltd</span><br><span class="line">	idivl	-28(%rbp)</span><br><span class="line">	cltq</span><br><span class="line">	movq	%rax, -8(%rbp)</span><br><span class="line">.L4:</span><br><span class="line">	movl	-28(%rbp), %eax</span><br><span class="line">	cltq</span><br><span class="line">	addq	%rax, -8(%rbp)</span><br><span class="line">	jmp	.L7</span><br><span class="line">.L3:</span><br><span class="line">	movl	-28(%rbp), %eax</span><br><span class="line">	cltq</span><br><span class="line">	subq	%rax, -8(%rbp)</span><br><span class="line">	jmp	.L7</span><br><span class="line">.L2:</span><br><span class="line">	movq	$2, -8(%rbp)</span><br><span class="line">.L7:</span><br><span class="line">	movq	-8(%rbp), %rax</span><br><span class="line">	popq	%rbp</span><br><span class="line">	ret</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216155148760.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216155148760.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216155148760" style="zoom:33%;">
+
+<h1 id="12-x86-32的程序栈"><a href="#12-x86-32的程序栈" class="headerlink" title="12.x86-32的程序栈"></a>12.x86-32的程序栈</h1><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216162337009.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216162337009.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216162337009" style="zoom:33%;">
+
+<h3 id="1-x86-32寄存器使用惯例"><a href="#1-x86-32寄存器使用惯例" class="headerlink" title="1.x86-32寄存器使用惯例"></a>1.x86-32寄存器使用惯例</h3><p>过程yoo调用who</p>
+<p><code>yoo：caller  who：callee</code></p>
+<h4 id="通用寄存器分成两类："><a href="#通用寄存器分成两类：" class="headerlink" title="通用寄存器分成两类："></a>通用寄存器分成两类：</h4><p><strong>“调用者负责保存”</strong></p>
+<p>调用者caller在调用子过程之前将这些寄存器内容存储在它的栈帧内</p>
+<p><strong>“被调用者负责保存”</strong></p>
+<p>被调用callee在使用这些寄存器之前将其原有的内容存储在它的栈帧内</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216163507118.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216163507118.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216163507118" style="zoom:33%;">
+
+<h3 id="2-递归调用"><a href="#2-递归调用" class="headerlink" title="2.递归调用"></a>2.递归调用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rfact</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> rval;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    rval=rfact(x<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> rval*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	pushq	%rbp</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	subq	$32, %rsp</span><br><span class="line">	movl	%edi, -20(%rbp)</span><br><span class="line">	cmpl	$1, -20(%rbp)</span><br><span class="line">	jg	.L2</span><br><span class="line">	movl	$1, %eax</span><br><span class="line">	jmp	.L3</span><br><span class="line">.L2:</span><br><span class="line">	movl	-20(%rbp), %eax</span><br><span class="line">	subl	$1, %eax</span><br><span class="line">	movl	%eax, %edi</span><br><span class="line">	call	_Z5rfacti</span><br><span class="line">	movl	%eax, -4(%rbp)</span><br><span class="line">	movl	-4(%rbp), %eax</span><br><span class="line">	imull	-20(%rbp), %eax</span><br><span class="line">.L3:</span><br><span class="line">	leave</span><br><span class="line">	ret</span><br></pre></td></tr></table></figure>
+
+<h1 id="13-x86-64的程序栈"><a href="#13-x86-64的程序栈" class="headerlink" title="13.x86-64的程序栈"></a>13.x86-64的程序栈</h1><table>
+<thead>
+<tr>
+<th align="center">寄存器</th>
+<th align="center">寄存器作用</th>
+<th align="center">寄存器</th>
+<th align="center">寄存器作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%rax</td>
+<td align="center">返回值</td>
+<td align="center">%r8</td>
+<td align="center">第五个参数</td>
+</tr>
+<tr>
+<td align="center">%rbx</td>
+<td align="center">被调用者保存</td>
+<td align="center">%r9</td>
+<td align="center">第六个参数</td>
+</tr>
+<tr>
+<td align="center">%rcx</td>
+<td align="center">第四个参数</td>
+<td align="center">%r10</td>
+<td align="center">被调用者保存</td>
+</tr>
+<tr>
+<td align="center">%rdx</td>
+<td align="center">第三个参数</td>
+<td align="center">%r11</td>
+<td align="center">Use for linking</td>
+</tr>
+<tr>
+<td align="center">%rsi</td>
+<td align="center">第二个参数</td>
+<td align="center">%r12</td>
+<td align="center">被调用者保存</td>
+</tr>
+<tr>
+<td align="center">%rdi</td>
+<td align="center">第一个参数</td>
+<td align="center">%r13</td>
+<td align="center">被调用者保存</td>
+</tr>
+<tr>
+<td align="center">%rsp</td>
+<td align="center">栈顶寄存器</td>
+<td align="center">%r14</td>
+<td align="center">被调用者保存</td>
+</tr>
+<tr>
+<td align="center">%rbp</td>
+<td align="center">被调用者保存</td>
+<td align="center">%r15</td>
+<td align="center">被调用者保存</td>
+</tr>
+</tbody></table>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216184739321.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216184739321.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216184739321" style="zoom: 33%;">
+
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216185245792.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216185245792.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216185245792" style="zoom: 33%;">
+
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216185728607.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216185728607.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216185728607" style="zoom:33%;">
+
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216185856982.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216185856982.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216185856982" style="zoom: 33%;">
+
+<h1 id="14-数组的访问"><a href="#14-数组的访问" class="headerlink" title="14.数组的访问"></a>14.数组的访问</h1><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216192947812.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216192947812.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216192947812" style="zoom:33%;">
+
+<p><strong>二维数组访存</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fie_ele</span><span class="params">(<span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">3</span>],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a[i][j];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">3</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	fie_ele(a,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pushq	%rbp</span><br><span class="line">movq	%rsp, %rbp</span><br><span class="line">movq	%rdi, -8(%rbp)</span><br><span class="line">movl	%esi, -12(%rbp)</span><br><span class="line">movl	%edx, -16(%rbp)</span><br><span class="line"></span><br><span class="line">movl	-12(%rbp), %eax #i</span><br><span class="line">movslq	%eax, %rdx #符号扩展 #i</span><br><span class="line">movq	%rdx, %rax #i</span><br><span class="line">addq	%rax, %rax #i+i</span><br><span class="line">addq	%rdx, %rax #3*i C=3 </span><br><span class="line">salq	$2, %rax   #3*i*4 K=4</span><br><span class="line">movq	%rax, %rdx #rdx=3*i*4</span><br><span class="line">movq	-8(%rbp), %rax #a的地址</span><br><span class="line">addq	%rax, %rdx #地址加上行</span><br><span class="line">movl	-16(%rbp), %eax</span><br><span class="line">movl	(%rdx,%rax,4), %eax#地址加上列</span><br><span class="line">popq	%rbp</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
+
+<p><strong>地址:</strong> A+<em>ix(CxK)</em>+<em>jxk</em></p>
+<p>对于以上的数组C=3 K=4  </p>
+<h1 id="15-结构的存储"><a href="#15-结构的存储" class="headerlink" title="15.结构的存储"></a>15.结构的存储</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rec</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">int</span> *p</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216202235945.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216202235945.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216202235945" style="zoom:33%;">
+
+<ul>
+<li>连续分配的内存区域；</li>
+<li>内部元素通过名字访问；</li>
+<li>且元素可以是不同的数据类型</li>
+</ul>
+<h3 id="1-数据存储位置对齐"><a href="#1-数据存储位置对齐" class="headerlink" title="1.数据存储位置对齐"></a>1.数据存储位置对齐</h3><p><strong>对齐的一般原则：</strong></p>
+<ul>
+<li>已知某种数据类型的大小为K字节，那么其存储地址必须是K的整数倍,，普通数据类型(1,2,4,8)</li>
+</ul>
+<p><strong>对齐的原因：</strong></p>
+<ul>
+<li>计算机访问内存一般是以内存块为单位，块的大小是地址对齐，如4,8,16字节对齐等</li>
+<li>如果数据访问地址跨越”块”边界会引起额外的内存访问</li>
+</ul>
+<p><strong>编译器的工作：</strong></p>
+<ul>
+<li>在结构的各个元素间插入额外空间来满足不同元素的对齐要求</li>
+</ul>
+<h3 id="2-x86-32下不同元素的对齐要求"><a href="#2-x86-32下不同元素的对齐要求" class="headerlink" title="2.x86-32下不同元素的对齐要求"></a>2.x86-32下不同元素的对齐要求</h3><h5 id="2-1基本数据类型："><a href="#2-1基本数据类型：" class="headerlink" title="2.1基本数据类型："></a><strong>2.1基本数据类型：</strong></h5><table>
+<thead>
+<tr>
+<th>字节</th>
+<th>举例</th>
+<th>对齐方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 byte</td>
+<td>char</td>
+<td>无要求</td>
+</tr>
+<tr>
+<td>2 bytes</td>
+<td>short</td>
+<td>2字节对齐 地址最后一位为0</td>
+</tr>
+<tr>
+<td>4 bytes</td>
+<td>int float</td>
+<td>4字节对齐 地址最后两位为0</td>
+</tr>
+<tr>
+<td>8 bytes</td>
+<td>double</td>
+<td>8字节对齐 地址最后三位为0(Windows) 4字节对齐 地址最后两位为0(Linux)</td>
+</tr>
+</tbody></table>
+<p>以上是32位机器的对齐方式，而对于64位机器8字节都是<strong>8字节对齐方式</strong></p>
+<h5 id="2-2-结构的存储对齐要求："><a href="#2-2-结构的存储对齐要求：" class="headerlink" title="2.2*结构的存储对齐要求："></a><strong>2.2*结构的存储对齐要求：</strong></h5><ul>
+<li>必须满足结构中各个元素的对齐要求</li>
+<li>结构自身的对齐要求等于其各个元素中对齐要求最高的那个，设为<strong>k</strong>字节</li>
+<li>结构的<strong>起始地址</strong>与<strong>结构长度</strong>必须是<strong>k</strong>的整数倍</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">s1</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> i[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">double</span> v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在windows系统或者x86-64系统下：K=8</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216204357774.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216204357774.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216204357774" style="zoom:33%;">
+
+<p>在x86-32的Linux系统：K=4</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216204550841.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216204550841.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216204550841" style="zoom:33%;">
+
+<h5 id="2-3结构数组的对齐方式："><a href="#2-3结构数组的对齐方式：" class="headerlink" title="2.3结构数组的对齐方式："></a>2.3结构数组的对齐方式：</h5><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216205200472.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216205200472.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216205200472" style="zoom:50%;">
+
+<h3 id="3-联合"><a href="#3-联合" class="headerlink" title="3.联合"></a>3.联合</h3><p><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216205821142.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216205821142.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216205821142"></p>
+<p>对于联合来说一次只能使用其中<strong>一个成员</strong>，上面的联合才占据8个字节</p>
+<h1 id="16-汇编举例"><a href="#16-汇编举例" class="headerlink" title="16.汇编举例"></a>16.汇编举例</h1><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216212507446.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216212507446.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216212507446" style="zoom:50%;">
+
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216212937218.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216212937218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216212937218" style="zoom:50%;">
+
+<p><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216213003490.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216213003490.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216213003490" style="zoom:50%;"><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216213030045.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216213030045.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216213030045"></p>
+<p><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216213003490.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216213003490.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216213003490" style="zoom:50%;"><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216213030045.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216213030045.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216213030045"></p>
+<h1 id="17-系统调用"><a href="#17-系统调用" class="headerlink" title="17.系统调用"></a>17.系统调用</h1><ul>
+<li><p>x86-Linux下的系统调用时通过中断指令(int 0x80)来实现的</p>
+</li>
+<li><p>在执行int $0x80指令时</p>
+<p>寄存器eax中存放的是系统调用的功能号，而传给系统调用的。</p>
+<p>参数则必须按顺序放到寄存器ebx，ecx，edx，esi，edi中</p>
+<p>当系统调用完成之后，返回值可以在寄存器中eax中获得</p>
+</li>
+<li><p>当一个系统调用所需的参数个数大于5时</p>
+<p>需将系统调用功能号保存在<code>寄存器eax</code>中，全部参数一次连续放在一块连续的内存区域里，同时<code>寄存器ebx</code>中保存指向该内存区域的指针</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216214654125.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216214654125.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216214654125" style="zoom:33%;"></li>
+</ul>
+<p><strong>先把参数先放入寄存器，再系统调用</strong></p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216215104222.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216215104222.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216215104222" style="zoom:50%;">
+
+<p><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216215132300.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216215132300.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216215132300"></p>
+<p><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216215151664.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201216215151664.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201216215151664"></p>
+<h1 id="18-汇编调用lib-c库函数"><a href="#18-汇编调用lib-c库函数" class="headerlink" title="18.汇编调用lib_c库函数"></a>18.汇编调用lib_c库函数</h1><p><strong>CPUID指令</strong>是一条汇编指令，它是请求处理器的<strong>特定信息</strong>并把信息返回到<strong>特定寄存器的</strong>低级指令。</p>
+<p>CPUID指令使用单一寄存器作为输入，EAX寄存器用于决定CPUID指令生成什么信息。</p>
+<p>根据EAX寄存器的值，CPUID指令在EBX，ECX和EDX寄存器中生成关于处理器的不同信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movl $0,%eax</span><br><span class="line">cpuid</span><br></pre></td></tr></table></figure>
+
+<p>当0倍放入到%eax寄存器并且执行CPUID指令时，处理器把厂商ID字符串返回到EBX，EDX和ECX寄存器中</p>
+<p><strong>程序结构：</strong></p>
+<ul>
+<li>主要分成三个段：</li>
+</ul>
+<p>.data 数据段 声明带有初始值的元素</p>
+<p>.bss 数据段 声明无需初始化的元素</p>
+<p>.text 正文段 程序指令 每个汇编程序都必须包含此段</p>
+<ul>
+<li><p>程序入口地址</p>
+<p>汇编器使用_start符号表示默认的起始点，此外如果想要汇编内部的符号能够被外部模块访问，需要赋予.globl属性，如：</p>
+<p>.globl    _start</p>
+</li>
+</ul>
+<h1 id="19-程序结构"><a href="#19-程序结构" class="headerlink" title="19.程序结构"></a>19.程序结构</h1><h3 id="1-数据段-data"><a href="#1-数据段-data" class="headerlink" title="1.数据段 .data"></a>1.数据段 .data</h3><p><strong>只读数据段 .rodata</strong>：声明一个数据元素时，需要使用Symbol和类型说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">output:</span><br><span class="line">		.ascii &quot;hello world.&quot;</span><br><span class="line">pi:</span><br><span class="line">		.float 2.14</span><br><span class="line">#声明可以在一行中定义多个值：</span><br><span class="line">ages:</span><br><span class="line">		.int 20,10,30,40</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-bss段"><a href="#2-bss段" class="headerlink" title="2.bss段"></a>2.bss段</h3><p><strong>bss段：</strong>和data段不同，无需声明特定的数据类型，只需声明为所需目的保留的原始内存部分即可</p>
+<p><code>.comm声明为未初始化的全局内存区域</code></p>
+<p><code>.lcomm声明为未初始化的本地内存区域(局部变量)</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.section .bss</span><br><span class="line">	.lcomm buffer,1000</span><br><span class="line">	#该语句把1000字节的内存地址赋予buffer，外部模块不能访问他们</span><br></pre></td></tr></table></figure>
+
+<h1 id="20-程序链接-linking"><a href="#20-程序链接-linking" class="headerlink" title="20.程序链接 linking"></a>20.程序链接 linking</h1><h3 id="1-静态链接-Static-Linking"><a href="#1-静态链接-Static-Linking" class="headerlink" title="1.静态链接(Static Linking)"></a>1.静态链接(Static Linking)</h3><h3 id="2-链接步骤："><a href="#2-链接步骤：" class="headerlink" title="2.链接步骤："></a>2.链接步骤：</h3><h5 id="1-符号解析"><a href="#1-符号解析" class="headerlink" title="1.符号解析"></a><strong>1.符号解析</strong></h5><ul>
+<li><p>程序定义以及引用了一系列符号(symbols，包含变量与函数)</p>
+<p>void swap(){}</p>
+<p>swap()</p>
+</li>
+<li><p>编译器将符号定义存储在符号表(symbol table)中</p>
+</li>
+<li><p>链接器将每一个符号引用于符号定义联系起来</p>
+</li>
+<li><p>链接符号：</p>
+<p><strong>全局符号</strong>：某一个模块定义、且可以被其他模块引用的变量或者函数符号(全局非静态函数或者变量)</p>
+<p><strong>外部符号</strong>：某个模块引用的由其他模块定义的全局符号(extern)</p>
+<p><strong>局部符号</strong>：由某个模块定义且仅有该模块引用的符号(静态的函数或者变量)</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201220133442852.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201220133442852.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201220133442852" style="zoom:50%;"></li>
+</ul>
+<h5 id="2-重定位"><a href="#2-重定位" class="headerlink" title="2.重定位"></a><strong>2.重定位</strong></h5><ul>
+<li>将多个文件的数据、代码段集成为单一的数据段和代码段</li>
+<li>将.o文件中的符号解析为绝对地址</li>
+<li>然后将所有的符号引用更新为这些新的地址</li>
+</ul>
+<h3 id="3-三种不同的对象文件"><a href="#3-三种不同的对象文件" class="headerlink" title="3.三种不同的对象文件"></a>3.三种不同的对象文件</h3><ul>
+<li><p><strong>重定向对象文件(.o文件)</strong></p>
+<p>含有一定格式的代码与数据内容，可以与其他重定向对象文件一起集成为执行文件(一个.o文件由唯一的一个源文件生成)</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201220133819969.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201220133819969.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201220133819969" style="zoom: 67%;"></li>
+<li><p><strong>执行文件(a.out文件)</strong></p>
+<p>含有一定格式的代码与数据内容，可以直接被装载入内存并执行</p>
+</li>
+<li><p><strong>共享对象文件(.so文件)</strong></p>
+<p>特殊类型的重定向对象文件，可以被装载入内存后进行动态链接；<strong>链接可以在装载时或者运行时</strong>完成</p>
+<p>Windows系统下被称为DDL文件</p>
+</li>
+</ul>
+<h3 id="4-ELF文件格式"><a href="#4-ELF文件格式" class="headerlink" title="4.ELF文件格式"></a>4.ELF文件格式</h3><p>LINUX下的可执行文件格式为ELF；ELF文件的全称是Executable and Linkable Format，意为可执行的、可连接的格式。</p>
+<img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201220131944786.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201220131944786.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201220131944786" style="zoom:67%;">
+
+<p><img src="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201220132304639.png" class="lazyload" data-srcset="/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/image-20201220132304639.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201220132304639"></p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/>http://example.com/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:10:18+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Apr 1, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>汇编语言</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/&title=汇编语言 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/&title=汇编语言 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/12/15/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/&title=汇编语言 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E9%93%BE%E6%8E%A5/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>深入理解计算机系统-链接</p>
+          <p class='content'>1.编译器驱动程序大多数编译系统提供编译器驱动程序，它代表用户在需要时调用语言预处理器、编译器、汇编器和链接器。
+
+1.预处理将源程序main.c翻译成一个ASCII码的中间文件main.i
+预...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/12/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E3%80%81%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/'>
+          <p class='title'>数据结构-排序、查找算法<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一、排序算法
+冒泡排序、双向冒泡排序
+选择排序
+插入排序、二分法插入排序、希尔排序
+快速排序(递归与非递归)
+归并排序(递归与非递归)
+堆排序
+
+1.冒泡排序、双向冒泡排序
+冒泡排序通过两两不断...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%8C%87%E4%BB%A4%E9%9B%86-CISC-RISC"><span class="toc-text">1.指令集(CISC RISC)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%95%B0%E7%9A%84%E6%9C%BA%E5%99%A8%E8%A1%A8%E7%A4%BA"><span class="toc-text">2.数的机器表示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-80386%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-text">3.80386三种工作模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%88%86%E6%AE%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="toc-text">4.分段机制的地址转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E5%88%86%E6%AE%B5%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%85%B7%E4%BD%93%E7%A1%AC%E4%BB%B6%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-text">4.1分段模式的具体硬件操作过程如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E6%AE%B5%E9%80%89%E6%8B%A9%E5%AD%90%E7%BB%93%E6%9E%84-%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%AD%E7%9A%84%E5%80%BC16%E4%BD%8D-%EF%BC%9A"><span class="toc-text">4.2段选择子结构(段寄存器中的值16位)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3%E6%AE%B5%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%BB%93%E6%9E%84-8%E4%B8%AA%E5%AD%97%E8%8A%8264%E4%BD%8D"><span class="toc-text">4.3段描述符结构(8个字节64位)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4%E5%85%A8%E5%B1%80%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8-GDT"><span class="toc-text">4.4全局描述符表(GDT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4%E5%88%86%E6%AE%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">4.4分段机制的系统寄存器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%B8%80%E4%BA%9B%E7%89%B9%E6%AE%8A%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-text">5.一些特殊的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E5%85%B6%E4%B8%ADmovs%E6%98%AF%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95-movz%E6%98%AF%E9%9B%B6%E6%89%A9%E5%B1%95"><span class="toc-text">5.1其中movs是符号扩展 movz是零扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2%E5%8A%A0%E8%BD%BD%E6%9C%89%E6%95%88%E5%9C%B0%E5%9D%80lea"><span class="toc-text">5.2加载有效地址lea</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%9D%A1%E4%BB%B6%E7%A0%81"><span class="toc-text">6.条件码</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#CF-set-if-unsigned-t-lt-unsigned-a-%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%BA%A2%E5%87%BA"><span class="toc-text">CF set if (unsigned) t &lt; (unsigned) a 无符号溢出</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#ZF-set-if-t-0-%E9%9B%B6"><span class="toc-text">ZF set if t &#x3D;&#x3D;0    零</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#SF-set-if-t-lt-0-%E8%B4%9F%E6%95%B0"><span class="toc-text">SF set if t &lt;0    负数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#OF-set-if-a-lt-0-b-lt-0-amp-amp-t-lt-0-a-lt-0-%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%BA%A2%E5%87%BA"><span class="toc-text">OF set if (a&lt;0&#x3D;&#x3D;b&lt;0) &amp;&amp; (t&lt;0!&#x3D;a&lt;0) 有符号溢出</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMP%E6%8C%87%E4%BB%A4"><span class="toc-text">CMP指令</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#ZF-1-cmp%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B8%BA0%EF%BC%8C%E4%B8%A4%E6%95%B0%E7%9B%B8%E7%AD%89"><span class="toc-text">ZF&#x3D;1 cmp的结果为0，两数相等</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%EF%BC%9A"><span class="toc-text">无符号：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#CF-1-%E6%9C%89%E8%BF%9B%E4%BD%8D%E6%88%96%E5%80%9F%E4%BD%8D%EF%BC%8C%E7%94%B1%E4%BA%8Ecmp%E6%98%AF%E5%87%8F%E6%93%8D%E4%BD%9C%EF%BC%8C%E6%89%80a-lt-b%EF%BC%8C%E6%AD%A4%E6%97%B6%E7%9A%84%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E5%B7%B2%E7%BB%8F%E5%8F%91%E7%94%9F%E6%BA%A2%E5%87%BA"><span class="toc-text">CF&#x3D;1 有进位或借位，由于cmp是减操作，所a&lt;b，此时的计算结果已经发生溢出</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#CF-0-%E5%88%99%E8%AF%B4%E6%98%8E%E6%97%A0%E5%80%9F%E4%BD%8D%EF%BC%8C%E4%BD%86%E8%A6%81%E6%B3%A8%E6%84%8F%E6%AD%A4%E6%97%B6%E7%9A%84ZF%E6%98%AF%E5%90%A6%E4%B8%BA0%EF%BC%8C%E8%8B%A5%E4%B8%BA0%EF%BC%8C%E5%88%99%E8%AF%B4%E6%98%8E%E7%BB%93%E6%9E%9C%E4%B8%8D%E4%B8%BA0%EF%BC%8C%E6%89%80%E4%BB%A5%E6%AD%A4%E6%97%B6a-gt-b"><span class="toc-text">CF&#x3D;0 则说明无借位，但要注意此时的ZF是否为0，若为0，则说明结果不为0，所以此时a&gt;b</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E7%AC%A6%E5%8F%B7-SF%E6%98%AF%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E4%B8%BA%E8%B4%9F%E6%95%B0%E7%BD%AE1-%EF%BC%9A"><span class="toc-text">有符号(SF是计算结果为负数置1)：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8B%A5SF-0%EF%BC%8COF-0-%E5%88%99%E8%AF%B4%E6%98%8E%E4%BA%86%E6%AD%A4%E6%97%B6%E7%9A%84%E5%80%BC%E4%B8%BA%E6%AD%A3%E6%95%B0%EF%BC%8C%E6%B2%A1%E6%9C%89%E6%BA%A2%E5%87%BA-a-gt-b"><span class="toc-text">若SF&#x3D;0，OF&#x3D;0 则说明了此时的值为正数，没有溢出 a&gt;b</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8B%A5SF-1%EF%BC%8COF-0-%E5%88%99%E8%AF%B4%E6%98%8E%E4%BA%86%E6%AD%A4%E6%97%B6%E7%9A%84%E5%80%BC%E4%B8%BA%E8%B4%9F%E6%95%B0%EF%BC%8C%E6%B2%A1%E6%9C%89%E6%BA%A2%E5%87%BA%EF%BC%8C%E5%88%99%E4%B8%BAa-lt-b"><span class="toc-text">若SF&#x3D;1，OF&#x3D;0 则说明了此时的值为负数，没有溢出，则为a&lt;b</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8B%A5SF-0%EF%BC%8COF-1-%E5%88%99%E8%AF%B4%E6%98%8E%E4%BA%86%E6%AD%A4%E6%97%B6%E7%9A%84%E5%80%BC%E4%B8%BA%E6%AD%A3%E6%95%B0%EF%BC%8C%E6%9C%89%E6%BA%A2%E5%87%BA%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%87%BAa-lt-b%EF%BC%9B%E6%AD%A4%E6%97%B6%E7%9A%84-a-lt-0-b-gt-0"><span class="toc-text">若SF&#x3D;0，OF&#x3D;1 则说明了此时的值为正数，有溢出，可以看出a&lt;b；此时的(a&lt;0 b&gt;0)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8B%A5SF-1%EF%BC%8COF-1%E5%88%99%E8%AF%B4%E6%98%8E%E4%BA%86%E6%AD%A4%E6%97%B6%E7%9A%84%E5%80%BC%E4%B8%BA%E8%B4%9F%E6%95%B0%EF%BC%8C%E6%9C%89%E6%BA%A2%E5%87%BA%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%87%BAa-gt-b%EF%BC%9B%E6%AD%A4%E6%97%B6%E7%9A%84-a-gt-0-b-lt-0"><span class="toc-text">若SF&#x3D;1，OF&#x3D;1则说明了此时的值为负数，有溢出，可以看出a&gt;b；此时的(a&gt;0,b&lt;0)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Test%E6%8C%87%E4%BB%A4"><span class="toc-text">Test指令</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#ZF-set-if-a-amp-b-0"><span class="toc-text">ZF set if a&amp;b&#x3D;0</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#SF-set-if-a-amp-b-lt-0-%E6%9C%80%E9%AB%98%E4%BD%8D%E7%9A%84%E7%AC%A6%E5%8F%B7%E4%BD%8D%E4%B8%BA1"><span class="toc-text">SF set if a&amp;b&lt;0 (最高位的符号位为1)</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E8%AF%BB%E5%8F%96%E6%9D%A1%E4%BB%B6%E7%A0%81-%E5%8F%AA%E5%AD%98%E5%85%A5%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="toc-text">7.读取条件码(只存入一个字节)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4"><span class="toc-text">8.跳转指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E6%9D%A1%E4%BB%B6%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4"><span class="toc-text">9.条件传送指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%B1%87%E7%BC%96%E8%A1%A8%E7%A4%BA"><span class="toc-text">10.循环的汇编表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E2%80%9DDo-Whlie%E2%80%9D%E5%BE%AA%E7%8E%AF"><span class="toc-text">1.”Do-Whlie”循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E2%80%9Cwhile%E2%80%9D%E5%BE%AA%E7%8E%AF"><span class="toc-text">2.“while”循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E2%80%9CFor%E2%80%9D%E5%BE%AA%E7%8E%AF"><span class="toc-text">3.“For”循环</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-Switch%E7%9A%84%E6%B1%87%E7%BC%96%E8%A1%A8%E7%A4%BA"><span class="toc-text">11.Switch的汇编表示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-x86-32%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%A0%88"><span class="toc-text">12.x86-32的程序栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-x86-32%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%BF%E7%94%A8%E6%83%AF%E4%BE%8B"><span class="toc-text">1.x86-32寄存器使用惯例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E5%88%86%E6%88%90%E4%B8%A4%E7%B1%BB%EF%BC%9A"><span class="toc-text">通用寄存器分成两类：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%92%E5%BD%92%E8%B0%83%E7%94%A8"><span class="toc-text">2.递归调用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-x86-64%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%A0%88"><span class="toc-text">13.x86-64的程序栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-%E6%95%B0%E7%BB%84%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="toc-text">14.数组的访问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-%E7%BB%93%E6%9E%84%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-text">15.结构的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE%E5%AF%B9%E9%BD%90"><span class="toc-text">1.数据存储位置对齐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-x86-32%E4%B8%8B%E4%B8%8D%E5%90%8C%E5%85%83%E7%B4%A0%E7%9A%84%E5%AF%B9%E9%BD%90%E8%A6%81%E6%B1%82"><span class="toc-text">2.x86-32下不同元素的对齐要求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">2.1基本数据类型：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E7%BB%93%E6%9E%84%E7%9A%84%E5%AD%98%E5%82%A8%E5%AF%B9%E9%BD%90%E8%A6%81%E6%B1%82%EF%BC%9A"><span class="toc-text">2.2*结构的存储对齐要求：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3%E7%BB%93%E6%9E%84%E6%95%B0%E7%BB%84%E7%9A%84%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-text">2.3结构数组的对齐方式：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%81%94%E5%90%88"><span class="toc-text">3.联合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16-%E6%B1%87%E7%BC%96%E4%B8%BE%E4%BE%8B"><span class="toc-text">16.汇编举例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="toc-text">17.系统调用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#18-%E6%B1%87%E7%BC%96%E8%B0%83%E7%94%A8lib-c%E5%BA%93%E5%87%BD%E6%95%B0"><span class="toc-text">18.汇编调用lib_c库函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="toc-text">19.程序结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E6%AE%B5-data"><span class="toc-text">1.数据段 .data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-bss%E6%AE%B5"><span class="toc-text">2.bss段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#20-%E7%A8%8B%E5%BA%8F%E9%93%BE%E6%8E%A5-linking"><span class="toc-text">20.程序链接 linking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5-Static-Linking"><span class="toc-text">1.静态链接(Static Linking)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%93%BE%E6%8E%A5%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-text">2.链接步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%AC%A6%E5%8F%B7%E8%A7%A3%E6%9E%90"><span class="toc-text">1.符号解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E9%87%8D%E5%AE%9A%E4%BD%8D"><span class="toc-text">2.重定位</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%89%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6"><span class="toc-text">3.三种不同的对象文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-text">4.ELF文件格式</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+		  
+		  <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="汇编语言";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.remove("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="half";
+    cover_wrapper.style.display="";
+    
+  
+</script>
+
+        </div>
+        
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='song'
+      id='1498076242'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1" target="_blank" class="codename">Volantis</a>
+        as theme
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script>
+
+
+<!-- internal -->
+
+
+
+  
+  
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>Copy Image Link</a>
+        <hr id='hr-src'>
+      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
+      <hr>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' 
+        
+        
+        
+          onclick="document.execCommand('print')"
+        
+        >
+        <i class='fa fa-print fa-fw'></i> 打印页面
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default toggle-mode-btn' 
+        
+        
+        
+        >
+        <i class='fas fa-moon fa-fw'></i> Dark mode
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          <li class='music name'>
+            <p class='nav music-title fix-cursor-default'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+      // 有音乐播放器 see: layout/_third-party/aplayer/script.ejs
+      
+      if(volantis.APlayerLoaded){ // APlayer加载完成？
+        // 如果有aplayer，初始化一下
+        checkAPlayer();
+      }
+      
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');
+  </script>
+
+
+
+
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '1498076242';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+  // APlayer 需要在  MetingJS 之前加载
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+  window.volantis.APlayerLoaded=0 // APlayer加载完成状态
+  var checkAPlayer = setInterval(function () {
+    if (!window.APlayer) return // APlayer加载完成？
+	  if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+    clearInterval(checkAPlayer)
+	  if (!window.volantis.APlayerLoaded&&!window.MetingJSElement){ // APlayer只能加载一次
+      window.volantis.APlayerLoaded=1 // APlayer加载完成
+      loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js") // 加载 MetingJS
+	  }
+  }, 2500) // 按照网速调节差分2.5s
+  // rightmenu see: layout/_partial/rightmenu.ejs
+
+  
+    loadScript("/js/aplayer.js")
+  
+
+</script>
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"ked1Jt0wsuySat94CsJo2Ivp-gzGzoHsz","appKey":"aJuiz0DpxQYvfg8WOhecMB1F","meta":["nick"],"requiredFields":["nick"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script>
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://example.com' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+ 
+	   
+	    
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+ 
+	  
+    </div>
+  </body>
+</html>

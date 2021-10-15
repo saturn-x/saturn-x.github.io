@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="preload" href="/css/first.css" as="style">
+  
+
+  <!-- 页面元数据 -->
+  
+  <title>Android-数据存储 - Hexo</title>
+  
+    <meta name="keywords" content="Android">
+  
+
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style>
+    <div class="kill-noscript">
+        <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
+        <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+</head>
+
+  <body>
+    
+
+<header id="l_header" class="l_header  shadow blur "  >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              
+                <li>
+                  <a class="menuitem flat-box">
+                    <i class='fas fa-compact-disc fa-fw music'></i>背景音乐
+                  </a>
+                  <ul class="list-v">
+                    <li>
+                      <div class="aplayer-container">
+                        
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='song'
+      id='1498076242'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+                      </div>
+                    </li>
+                  </ul>
+                <li>
+              
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+        <div id="half" class='cover-wrapper post featured' style="display: ;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="img/tmp.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">FIGHTING······</p>
+    
+    
+      <p class="subtitle">记录一些学习笔记</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a target="_blank" rel="noopener" href="http://www.gzhu.club:90"
+              
+              
+              id="http:wwwgzhuclub:90">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>摄影日记</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>学习笔记</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              id="contributors">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0.1/assets/svg/1f6e0.svg'><p>折腾记录</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        Android-数据存储
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1.3/logo/256/telegram.png">
+    <p>Gzhu_RuIop</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Sep 26, 2020</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="Android-数据存储" data-path="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <h1 id="Android数据持久化"><a href="#Android数据持久化" class="headerlink" title="Android数据持久化"></a>Android数据持久化</h1><p>Android主要提供了三种方式数据持久：文件存储、SharePreference或数据库来保存数据</p>
+<h2 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h2><p>Context类中提供了一个openFileOutput( )方法，可以将数据存到指定文件，该方法有两个参数</p>
+<p>第一个参数是文件名，在文件创建的时候使用的就是这个名词，这里指定的文件名不包含路径，因为所有的文件都是默认存到/data/data/&lt;packagename&gt;/files目录下，第二个参数文件的操作模式，主要有两种模式可选MODE_PRIVATE和MODE_APPEND</p>
+<p>MODE_PRIVATE是默认操作模式，表示指定同样文件名，所写入的内容将会覆盖源文件的内容</p>
+<p>MODE_APPEND则表示如果文件已经存在，就往里面追加内容，不存在就创建新文件</p>
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926153408496.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926153408496.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200926153408496"><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926153418294.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926153418294.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200926153418294"></p>
+<p>通过点击按钮去保存主窗口的editText的内容，然后主activity的内容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    EditText editText;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">         editText=(EditText) findViewById(R.id.edit_text);</span><br><span class="line">        Button button=(Button) findViewById(R.id.button1);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                String data=editText.getText().toString();</span><br><span class="line">                Save(data);</span><br><span class="line">                Intent intent=<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,msgActivity.class);</span><br><span class="line">                startActivity(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Save</span><span class="params">(String data)</span></span>&#123;</span><br><span class="line">        FileOutputStream out=<span class="keyword">null</span>;</span><br><span class="line">        BufferedWriter writer =<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//打开文件输出流</span></span><br><span class="line">            out=openFileOutput(<span class="string">&quot;data&quot;</span>, Context.MODE_PRIVATE);</span><br><span class="line">            <span class="comment">//缓存写入流拿到文件输出流</span></span><br><span class="line">            writer=<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(out));</span><br><span class="line">            writer.write(data);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(writer!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该窗口最重要的是Save内容，其中先开输出文件流，用缓存写入流去拿到这个文件输出流，然后将数据写入到输出流中</p>
+<p>下面是消息活动，主要内容是读文件的内容，操作与写入类似，使用的是文件输入流，以及缓存读取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">msgActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_msg);</span><br><span class="line">        TextView textView=(TextView) findViewById(R.id.text_view);</span><br><span class="line">        String data=tostringread();</span><br><span class="line">        textView.setText(data);</span><br><span class="line">        Toast.makeText(msgActivity.<span class="keyword">this</span>,data,Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">tostringread</span><span class="params">()</span></span>&#123;</span><br><span class="line">       FileInputStream in=<span class="keyword">null</span>;</span><br><span class="line">       BufferedReader reader=<span class="keyword">null</span>;</span><br><span class="line">       StringBuilder last=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//打开文件输入 获取文件输入流</span></span><br><span class="line">           in=openFileInput(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">           <span class="comment">//通过缓存读取去获得文件输入流</span></span><br><span class="line">           reader=<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(in));</span><br><span class="line">           <span class="comment">//处理一个输入流 </span></span><br><span class="line">           String line=<span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">while</span> ((line=reader.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                last.append(line);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">           <span class="keyword">if</span>(reader!=<span class="keyword">null</span>)&#123;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   reader.close();</span><br><span class="line">               &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> last.toString();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先打开一个文件输入流，缓存读取去活动文件输入流，然后处理缓存的内容</p>
+<p>此项的StringBuilder跟String类似，不过StringBuilder可以直接对内存空间进行一个持续的添加与修改，最后再转化为String，这样效率会相同较高</p>
+<h2 id="SharePreferences存储"><a href="#SharePreferences存储" class="headerlink" title="SharePreferences存储"></a>SharePreferences存储</h2><p>不同文件的存储方式，sharepreferences是使用 <code>键值对</code> 的方式来存储数据的，意思就是当保存一条数据的时候，需要给这条数据提供一个对应的键，这样读取数据的时候就可以通过这个键把相应的值取出来，而SharePrefences还支持多种不同的数据类型存储，如果存储的数据类型是整型，那么读出来的数据也是整形，如果存储的数据是一个字符串，那么读取出来的数据仍是字符串</p>
+<h4 id="a、Context类中的getSharePreferens-方法"><a href="#a、Context类中的getSharePreferens-方法" class="headerlink" title="a、Context类中的getSharePreferens( )方法"></a>a、Context类中的getSharePreferens( )方法</h4><p>该方法两个参数，第一个参数用于指定SharedPreferences文件的名称，如果指定的文件不存在则会创建一个，SharedPreferens文件都是存放在/data/data/&lt;package name&gt;/shared_prefs/目录下；第二个参数是用于指定一操作模式，只有MODE_PRIVATE一种模式可以选</p>
+<h4 id="b、Activity类中的getPreferences-方法"><a href="#b、Activity类中的getPreferences-方法" class="headerlink" title="b、Activity类中的getPreferences( )方法"></a>b、Activity类中的getPreferences( )方法</h4><p>与上面很相似，不过这个方法只接收一个操作模式的参数，使用这个方法会自动将当前活动的类名作为SharedPreferences的文件名</p>
+<h4 id="c、PreferenceManger类中的getDefalutSharePreferences-方法"><a href="#c、PreferenceManger类中的getDefalutSharePreferences-方法" class="headerlink" title="c、PreferenceManger类中的getDefalutSharePreferences( )方法"></a>c、PreferenceManger类中的getDefalutSharePreferences( )方法</h4><p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926160850196.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926160850196.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200926160850196"></p>
+<p>主窗口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ublic <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Button button=(Button) findViewById(R.id.button_write);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                SharedPreferences.Editor editor=getSharedPreferences(<span class="string">&quot;data&quot;</span>,MODE_PRIVATE).edit();</span><br><span class="line">                editor.putString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;caixukun&quot;</span>);</span><br><span class="line">                editor.putInt(<span class="string">&quot;age&quot;</span>,<span class="number">56</span>);</span><br><span class="line">                editor.putBoolean(<span class="string">&quot;married&quot;</span>,<span class="keyword">false</span>);</span><br><span class="line">                editor.apply();</span><br><span class="line">                Intent intent=<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,msgActivity.class);</span><br><span class="line">                startActivity(intent);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>消息窗口读数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">msgActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_msg);</span><br><span class="line">        TextView text_name=(TextView) findViewById(R.id.text_name);</span><br><span class="line">        TextView text_age=(TextView) findViewById(R.id.text_age);</span><br><span class="line">        TextView text_married=(TextView) findViewById(R.id.text_married);</span><br><span class="line">        SharedPreferences pref=getSharedPreferences(<span class="string">&quot;data&quot;</span>,MODE_PRIVATE);</span><br><span class="line">        String name=pref.getString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">        String age=pref.getInt(<span class="string">&quot;age&quot;</span>,<span class="number">0</span>)+<span class="string">&quot;&quot;</span>;</span><br><span class="line">        String married=pref.getBoolean(<span class="string">&quot;married&quot;</span>,<span class="keyword">true</span>)+<span class="string">&quot;&quot;</span>;</span><br><span class="line">        Toast.makeText(msgActivity.<span class="keyword">this</span>,name+age,Toast.LENGTH_SHORT).show();</span><br><span class="line">        text_name.setText(name);</span><br><span class="line">        text_age.setText(age);</span><br><span class="line">        text_married.setText(married);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926192433725.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200926192433725.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200926192433725"></p>
+<p><strong>实现一个密码记住功能</strong></p>
+<p>登录窗口源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">login</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SharedPreferences pref;</span><br><span class="line">    <span class="keyword">private</span> SharedPreferences.Editor editor;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(<span class="keyword">final</span> Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_login);</span><br><span class="line">        Button button=(Button) findViewById(R.id.button_1);</span><br><span class="line">        <span class="keyword">final</span> CheckBox checkBox=(CheckBox) findViewById(R.id.checkbox2);</span><br><span class="line">        <span class="keyword">final</span> EditText username=(EditText) findViewById(R.id.edit_id);</span><br><span class="line">        <span class="keyword">final</span> EditText password=(EditText) findViewById(R.id.edit_password);</span><br><span class="line">        <span class="comment">//这里使用的是Manager的一个静态方法</span></span><br><span class="line">        pref= PreferenceManager.getDefaultSharedPreferences(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">boolean</span> isRemmber=pref.getBoolean(<span class="string">&quot;remember_password&quot;</span>,<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">if</span>(isRemmber)&#123;</span><br><span class="line">            String name=pref.getString(<span class="string">&quot;username&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">            String pass=pref.getString(<span class="string">&quot;password&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">            password.setText(pass);</span><br><span class="line">            username.setText(name);</span><br><span class="line">            checkBox.setChecked(<span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                String name=username.getText().toString();</span><br><span class="line">                String pass=password.getText().toString();</span><br><span class="line">                <span class="keyword">if</span>(name.equals(<span class="string">&quot;admin&quot;</span>)&amp;&amp;pass.equals(<span class="string">&quot;123&quot;</span>))&#123;</span><br><span class="line">                    <span class="comment">//添加数据需要获取一个edit( )方法</span></span><br><span class="line">                     editor=pref.edit();</span><br><span class="line">                     <span class="keyword">if</span>(checkBox.isChecked())&#123;</span><br><span class="line">                         editor.putBoolean(<span class="string">&quot;remember_password&quot;</span>,<span class="keyword">true</span>);</span><br><span class="line">                         editor.putString(<span class="string">&quot;username&quot;</span>,<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">                         editor.putString(<span class="string">&quot;password&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line">                     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                         editor.clear();</span><br><span class="line">                     &#125;</span><br><span class="line">                     editor.apply();</span><br><span class="line">                     Intent intent=<span class="keyword">new</span> Intent(login.<span class="keyword">this</span>,MainActivity.class);</span><br><span class="line">                    startActivity(intent);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    Toast.makeText(login.<span class="keyword">this</span>,<span class="string">&quot;密码账户错误&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200927141247481.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200927141247481.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200927141247481"></p>
+<p>如果使用的是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">editor.clear();</span><br></pre></td></tr></table></figure>
+
+<p>会清除所有该数据表的内容，所以不能随便乱用</p>
+<h2 id="使用SQLite语言"><a href="#使用SQLite语言" class="headerlink" title="使用SQLite语言"></a>使用SQLite语言</h2><p><em>了解SQLiteOpenHelper帮助类，以及两个实例方法，实例方法返回的是一个SQLiteDatabse对象，一般用帮助类进行一个建表以及更新表的操作，用SQLiteDatabase对象进行一个增删改查的操作</em></p>
+<p><strong>创建数据库</strong></p>
+<p>Android为了更加方便管理数据库，专门提供了一个SQLiteOpenHelper帮助类，借助这类可以非常简单对数据库进行创建和升级。</p>
+<p>SQLiteOpenHelper是一个抽象类，使用的话肯定需要帮助类进行一个继承，SQLiteOpenHelper中有两个抽象方法，分别是onCreate( )和onUpgrade( )，这两个方法必须进行一个重写，然后在这两个方法中去实现创建以及升级数据库的逻辑。</p>
+<p>该实例方法中还有两个非常重要的实例方法<code>getReadableDatabase( )</code>和<code>getWritableDatabase( )</code></p>
+<p>这两个方法都可以创建或打开一个现有的数据库(如果数据已存在则直接打开，否则创建一个新的数据库)，并返回一个可对数据库进行读写操作的对象。不同的是，当数据库不可写入的时候：</p>
+<p><code>getReadableDatabase( )</code>方法返回的对象将以读的方式打开数据库，</p>
+<p><code>getWriteableDatabase( )</code>方法将出现异常。 </p>
+<p>SQLiteOpenHelper中有两个构造方法可重写，一般使用参数少一点的构造方法，该构造方法接收4个参数，第一个参数是Context，第二个参数是数据库名，创建数据库时使用的就是这里指定的名称，第三个参数允许我们在查询数据的时候返回一个自定义的Cursor，一般传入null，第四个参数表示当前的数据库版本号，可用于对数据库进行升级操作。</p>
+<p>构建出SQLiteOpenHelper的实例之后，再调用它的getReadableDatabase( )和getWriteableDatabase( )方法就能创建数据库。</p>
+<p>创建后的数据库文件会放在/data/data/&lt;package name&gt;/databases目录下</p>
+<p>SQLite的数据类型很简单，integer表示整型，real表示浮点型，text表示文本型，blob表示二进制型，primary key将id列为主键，并用autoincrement表示id列是自增长的</p>
+<p><strong>创建数据库</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span>  <span class="class"><span class="keyword">class</span> <span class="title">MydatabaseHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_BOOK=<span class="string">&quot;create table Book (&quot;</span></span><br><span class="line">                + <span class="string">&quot;id integer primary key autoincrement,&quot;</span></span><br><span class="line">                +<span class="string">&quot;author text,&quot;</span></span><br><span class="line">                +<span class="string">&quot;price real,&quot;</span></span><br><span class="line">                +<span class="string">&quot;pages integer,&quot;</span></span><br><span class="line">                +<span class="string">&quot;name text)&quot;</span>;</span><br><span class="line">        <span class="keyword">private</span> Context mContext;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MydatabaseHelper</span><span class="params">(<span class="meta">@Nullable</span> Context context, <span class="meta">@Nullable</span> String name, <span class="meta">@Nullable</span> SQLiteDatabase.CursorFactory factory, <span class="keyword">int</span> version)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(context, name, factory, version);</span><br><span class="line">            mContext=context;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</span><br><span class="line">            db.execSQL(CREATE_BOOK);</span><br><span class="line">            Toast.makeText(mContext,<span class="string">&quot;创建成功&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> MydatabaseHelper dbhelper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">		<span class="comment">//实例化该自动创建的对象</span></span><br><span class="line">        dbhelper=<span class="keyword">new</span> MydatabaseHelper(<span class="keyword">this</span>,<span class="string">&quot;BookStore&quot;</span>,<span class="keyword">null</span>,<span class="number">1</span>);</span><br><span class="line">        Button createDatabase=(Button) findViewById(R.id.button_re);</span><br><span class="line">        createDatabase.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                dbhelper.getWritableDatabase();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</span><br><span class="line">          db.execSQL(CREATE_BOOK);</span><br><span class="line">          Toast.makeText(mContext,<span class="string">&quot;创建成功&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要建表语句，子啊onCreate( )方法中调用SQLiteDatabase的execSQL( )的方法去执行语句，并且弹出一个创建成功的语句</p>
+<p>用DB browser查看</p>
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929151059782.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929151059782.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929151059782"></p>
+<p><strong>升级数据库(对数据库进行加表操作)</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_CATEGORY=<span class="string">&quot;create table Category (&quot;</span></span><br><span class="line">        +<span class="string">&quot;id integer primary key autoincrement, &quot;</span></span><br><span class="line">        +<span class="string">&quot;category_name text, &quot;</span></span><br><span class="line">        +<span class="string">&quot;category_code integer)&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>再增加一句SQL语句，增加第二个名为Category的表</p>
+<p>如果直接再onCreate( )方法中使用此代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</span><br><span class="line">    db.execSQL(CREATE_BOOK);</span><br><span class="line">    db.execSQL(CREATE_CATEGORY);</span><br><span class="line">    Toast.makeText(mContext,<span class="string">&quot;创建成功&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时是没有任何反应的，因为如果此时BookStore.db已经存再了，该语句已经不会再执行，此时只能在onUpgrade( )语句中再加入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123;</span><br><span class="line">    db.execSQL(<span class="string">&quot;drop table if exists Book&quot;</span>);</span><br><span class="line">    db.execSQL(<span class="string">&quot;drop table if exists Category&quot;</span>);</span><br><span class="line">    onCreate(db);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在onUpgrade( )语句中执行了两条DROP语句，如果发现数据库中已经存在Book表或者Category表，就把两张然后调用onCreate( )中的语句，进行一次重新建表的操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> MydatabaseHelper dbhelper;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">    dbhelper=<span class="keyword">new</span> MydatabaseHelper(<span class="keyword">this</span>,<span class="string">&quot;BookStore&quot;</span>,<span class="keyword">null</span>,<span class="number">2</span>);</span><br><span class="line">    Button createDatabase=(Button) findViewById(R.id.button_re);</span><br><span class="line">    createDatabase.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">            dbhelper.getWritableDatabase();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>关键语句应该在实例化的操作中将该构造函数的1改为2，只要比1大就能执行onUpgrade( )中的语句</p>
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929152506589.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929152506589.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929152506589"></p>
+<p><strong>对表进行CRUD操作</strong></p>
+<h6 id="增加数据"><a href="#增加数据" class="headerlink" title="增加数据"></a>增加数据</h6><p>前面已经知道SQLiteOpenHelper的<code>getReadableDatabase( )</code>或<code>getWritableDatabase( )</code>方法是可以返回一个SQLiteDatabase( )对象，借助这个对象可以对数据进行各种操作。</p>
+<p>SQLiteDatabase中提供了一个insert( )方法，这个方法专门用于添加数据，接收三个参数</p>
+<p><code>db.insert(&quot;Book&quot;,null,values);</code></p>
+<p>第一个参数是表名，第二个参数用于未指定添加数据的情况下给某些可为空的列自动赋值为NULL，一般传null，第三个是一个ContentValues对象，提供一系列的put( )方法重载，用于向ContentValues添加数据，只需要将表中的每个列名以及相应的待添加数据传入即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDatabase db=dbhelper.getWritableDatabase();</span><br><span class="line">ContentValues values=<span class="keyword">new</span> ContentValues();</span><br><span class="line">values.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;蔡徐坤的人生&quot;</span>);</span><br><span class="line">values.put(<span class="string">&quot;author&quot;</span>,<span class="string">&quot;caixukun&quot;</span>);</span><br><span class="line">values.put(<span class="string">&quot;pages&quot;</span>,<span class="number">444</span>);</span><br><span class="line">values.put(<span class="string">&quot;price&quot;</span>,<span class="number">17</span>);</span><br><span class="line">db.insert(<span class="string">&quot;Book&quot;</span>,<span class="keyword">null</span>,values);</span><br><span class="line">Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">&quot;添加数据成功&quot;</span>,Toast.LENGTH_SHORT).show();</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929154643653.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929154643653.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929154643653"><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929154707204.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929154707204.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929154707204"></p>
+<h6 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h6><p><code>db.update(&quot;Book&quot;,values,&quot;name=?&quot;,new String[]&#123;&quot;蔡徐坤的人生&quot;&#125;);</code></p>
+<p>修改数据主要通过db.updata( )该方法进行操作，第一个参数是表名；第二个参数ContentValues对象，用put( )传入要修改的数据；第三个参数相当于SQL语句的WHERE,主要用来找列，该方法找的是name这列，问号相当于一个占位符，供给第四个参数使用；第四参数就是一个字符串 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mod_data.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        SQLiteDatabase db=dbhelper.getWritableDatabase();</span><br><span class="line">        ContentValues values=<span class="keyword">new</span> ContentValues();</span><br><span class="line">        values.put(<span class="string">&quot;price&quot;</span>,<span class="number">10</span>);</span><br><span class="line">        db.update(<span class="string">&quot;Book&quot;</span>,values,<span class="string">&quot;name=?&quot;</span>,<span class="keyword">new</span> String[]&#123;<span class="string">&quot;蔡徐坤的人生&quot;</span>&#125;);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">&quot;修改数据成功&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929160438852.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929160438852.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929160429032"><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929160447803.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929160447803.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929160447803"></p>
+<h6 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h6><p><code>db.delete(&quot;Book&quot;,&quot;pages &gt; ?&quot;,new String[]&#123;&quot;500&quot;&#125;);</code></p>
+<p>删除数据主要通过<code>db.delete( )</code>方法进行一个操作，第一个参数是表名，第二个参数是条件，跟修改数据差不多是为了找到数据条的位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">delete_data.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        SQLiteDatabase db=dbhelper.getWritableDatabase();</span><br><span class="line">        db.delete(<span class="string">&quot;Book&quot;</span>,<span class="string">&quot;pages &gt; ?&quot;</span>,<span class="keyword">new</span> String[]&#123;<span class="string">&quot;500&quot;</span>&#125;);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">&quot;删除数据成功&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929161554039.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929161554039.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929161554039"><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929162019910.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929162019910.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929162019910"></p>
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929163526668.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929163526668.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929163526668"></p>
+<h6 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h6><p>SQLiteDatabase中提供了一个query( )方法用于对数据进行查询，这个方法的参数非常复杂，最短的一个方法重载也需要传入7个参数。</p>
+<p>第一个参数表名；</p>
+<p>第二个参数指定用于查询哪几列，如果不指定则默认查询所有列；</p>
+<p>第三、第四个参数用于约束查询某一行或某几行的数据，不指定则默认查询所有的行数据；</p>
+<p>第五个参数用于指定需要group by的列，不指定则表示不对查询结果进行group by操作；</p>
+<p>第七个参数用于指定查询结果的排列方式，不指定则表示使用默认的排序方式</p>
+<p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929183346145.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929183346145.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929183346145"></p>
+<p>调用query( )方法会返回一个Cursor对象，查询到所有的数据都将从这个对象中取出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">query_data.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        SQLiteDatabase db=dbhelper.getWritableDatabase();</span><br><span class="line">        Cursor cursor=db.query(<span class="string">&quot;Book&quot;</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line">           <span class="keyword">if</span>(cursor.moveToFirst())&#123;</span><br><span class="line">               <span class="keyword">do</span>&#123;</span><br><span class="line">                   String id=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">                   String author=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;author&quot;</span>));</span><br><span class="line">                   String price=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;price&quot;</span>));</span><br><span class="line">                   String pages=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;pages&quot;</span>));</span><br><span class="line">                   String name=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">                   Toast.makeText(MainActivity.<span class="keyword">this</span>,id+<span class="string">&quot; &quot;</span>+author+<span class="string">&quot; &quot;</span>+price+<span class="string">&quot; &quot;</span>+pages+<span class="string">&quot; &quot;</span>+name,Toast.LENGTH_SHORT).show();</span><br><span class="line">               &#125;<span class="keyword">while</span> (cursor.moveToNext());</span><br><span class="line">           &#125;</span><br><span class="line">           cursor.close();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>首先获取一个SQLiteDatabase对象，然后使用<code>db.query( )</code>方法将数据存在一个Cursor对象，最后对Cursor进行处理， <code>cursor.moveToFirst( )</code>方法将指针移到第一个数据，<code>cursor.getString(cursor.getColumnIndex(&quot;id&quot;))</code>获取数据是列索引为id的数据，一行一行去读数据通过方法<code>cursor.moveToNext()</code>实现，最后 <code>cursor.close()</code>关闭该对象<img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184654029.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184654029.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929184654029"></p>
+<h2 id="使用SQL语言操作数据库"><a href="#使用SQL语言操作数据库" class="headerlink" title="使用SQL语言操作数据库"></a>使用SQL语言操作数据库</h2><p><img src="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184829755.png" class="lazyload" data-srcset="/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/image-20200929184829755.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929184829755"></p>
+<h2 id="使用LitePal操作数据库"><a href="#使用LitePal操作数据库" class="headerlink" title="使用LitePal操作数据库"></a>使用LitePal操作数据库</h2><p>LitePal是一款开源的Android数据库框架,它采用了对象关系映射(ORM)的模式,并将我们平时开发最常用到的一些数据库功能进行了封装,使得不用编写一行SQL语句就可以完成各种建表和增删改查的操作，并且LitePal很“轻”，jar包大小不到100k，而且近乎零配置，这一点和Hibernate这类的框架有很大区别。</p>
+<p>1.添加依赖</p>
+<p>在app/build.gradle文件中添加依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#x27;org.litepal.guolindev:core:3.2.2&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 然后在主注册文件中&lt;application&gt;标签内添加一行</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:name=&quot;org.litepal.LitePalApplication&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在assets目录下创建一个litepal.xml配置文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">litepal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dbname</span> <span class="attr">value</span>=<span class="string">&quot;demo&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">class</span>=<span class="string">&quot;com.example.litepaltest.Album&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">class</span>=<span class="string">&quot;com.example.litepaltest.Song&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">litepal</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>verson为版本号，若对数据表的结构有进行更新的话，添加版本号1-&gt;2，list中为两个数据表，<strong>路径一定要搞对</strong>，</p>
+<p>最后在活动的创建中加入一行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LitePal.initialize(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2.创建实体类，一般继承LitePalSupport，不能包含List类型的属性</p>
+<h6 id="litepal支持的实体类字段映射类型为-int，long，double，float，byte-，boolean，String，Date；不支持String-数组型"><a href="#litepal支持的实体类字段映射类型为-int，long，double，float，byte-，boolean，String，Date；不支持String-数组型" class="headerlink" title="litepal支持的实体类字段映射类型为 int，long，double，float，byte[]，boolean，String，Date；不支持String[]数组型"></a>litepal支持的实体类字段映射类型为 int，long，double，float，byte[]，boolean，String，Date；不支持String[]数组型</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Movie</span> <span class="keyword">extends</span> <span class="title">LitePalSupport</span></span>&#123;    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="comment">//name是唯一的，且默认值为unknown </span></span><br><span class="line">    <span class="meta">@Column(unique = true, defaultValue = &quot;unknown&quot;)</span> </span><br><span class="line">    <span class="keyword">private</span> String name; </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//忽略即 不在数据库中创建该属性对应的字段 </span></span><br><span class="line">    <span class="meta">@Column(ignore = true)</span> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> price; </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] cover; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> duration; </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//不为空 </span></span><br><span class="line">    <span class="meta">@Column(nullable = false)</span> </span><br><span class="line">    <span class="keyword">private</span> String director; </span><br><span class="line">    <span class="keyword">private</span> String type; </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//记得添加所有字段的getter和setter方法 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中id这个字段可写可不写，因为即使不写这个字段，LitePal也会在表中自动生成一个id列，毕竟每张表都一定要有主键的， 即不管实体类中有没有id这个属性，都会默认创建一个为整型的id字段，作为自增的主键。</p>
+<p>3.存储操作</p>
+<p>实例一个对象，然后对象进行一个赋值，最后用对象.save( )方法进行一个保存。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">album.save();</span><br><span class="line">Song song1 = <span class="keyword">new</span> Song();</span><br><span class="line">song1.setName(<span class="string">&quot;song1&quot;</span>);</span><br><span class="line">song1.setDuration(<span class="number">320</span>);</span><br><span class="line">song1.setAlbum(album);</span><br><span class="line">song1.save();</span><br></pre></td></tr></table></figure>
+
+<p>4.删除操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除单个记录，id=1</span></span><br><span class="line">LitePal.delete(Movie.class,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除数据库中movie表的所有记录 </span></span><br><span class="line">LitePal.deleteAll(Movie.class); </span><br><span class="line"></span><br><span class="line"><span class="comment">//删除数据库movie表中duration大于3500的记录 </span></span><br><span class="line">LitePal.deleteAll(Movie.class, <span class="string">&quot;duration &gt; ?&quot;</span> , <span class="string">&quot;3500&quot;</span>); </span><br></pre></td></tr></table></figure>
+
+<p>5.修改操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一步，查找id为1的记录 </span></span><br><span class="line">Movie movie = LitePal.find(Movie.class, <span class="number">1</span>); </span><br><span class="line"><span class="comment">//第二步，改变某个字段的值 </span></span><br><span class="line">movie.setPrice(<span class="number">4020f</span>); </span><br><span class="line"><span class="comment">//第三步，保存数据 </span></span><br><span class="line">movie.save(); </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Movie movie=<span class="keyword">new</span> Movie(); </span><br><span class="line">movie.setName(<span class="string">&quot;2Diots&quot;</span>); </span><br><span class="line">movie.setDirector(<span class="string">&quot;某人&quot;</span>);</span><br><span class="line"> <span class="comment">//直接更新id为1的记录 </span></span><br><span class="line"> movie.update(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Movie movie=<span class="keyword">new</span> Movie(); </span><br><span class="line">movie.setDirector(<span class="string">&quot;someone&quot;</span>); </span><br><span class="line"><span class="comment">//更新所有name为2Diots的记录,将director字段设为someone </span></span><br><span class="line">movie.updateAll(<span class="string">&quot;name = ?&quot;</span>, <span class="string">&quot;2Diots&quot;</span>);</span><br><span class="line"></span><br><span class="line">Movie movie=<span class="keyword">new</span> Movie(); </span><br><span class="line">movie.setName(<span class="string">&quot;someone&quot;</span>); </span><br><span class="line">movie.setDirector(<span class="string">&quot;someone&quot;</span>); </span><br><span class="line"><span class="comment">//将更新所有name为2Diots，director为gpf的记录name和director均改为someone</span></span><br><span class="line">movie.updateAll(<span class="string">&quot;name=? and director=?&quot;</span>, <span class="string">&quot;2Diots&quot;</span>，<span class="string">&quot;gpf&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>6.查询操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查找movie表的所有记录，返回值是一个泛型为Movie的List集合</span></span><br><span class="line">List&lt;Movie&gt; allMovies = LitePal.findAll(Movie.class); </span><br><span class="line"></span><br><span class="line"><span class="comment">//查找movie表id为1的记录 </span></span><br><span class="line">Movie movie = LitePal.find(Movie.class,<span class="number">1</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 比如获取news表中的第一条数据</span></span><br><span class="line">News firstNews = LitePal.findFirst(News.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取News表中的最后一条数据</span></span><br><span class="line">News lastNews = LitePal.findLast(News.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 想把news表中id为1、3、5、7的数据都查出来</span></span><br><span class="line">List&lt;News&gt; newsList = LitePal.findAll(News.class, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>);</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">long</span>[] ids = <span class="keyword">new</span> <span class="keyword">long</span>[] &#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span> &#125;;</span><br><span class="line">List&lt;News&gt; newsList = LitePal.findAll(News.class, ids);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查找name为2Diots的记录,并且以时长作排序，where()方法接收任意个字符串参数，其中第一个参数用于进行条件约束，</span></span><br><span class="line"><span class="comment">//从第二个参数开始，都是用于替换第一个参数中的占位符的。那这个where()方法就对应了一条SQL语句中的where部分。 </span></span><br><span class="line">List&lt;Movie&gt; movies = LitePal.where(<span class="string">&quot;name = ?&quot;</span>, <span class="string">&quot;2Diots&quot;</span>).order(<span class="string">&quot;duration&quot;</span>).find(Movie.class); </span><br><span class="line"><span class="comment">// 但是这样会将news表中所有的列都查询出来，也许你并不需要那么多的数据，而是只要title和content这两列数据。那么也很简单，我们只要再增加一个连缀就行了，如下所示：</span></span><br><span class="line">List&lt;News&gt; newsList = LitePal.select(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;content&quot;</span>).where(<span class="string">&quot;commentcount &gt; ?&quot;</span>, <span class="string">&quot;0&quot;</span>).find(News.class);</span><br><span class="line"><span class="comment">//将查询出的新闻按照发布的时间倒序排列，即最新发布的新闻放在最前面，那就可以这样写：</span></span><br><span class="line">List&lt;News&gt; newsList = LitePal.select(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;content&quot;</span>).where(<span class="string">&quot;commentcount &gt; ?&quot;</span>, <span class="string">&quot;0&quot;</span>).order(<span class="string">&quot;publishdate desc&quot;</span>).find(News.class);</span><br><span class="line"><span class="comment">//order()方法中接收一个字符串参数，用于指定查询出的结果按照哪一列进行排序，asc表示正序排序，desc表示倒序排序，因此order()方法对应了一条SQL语句中的order by部分。</span></span><br><span class="line"><span class="comment">//也许你并不希望将所有条件匹配的结果一次性全部查询出来，因为这样数据量可能会有点太大了，而是希望只查询出前10条数据，那么使用连缀同样可以轻松解决这个问题，代码如下所示：</span></span><br><span class="line">List&lt;News&gt; newsList = LitePal.select(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;content&quot;</span>).where(<span class="string">&quot;commentcount &gt; ?&quot;</span>, <span class="string">&quot;0&quot;</span>).order(<span class="string">&quot;publishdate desc&quot;</span>).limit(<span class="number">10</span>).find(News.class);</span><br><span class="line"><span class="comment">//limit()方法接收一个整型参数，用于指定查询前几条数据，这里指定成10，意思就是查询所有匹配结果中的前10条数据。</span></span><br><span class="line"><span class="comment">//刚才我们查询到的是所有匹配条件的前10条新闻，那么现在我想对新闻进行分页展示，翻到第二页时，展示第11到第20条新闻,只需要再连缀一个偏移量就可以了，如下所示：</span></span><br><span class="line">List&lt;News&gt; newsList = LitePal.select(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;content&quot;</span>).where(<span class="string">&quot;commentcount &gt; ?&quot;</span>, <span class="string">&quot;0&quot;</span>).order(<span class="string">&quot;publishdate desc&quot;</span>).limit(<span class="number">10</span>).offset(<span class="number">10</span>).find(News.class);</span><br><span class="line"><span class="comment">//这里指定成10，就表示偏移十个位置，那么原来是查询前10条新闻的，偏移了十个位置之后，就变成了查询第11到第20条新闻了，如果偏移量是20，那就表示查询第21到第30条新闻</span></span><br><span class="line"><span class="comment">//查找所有年龄小于25岁的人</span></span><br><span class="line">List&lt;Person&gt; person = LitePal.where(<span class="string">&quot;age &lt; ?&quot;</span>, <span class="number">25</span>).find(Person.class); </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/>http://example.com/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T21:53:32+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Apr 1, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Android/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Android</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/&title=Android-数据存储 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/&title=Android-数据存储 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/09/26/Android/Android-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/&title=Android-数据存储 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/10/04/Android/Android-%E7%9B%B4%E8%BF%9E%E6%95%B0%E6%8D%AE%E5%BA%93/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Android-直连数据库</p>
+          <p class='content'>导入包实现直连MySql数据库需要导入mysql-connector-java-5.1.30-binjar包（百度网盘提取码为：ctxa）
+主窗口代码1234567891011121314151...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/09/24/Android/Android-%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/'>
+          <p class='title'>Android-广播机制<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>广播机制标准广播
+标准广播是一种完全异步执行的而广播，在广播发出之后，所有的广播接收器几乎都在同一个时候接受到这条广播消息，因此它们之前没有任何先后顺序，这种广播的效率都会比较高，但同时也意味同...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">Android数据持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="toc-text">文件存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SharePreferences%E5%AD%98%E5%82%A8"><span class="toc-text">SharePreferences存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a%E3%80%81Context%E7%B1%BB%E4%B8%AD%E7%9A%84getSharePreferens-%E6%96%B9%E6%B3%95"><span class="toc-text">a、Context类中的getSharePreferens( )方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b%E3%80%81Activity%E7%B1%BB%E4%B8%AD%E7%9A%84getPreferences-%E6%96%B9%E6%B3%95"><span class="toc-text">b、Activity类中的getPreferences( )方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c%E3%80%81PreferenceManger%E7%B1%BB%E4%B8%AD%E7%9A%84getDefalutSharePreferences-%E6%96%B9%E6%B3%95"><span class="toc-text">c、PreferenceManger类中的getDefalutSharePreferences( )方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SQLite%E8%AF%AD%E8%A8%80"><span class="toc-text">使用SQLite语言</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-text">增加数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">修改数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">删除数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">查询数据</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SQL%E8%AF%AD%E8%A8%80%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">使用SQL语言操作数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8LitePal%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">使用LitePal操作数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#litepal%E6%94%AF%E6%8C%81%E7%9A%84%E5%AE%9E%E4%BD%93%E7%B1%BB%E5%AD%97%E6%AE%B5%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B%E4%B8%BA-int%EF%BC%8Clong%EF%BC%8Cdouble%EF%BC%8Cfloat%EF%BC%8Cbyte-%EF%BC%8Cboolean%EF%BC%8CString%EF%BC%8CDate%EF%BC%9B%E4%B8%8D%E6%94%AF%E6%8C%81String-%E6%95%B0%E7%BB%84%E5%9E%8B"><span class="toc-text">litepal支持的实体类字段映射类型为 int，long，double，float，byte[]，boolean，String，Date；不支持String[]数组型</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+		  
+		  <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="Android-数据存储";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.remove("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="half";
+    cover_wrapper.style.display="";
+    
+  
+</script>
+
+        </div>
+        
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='song'
+      id='1498076242'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1" target="_blank" class="codename">Volantis</a>
+        as theme
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script>
+
+
+<!-- internal -->
+
+
+
+  
+  
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>Copy Image Link</a>
+        <hr id='hr-src'>
+      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
+      <hr>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' 
+        
+        
+        
+          onclick="document.execCommand('print')"
+        
+        >
+        <i class='fa fa-print fa-fw'></i> 打印页面
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default toggle-mode-btn' 
+        
+        
+        
+        >
+        <i class='fas fa-moon fa-fw'></i> Dark mode
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          <li class='music name'>
+            <p class='nav music-title fix-cursor-default'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+      // 有音乐播放器 see: layout/_third-party/aplayer/script.ejs
+      
+      if(volantis.APlayerLoaded){ // APlayer加载完成？
+        // 如果有aplayer，初始化一下
+        checkAPlayer();
+      }
+      
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');
+  </script>
+
+
+
+
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '1498076242';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+  // APlayer 需要在  MetingJS 之前加载
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+  window.volantis.APlayerLoaded=0 // APlayer加载完成状态
+  var checkAPlayer = setInterval(function () {
+    if (!window.APlayer) return // APlayer加载完成？
+	  if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+    clearInterval(checkAPlayer)
+	  if (!window.volantis.APlayerLoaded&&!window.MetingJSElement){ // APlayer只能加载一次
+      window.volantis.APlayerLoaded=1 // APlayer加载完成
+      loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js") // 加载 MetingJS
+	  }
+  }, 2500) // 按照网速调节差分2.5s
+  // rightmenu see: layout/_partial/rightmenu.ejs
+
+  
+    loadScript("/js/aplayer.js")
+  
+
+</script>
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"ked1Jt0wsuySat94CsJo2Ivp-gzGzoHsz","appKey":"aJuiz0DpxQYvfg8WOhecMB1F","meta":["nick"],"requiredFields":["nick"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script>
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://example.com' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+ 
+	   
+	    
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+ 
+	  
+    </div>
+  </body>
+</html>

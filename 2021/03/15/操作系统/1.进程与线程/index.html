@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="preload" href="/css/first.css" as="style">
+  
+
+  <!-- 页面元数据 -->
+  
+  <title>1.进程与线程 - Hexo</title>
+  
+    <meta name="keywords" content="操作系统">
+  
+
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style>
+    <div class="kill-noscript">
+        <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
+        <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+</head>
+
+  <body>
+    
+
+<header id="l_header" class="l_header  shadow blur "  >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              
+                <li>
+                  <a class="menuitem flat-box">
+                    <i class='fas fa-compact-disc fa-fw music'></i>背景音乐
+                  </a>
+                  <ul class="list-v">
+                    <li>
+                      <div class="aplayer-container">
+                        
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='song'
+      id='1498076242'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+                      </div>
+                    </li>
+                  </ul>
+                <li>
+              
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+        <div id="half" class='cover-wrapper post featured' style="display: ;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="img/tmp.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">FIGHTING······</p>
+    
+    
+      <p class="subtitle">记录一些学习笔记</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a target="_blank" rel="noopener" href="http://www.gzhu.club:90"
+              
+              
+              id="http:wwwgzhuclub:90">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>摄影日记</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>学习笔记</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              id="contributors">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0.1/assets/svg/1f6e0.svg'><p>折腾记录</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        1.进程与线程
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1.3/logo/256/telegram.png">
+    <p>Gzhu_RuIop</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 15, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="1.进程与线程" data-path="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="进程的定义"><a href="#进程的定义" class="headerlink" title="进程的定义"></a>进程的定义</h2><ul>
+<li><p>进程是指一个具有一定<strong>独立功能</strong>的程序在一个<strong>数据集合</strong>上的一次<strong>动态执行</strong>的过程</p>
+</li>
+<li><p>进程的特点：动态性、并发性、独立性、制约性</p>
+</li>
+<li><p>程序=文化（静态的可执行文件）</p>
+</li>
+<li><p>进程=执行中的程序=程序+执行状态</p>
+</li>
+</ul>
+<h2 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h2><p>描述和控制进程运行的数据结构：**进程控制块PCB(Process Control Block)**，是操作系统中最重要的记录型数据结构。</p>
+<ul>
+<li>操作系统用PCB来描述进程的基本情况以及运行的变化过程</li>
+<li>PCB是进程存在的唯一标志、每个进程在操作系统中都有一个对应的PCB</li>
+</ul>
+<p>进程控制块的使用：进程的创建、终止、组织管理</p>
+<p>进程控制块的内容：进程的标识信息、处理机现场保存、进程控制信息</p>
+<p>进程控制块的组织方式：线性方式、链接方式、索引方式</p>
+<p><img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321134250680.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321134250680.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321134250680" style="zoom:50%;"><img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321134325942.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321134325942.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321134325942" style="zoom: 67%;"></p>
+<h2 id="进程的三种基本状态"><a href="#进程的三种基本状态" class="headerlink" title="进程的三种基本状态"></a>进程的三种基本状态</h2><p>由于多个进程在并发执行时共享系统资源，致使它们在运行过程中呈现间断性的运行规律，所以进程在其生命周期内可能具有多种状态。一般而言，每一个进程至少应处于以下三种基本状态之一：</p>
+<h3 id="就绪-Ready-状态"><a href="#就绪-Ready-状态" class="headerlink" title="就绪(Ready)状态"></a>就绪(Ready)状态</h3><p>进程已获得所有必要资源，处于准备好运行的状态，只要获得CPU，就可以立即执行；</p>
+<h3 id="执行-Running-状态"><a href="#执行-Running-状态" class="headerlink" title="执行(Running)状态"></a>执行(Running)状态</h3><p>​    进程已经获得CPU，其程序正在执行；</p>
+<h3 id="阻塞-Block-状态"><a href="#阻塞-Block-状态" class="headerlink" title="阻塞(Block)状态"></a>阻塞(Block)状态</h3><p>​    进程由于需要等待某种事件或者某种资源，暂时无法继续执行；</p>
+<p>进程在运行过程中会经常发生状态的转换。例如，处于就绪状态的进程，在调度程序为之分配了处理机之后便可执行，相应地，其状态就由就绪态转变为执行态；正在执行的进程(当前进程)如果因分配给它的<strong>时间片已完</strong>而被剥夺处理机暂停执行时，其状态便由执行转为就绪；如果因发生某事件，致使当前进程的执行受阻(例如进程访问某临界资源，而该资源正被其它进程访问时)，使之无法继续执行，则该进程状态将由执行转变为阻塞。</p>
+<table>
+<thead>
+<tr>
+<th>初始状态</th>
+<th>变换状态</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>就绪</td>
+<td>执行</td>
+<td>系统调用</td>
+</tr>
+<tr>
+<td>执行</td>
+<td>就绪</td>
+<td>时间片用完之后，系统将其调入就绪队列，等待下次调用</td>
+</tr>
+<tr>
+<td>执行</td>
+<td>阻塞</td>
+<td>等待IO调用，或者类似sleep( )函数的等待（<strong>阻塞是进程自身主动行为</strong>）</td>
+</tr>
+<tr>
+<td>阻塞</td>
+<td>就绪</td>
+<td>只能被别的进程或者操作系统唤醒，并<strong>不会由于自身</strong>的原因进入就绪队列（唤醒）</td>
+</tr>
+</tbody></table>
+<p>唤醒进程的情况：被阻塞进程需要的资源可被满足、被阻塞的进程等待的时间到达</p>
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321130233104.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321130233104.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321130233104" style="zoom: 67%;">
+
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210315174900215.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210315174900215.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210315174900215" style="zoom:67%;">
+
+<h3 id="进程挂起模型"><a href="#进程挂起模型" class="headerlink" title="进程挂起模型"></a>进程挂起模型</h3><h6 id="进程挂起"><a href="#进程挂起" class="headerlink" title="进程挂起"></a>进程挂起</h6><p>处在挂起状态的进程映像在磁盘上，目的是减少进程所占用内存</p>
+<h6 id="挂起操作后三个进程状态的转换"><a href="#挂起操作后三个进程状态的转换" class="headerlink" title="挂起操作后三个进程状态的转换"></a>挂起操作后三个进程状态的转换</h6><p>挂起：把一个进程从内存转到外存；激活：把一个进程从外存转到内存</p>
+<table>
+<thead>
+<tr>
+<th>初始状态</th>
+<th>变换状态</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>活动就绪（处于未被挂起的就绪状态）</td>
+<td>静止就绪（挂起的就绪状态）</td>
+<td>挂起</td>
+</tr>
+<tr>
+<td>活动阻塞（处于未被挂起的阻塞状态）</td>
+<td>静止阻塞（挂起的阻塞状态）</td>
+<td>挂起</td>
+</tr>
+<tr>
+<td>静止就绪</td>
+<td>活动就绪</td>
+<td>激活</td>
+</tr>
+<tr>
+<td>静止阻塞</td>
+<td>活动阻塞</td>
+<td>激活</td>
+</tr>
+</tbody></table>
+<p><img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321131456132.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321131456132.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321131456132" style="zoom: 67%;"><img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321131803826.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321131803826.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321131803826" style="zoom: 67%;"></p>
+<p><em>其中阻塞的外部进入状态只能从<strong>执行-&gt;活动阻塞</strong>；并且其的<strong>静止阻塞</strong>也是可以到<strong>静止就绪</strong></em></p>
+<h3 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h3><h6 id="1-操作系统内核"><a href="#1-操作系统内核" class="headerlink" title="1.操作系统内核"></a>1.操作系统内核</h6><h6 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h6><p>通常将处理机的执行状态分成系统态和内核态；系统态又称为管态、内核态，具有较高特权，能执行一切指令，访问所有寄存器和存储区，传统的OS都在系统态运行。</p>
+<h6 id="2-内核支撑功能："><a href="#2-内核支撑功能：" class="headerlink" title="2.内核支撑功能："></a>2.内核支撑功能：</h6><ul>
+<li>中断处理：中断处理使内核最基本的功能，是整个操作系统赖以活动的基础， 为提高程序执行的并发性，内核在对中断”有限处理”后，便转入相关的进程，由这些进程继续完成后续的处理工作。</li>
+<li>时钟管理：时间管理是内核一项基本功能，在时间片轮转的调度中，每当时间片用完时，便由时间管理产生一个<strong>中断信号</strong>，促使调度程序重新进行调度。</li>
+<li>原语操作：所谓原语，就是若干条指令组成的，用于完成一定功能的一个过程，它与一般过程的区别在于”原子操作“。就是要么一起做，要么一个都不做，原语操作在执行过程中不允许被中断。原子操作在系统态下执行，常驻内存。</li>
+</ul>
+<h6 id="3-资源管理功能："><a href="#3-资源管理功能：" class="headerlink" title="3.资源管理功能："></a>3.资源管理功能：</h6><p>进程管理、存储器管理、设备管理</p>
+<h3 id="进程的操作"><a href="#进程的操作" class="headerlink" title="进程的操作"></a>进程的操作</h3><h6 id="1-进程创建"><a href="#1-进程创建" class="headerlink" title="1.进程创建"></a>1.进程创建</h6><ul>
+<li>申请空白PCB</li>
+<li>为新进程分配其运行所需的资源，包括物理和逻辑资源</li>
+<li>初始化进程控制块</li>
+<li>如果进程就绪队列能够接纳新进程，便将新进程插入就绪队列</li>
+</ul>
+<h6 id="2-进程的终止"><a href="#2-进程的终止" class="headerlink" title="2.进程的终止"></a>2.进程的终止</h6><h6 id="3-进程的阻塞和唤醒"><a href="#3-进程的阻塞和唤醒" class="headerlink" title="3.进程的阻塞和唤醒"></a>3.进程的阻塞和唤醒</h6><h6 id="1-引起进程的阻塞和唤醒的事件（block和wakeup）"><a href="#1-引起进程的阻塞和唤醒的事件（block和wakeup）" class="headerlink" title="1.引起进程的阻塞和唤醒的事件（block和wakeup）"></a>1.引起进程的阻塞和唤醒的事件（block和wakeup）</h6><ul>
+<li>向系统请求共享资源失败。</li>
+<li>等待某种操作的完成</li>
+<li>新数据尚未到达</li>
+<li>等到新任务到达</li>
+</ul>
+<h6 id="2-进程阻塞过程"><a href="#2-进程阻塞过程" class="headerlink" title="2.进程阻塞过程"></a>2.进程阻塞过程</h6><p>正在执行的进程，进入阻塞后，通过阻塞<strong>原语block</strong>操作将自己阻塞，所以，阻塞是进程自身的<strong>主动行为</strong>。</p>
+<h6 id="3-进程唤醒过程"><a href="#3-进程唤醒过程" class="headerlink" title="3.进程唤醒过程"></a>3.进程唤醒过程</h6><p>当被阻塞进程所期待的事件发生时，则由有关进程调用唤醒*<em>原语wakeup</em>***，将等待该时间的进程唤醒。</p>
+<h6 id="4-进程的挂起和激活（suspend和active）"><a href="#4-进程的挂起和激活（suspend和active）" class="headerlink" title="4.进程的挂起和激活（suspend和active）"></a>4.进程的挂起和激活（suspend和active）</h6><p>都是操作系统内核的调用</p>
+<h2 id="进程的同步"><a href="#进程的同步" class="headerlink" title="进程的同步"></a>进程的同步</h2><img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321190934586.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321190934586.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321190934586" style="zoom: 50%;">
+
+<p>进程同步主要是使得执行的各个进程能按照一定的规则和时序共享系统资源。</p>
+<h6 id="1-两种形式的制约关系"><a href="#1-两种形式的制约关系" class="headerlink" title="1.两种形式的制约关系"></a>1.两种形式的制约关系</h6><ul>
+<li><p>间接相互制约关系：多个程序在并发执行时，由于共享系统资源，如CPU和IO设备等，致使这些并发执行的程序之间相互形成了制约关系。</p>
+</li>
+<li><p>直接相互制约关系</p>
+</li>
+</ul>
+<h6 id="2-临界资源"><a href="#2-临界资源" class="headerlink" title="2.临界资源"></a>2.临界资源</h6><p>打印机、io设备等等</p>
+<h6 id="3-临界区"><a href="#3-临界区" class="headerlink" title="3.临界区"></a>3.临界区</h6><p>每个进程中访问临界资源的那段代码称为临界区</p>
+<h6 id="4-同步机制遵循的规则"><a href="#4-同步机制遵循的规则" class="headerlink" title="4.同步机制遵循的规则"></a>4.同步机制遵循的规则</h6><p>空闲让进、忙则等待、有限等待、让权等待</p>
+<h6 id="5-硬件同步机制"><a href="#5-硬件同步机制" class="headerlink" title="5.硬件同步机制"></a>5.硬件同步机制</h6><p>1.关中断：进入所测试之前关闭中断，直至锁测试完成上锁之后打开中段，进程在临界区执行期间，os不响应中断，不会引起调度，也就不会发生进程或者线程的切换，从而保证了对锁的测试和关锁操作的连续性和完整性。</p>
+<p>2.利用Test-and-Set指令实现互斥</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">TS</span><span class="params">(boolean *lock)</span></span>&#123;<span class="comment">//lock有两种状态， lock=FALSE 表示资源空闲 lock=TRUE 表示资源正在被使用</span></span><br><span class="line">	Boolean old; </span><br><span class="line">	old=*lock;</span><br><span class="line">	*lock=TRUE; <span class="comment">//如果资源没上锁，那就将资源上锁</span></span><br><span class="line">	<span class="keyword">return</span> old; <span class="comment">//返回资源之前的状态</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">···</span><br><span class="line"><span class="function"><span class="keyword">while</span> <span class="title">TS</span><span class="params">(&amp;lock)</span> </span>; <span class="comment">// 必须将资源循环测试到TS(s)=FALSE，其实质就是自身进程能将临界资源上锁</span></span><br><span class="line">	critical section;<span class="comment">//临界区操作</span></span><br><span class="line">	lock=FALSE;</span><br><span class="line">	remainder section;</span><br><span class="line">&#125;<span class="keyword">while</span>(TRUE)</span><br></pre></td></tr></table></figure>
+
+<p>3.使用Swap指令实现进程互斥</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(boolean *a,boolean *b)</span></span>&#123;</span><br><span class="line">    boolean tmp;</span><br><span class="line">    tmp=*a;</span><br><span class="line">    *a=*b;</span><br><span class="line">    *b=tmp;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    key=TRUE;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        swap(&amp;lock,&amp;key);</span><br><span class="line">    &#125;<span class="keyword">while</span>(key!=FALSE);<span class="comment">//如果key==false代表交换成功，即拿到了资源</span></span><br><span class="line">    <span class="comment">//临界区操作</span></span><br><span class="line">    lock=FALSE;</span><br><span class="line">    ···</span><br><span class="line">&#125;<span class="keyword">while</span>(TRUE);</span><br></pre></td></tr></table></figure>
+
+<p>利用以上的硬件指令能够有效地实现进程互斥，但当临界志愿忙碌时，其他访问进程必须不断地进行测试，处于忙等的状态，不符合让权等待的原则。</p>
+<h6 id="6-信号量机制"><a href="#6-信号量机制" class="headerlink" title="6.信号量机制"></a>6.信号量机制</h6><p>1.整型信号量</p>
+<p>2.记录型信号量</p>
+<p>3.AND信号量</p>
+<p>当一个进程需要获得两个或更多的共享资源后能执行其任务，假定有AB两个进程，都要求访问共享数据DE，共享数据都应作为临界资源，可为这两个数据分别设置用于互斥的信号量Dmutex和Emutex，初值都为1</p>
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321180759287.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321180759287.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321180759287" style="zoom:50%;">
+
+<p>最后进程都不能执行下去了，此时AB进入死锁，所以需要在wait操作中增加一个AND条件，或称为同时wait操作</p>
+<p>4.信号量集</p>
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321182355976.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321182355976.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321182355976" style="zoom:67%;">
+
+<p>5.信号量的操作</p>
+<ul>
+<li>由一个整型变量和两个原子操作组成，整型变量代表其中有多少个</li>
+<li>PV操作，P增加、V减少</li>
+</ul>
+<p>在执行的过程P( )可能阻塞，V( )不会阻塞</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Semaphore</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> sem;</span><br><span class="line">	WaitQueue q; <span class="comment">//阻塞队列</span></span><br><span class="line">&#125;</span><br><span class="line">Semaphore::<span class="built_in">P</span>( )&#123;</span><br><span class="line">    sem--;</span><br><span class="line">    <span class="keyword">if</span>(sem&lt;<span class="number">0</span>)&#123; <span class="comment">//x小于0代表资源已经被占用</span></span><br><span class="line">        <span class="comment">//将进程加到阻塞队列中</span></span><br><span class="line">        <span class="built_in">block</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Semaphore::<span class="built_in">V</span>( )&#123;</span><br><span class="line">    sem++;</span><br><span class="line">    <span class="keyword">if</span>(sem&lt;=<span class="number">0</span>)&#123;<span class="comment">//如果加完小于等于0，则代表已经有进程进入阻塞队列</span></span><br><span class="line">    	<span class="comment">//将线程移出阻塞队列</span></span><br><span class="line">        <span class="built_in">wakeup</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>6.信号量实现前趋关系</p>
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321184514966.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321184514966.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321184514966" style="zoom:80%;">
+
+<h6 id="7-管程机制"><a href="#7-管程机制" class="headerlink" title="7.管程机制"></a>7.管程机制</h6><p>1.定义</p>
+<p>硬件资源和软件资源可用数据结构抽象地描述其资源性，即用少量信息和对该资源所执行的操作来表征该资源，利用<strong>共享数据结构</strong>抽象地表示系统中的共享资源，并且对共享数据结构的特定操作定义为一组过程。进程对共享资源的申请，释放和其他操作必须通过这组过程，间接对共享数据结构实现操作。对于请求访问共享资源的并发进程，可以根据资源的情况接受或阻塞，确保每一次仅有一个进程进入管程。</p>
+<p>代表<strong>共享资源的数据结构</strong>以及对该共享数据结构实施操作的<strong>一组过程</strong>所组成的资源管理程序共同构成了一个操作系统的资源管模块，称之为管程，管程被请求和释放的资源的进程所调用。</p>
+<p>2.组成内容：<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321185409877.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321185409877.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321185409877" style="zoom:67%;"></p>
+<ul>
+<li>管程名称</li>
+<li>局部于管程的共享数据结构说明</li>
+<li>对该数据结构进行操作的一组过程（函数）</li>
+<li>对局部于管程的共享数据设置初始值</li>
+</ul>
+<p>3.条件变量</p>
+<p>利用管程实现进程同步时，必须设置同步工具，如两个同步操作原语wait和signal，管程中对每个条件变量都必须说明，其形式condition x，y；对条件变量的操作仅仅是wait和signal。同时提供两个操作可表示为x.wait和x.signal</p>
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321192446850.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321192446850.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321192446850" style="zoom:80%;">
+
+<h6 id="8-用两种方法解决生产者消费者问题"><a href="#8-用两种方法解决生产者消费者问题" class="headerlink" title="8.用两种方法解决生产者消费者问题"></a>8.用两种方法解决生产者消费者问题</h6><p>1.使用记录型信号量</p>
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321201603305.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321201603305.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321201603305" style="zoom:67%;">
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mutex表示进程对缓冲区的互斥使用。empty和full分别表示缓冲池中空缓冲区和满缓冲区的数量</span></span><br><span class="line"><span class="comment">//buffer表示偶n个缓冲区，其中子项为item</span></span><br><span class="line"><span class="comment">//in、out代表第一个资源和最后一个资源</span></span><br><span class="line"><span class="keyword">int</span> in=<span class="number">0</span>,out=<span class="number">0</span>;</span><br><span class="line">item buffer[n];</span><br><span class="line">semaphore mutex=<span class="number">1</span>,empty=n,full=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">proceducer</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        producer an item nextp;<span class="comment">//生产一个产品</span></span><br><span class="line">        ···</span><br><span class="line">        wait(empty);<span class="comment">//等待缓冲区有空闲位置，没满进入，满了继续等待</span></span><br><span class="line">        wait(mutex);<span class="comment">//如果正在被占用则等待 保证互斥曹组</span></span><br><span class="line">		buffer[in]=nextp;<span class="comment">//将新资源放到buffer[in]位置</span></span><br><span class="line">        in=(in+<span class="number">1</span>)%n;</span><br><span class="line">        signal(mutex);<span class="comment">//释放互斥</span></span><br><span class="line">        signal(full);<span class="comment">//将信号量+1，表示填入一个</span></span><br><span class="line">    &#125;<span class="keyword">while</span>(TRUE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">do</span>&#123;</span><br><span class="line">       wait(full);<span class="comment">//是否缓冲区不为空，不为空的话继续执行，为空就一直等待</span></span><br><span class="line">       wait(mutex);</span><br><span class="line">       nextc=buffer[out];</span><br><span class="line">       out=(out+<span class="number">1</span>)%n;</span><br><span class="line">       signal(mutex);</span><br><span class="line">       signal(empty);</span><br><span class="line">       consumer the item in nextc;</span><br><span class="line">       ···</span><br><span class="line">    &#125;<span class="keyword">while</span>(TRUE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">cobegin</span></span><br><span class="line"><span class="function">       <span class="title">proceducer</span><span class="params">( )</span></span>; consumer( );</span><br><span class="line">    coend</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.使用管程</p>
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321192922427.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321192922427.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321192922427" style="zoom:67%;">
+
+<img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321203307445.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321203307445.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321203307445" style="zoom:67%;">
+
+<h2 id="进程间的通信"><a href="#进程间的通信" class="headerlink" title="进程间的通信"></a>进程间的通信</h2><h6 id="1-共享存储器系统"><a href="#1-共享存储器系统" class="headerlink" title="1.共享存储器系统"></a>1.共享存储器系统</h6><h6 id="2-管道通信系统"><a href="#2-管道通信系统" class="headerlink" title="2.管道通信系统"></a>2.管道通信系统</h6><img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321201310109.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321201310109.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321201310109" style="zoom: 67%;">
+
+<h6 id="3-消息传递系统"><a href="#3-消息传递系统" class="headerlink" title="3.消息传递系统"></a>3.消息传递系统</h6><img src="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321201413703.png" class="lazyload" data-srcset="/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/image-20210321201413703.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210321201413703" style="zoom:67%;">
+
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><h2 id="线程—作为调度和分派的基本单位"><a href="#线程—作为调度和分派的基本单位" class="headerlink" title="线程—作为调度和分派的基本单位"></a>线程—作为调度和分派的基本单位</h2><h6 id="1-调度的基本单位"><a href="#1-调度的基本单位" class="headerlink" title="1.调度的基本单位"></a>1.调度的基本单位</h6><p>线程作为调度和分派的基本单位，而进程作为资源拥有的基本单位；同一进程中，线程的切换不会引起进程的切换；</p>
+<h6 id="2-并发性"><a href="#2-并发性" class="headerlink" title="2.并发性"></a>2.并发性</h6><p>线程之间可并发执行，最大化提升单进程的吞吐能力；</p>
+<h6 id="3-拥有资源"><a href="#3-拥有资源" class="headerlink" title="3.拥有资源"></a>3.拥有资源</h6><p>进程的资源可以被自己的线程共享使用；线程一般不独占资源；</p>
+<h6 id="4-独立性"><a href="#4-独立性" class="headerlink" title="4.独立性"></a>4.独立性</h6><p>同一进程产生的线程可以共享资源，独立性弱；</p>
+<h6 id="5-系统开销"><a href="#5-系统开销" class="headerlink" title="5.系统开销"></a>5.系统开销</h6><p>进程高、线程低；</p>
+<h6 id="6-支持多处理机系统"><a href="#6-支持多处理机系统" class="headerlink" title="6.支持多处理机系统"></a>6.支持多处理机系统</h6><p>多线程可以充分利用多个处理机，并发执行；</p>
+<h2 id="线程的状态和线程控制块"><a href="#线程的状态和线程控制块" class="headerlink" title="线程的状态和线程控制块"></a>线程的状态和线程控制块</h2><h6 id="1-线程运行的三个状态"><a href="#1-线程运行的三个状态" class="headerlink" title="1.线程运行的三个状态"></a>1.线程运行的三个状态</h6><p>与传统的进程一样，在各线程之间也存在着共享资源和相互合作的制约关系，致使线程在运行时也具有间断性。相应地，线程在运行时也具有下述三种基本状态：<br> 　(1) <strong>执行状态</strong>，表示线程已获得处理机而正在运行；<br> 　(2) <strong>就绪状态</strong>，指线程已具备了各种执行条件，只须再获得CPU便可立即执行；<br> 　(3) <strong>阻塞状态</strong>，指线程在执行中因某事件受阻而处于暂停状态，例如，当一个线程执行从键盘读入数据的系统调用时，该线程就被阻塞。</p>
+<h6 id="2-线程控制块TCB"><a href="#2-线程控制块TCB" class="headerlink" title="2.线程控制块TCB"></a>2.线程控制块TCB</h6><p>如同每个进程有一个进程控制块一样，系统也为每个线程配置了一个线程控制块TCB，将所有用于控制和管理线程的信息记录在线程控制块中。 </p>
+<p>线程标识符、一组寄存器（ 通用寄存器、程序计数器PC、状态寄存器）、线程运行状态、优先级、线程专有存储区、信号屏蔽、堆栈指针</p>
+<h2 id="线程的实现"><a href="#线程的实现" class="headerlink" title="线程的实现"></a>线程的实现</h2><h6 id="1-线程的创建"><a href="#1-线程的创建" class="headerlink" title="1.线程的创建"></a>1.线程的创建</h6><p>应用程序在启动时，通常仅有一个线程在执行，人们把线程称为“初始化线程”，它的主要功能是用于创建新线程。在创建新线程时，需要利用一个线程创建函数(或系统调用)，并提供相应的参数，如指向线程主程序的入口指针、堆栈的大小，以及用于调度的优先级等。在线程的创建函数执行完后，将返回一个线程标识符供以后使用。</p>
+<h6 id="2-线程的终止"><a href="#2-线程的终止" class="headerlink" title="2.线程的终止"></a>2.线程的终止</h6><p>当一个线程完成了自己的任务(工作)后，或是线程在运行中出现异常情况而须被强行终止时，由终止线程通过调用相应的函数(或系统调用)对它执行终止操作。但有些线程(主要是系统线程)，它们一旦被建立起来之后，便一直运行下去而不被终止。在大多数的OS中，<strong>线程被中止后并不立即释放它所占有的资源，只有当进程中的其它线程执行了分离函数后，被终止的线程才与资源分离，此时的资源才能被其它线程利用</strong>。</p>
+<h2 id="进程线程编程实验"><a href="#进程线程编程实验" class="headerlink" title="进程线程编程实验"></a>进程线程编程实验</h2><h6 id="1-创建子进程实验"><a href="#1-创建子进程实验" class="headerlink" title="1.创建子进程实验"></a>1.创建子进程实验</h6><p>对于父进程，<code>fork()</code>函数返回子进程的进程号，而对于子进程，<code>fork()</code>函数则返回0。因此，通过<code>fork()</code>函数的返回值可以判定该进程是父进程还是子进程。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过父进程创建一个子进程</span></span><br><span class="line"><span class="keyword">pid_t</span> p1,p2,p3;</span><br><span class="line">p1=getpid();</span><br><span class="line"><span class="keyword">while</span>((p2=fork())==<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">if</span>(p2 == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;进入进程2\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;我是第二个进程，id为%d，父进程为%d\n&quot;</span>,getpid(),getppid());</span><br><span class="line">&#125;</span><br><span class="line">sleep(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">while</span>((p3=fork())==<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">if</span>(p3 ==<span class="number">0</span> &amp;&amp; getppid()==p1)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;进入进程3\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;我是第三个进程，id为%d，父进程为%d\n&quot;</span>,getpid(),getppid());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-在子进程中创建线程"><a href="#2-在子进程中创建线程" class="headerlink" title="2.在子进程中创建线程"></a>2.在子进程中创建线程</h6><p>在子进程中创建线程，每个线程执行不同的函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pid_t</span> p1,p2,p3;</span><br><span class="line">p1=getpid();</span><br><span class="line"><span class="keyword">if</span>(p2!=<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">while</span>((p2=fork())==<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">if</span>(p2 == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">pthread_t</span> tid1, tid2; <span class="comment">//定义两个线程i;</span></span><br><span class="line">    <span class="keyword">int</span> ret1,ret2;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;进入进程2\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;我是第二个进程，id为%d，父进程为%d\n&quot;</span>,getpid(),getppid());</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">23</span>;<span class="comment">//打印两次helloworld</span></span><br><span class="line">    <span class="keyword">int</span> n2=<span class="number">3</span>;</span><br><span class="line">    ret1 = pthread_create(&amp;tid1, <span class="literal">NULL</span>, (<span class="keyword">void</span>*)print_prime, &amp;n);<span class="comment">//传入的参数为void *类型，然后，再将int num=*(int *)n;</span></span><br><span class="line">    <span class="keyword">if</span>(ret1 == <span class="number">0</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;创建第一个线程成功\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;创建第一个线程失败!\n&quot;</span>);</span><br><span class="line">    ret2=pthread_create(&amp;tid2,<span class="literal">NULL</span>,(<span class="keyword">void</span>*)Fibonacci,&amp;n2);</span><br><span class="line">    <span class="keyword">if</span>(ret2 == <span class="number">0</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;创建第二个线程成功\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;创建第二个线程失败!\n&quot;</span>);</span><br><span class="line">    pthread_join(tid1, <span class="literal">NULL</span>);<span class="comment">//等待线程执行完成</span></span><br><span class="line">    pthread_join(tid2, <span class="literal">NULL</span>);<span class="comment">//等待线程执行完成</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_prime</span><span class="params">(<span class="keyword">void</span>* max_void)</span></span>&#123;</span><br><span class="line">    ······</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-在子进程中执行不同的程序"><a href="#3-在子进程中执行不同的程序" class="headerlink" title="3.在子进程中执行不同的程序"></a>3.在子进程中执行不同的程序</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pid_t</span> p4=<span class="number">10</span>,p5=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">if</span>(p4!=<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;执行创建进程p4\n&quot;</span>);</span><br><span class="line">    <span class="keyword">while</span>((p4=fork())==<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">if</span>(p4==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;创建进程4成功，id为%d，父进程为%d\n&quot;</span>,getpid(),getppid());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(p4==<span class="number">0</span>)&#123;</span><br><span class="line">	<span class="keyword">int</span> ret;</span><br><span class="line">	ret=execl(<span class="string">&quot;/bin/ls&quot;</span>, <span class="string">&quot;ls&quot;</span>, <span class="string">&quot;-lh&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ret%d&quot;</span>,ret);</span><br><span class="line">	<span class="keyword">if</span>(ret &lt; <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;执行ls -l出错&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;成功在进程4中执行ls -l命令\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中excel( )在子进程中执行，为覆盖掉原来的程序，所以第二个if里只执行<code>ls -lh</code></p>
+<h2 id="进程间的通信-1"><a href="#进程间的通信-1" class="headerlink" title="进程间的通信"></a>进程间的通信</h2>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/>http://example.com/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-22T14:45:04+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：May 22, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>操作系统</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/&title=1.进程与线程 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/&title=1.进程与线程 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/03/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1.%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/&title=1.进程与线程 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/03/18/Linux/%E5%9F%BA%E7%A1%80Linux%E6%93%8D%E4%BD%9C/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>基础Linux操作</p>
+          <p class='content'>Centos安装时软件库
+配置ubuntu18.04环境https://blog.csdn.net/longgeaisisi/article/details/78448525
+web目录:/va...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/03/13/Python/Python-Josn%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%A4%84%E7%90%86/'>
+          <p class='title'>Python-Josn格式的处理<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>1.mysql不存在插入存在不插入1INSERT INTO info(goods_id,goods_store,goods_name,goods_oriPrice,goods_killPrice...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">进程的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-text">进程控制块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%8A%B6%E6%80%81"><span class="toc-text">进程的三种基本状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%B1%E7%BB%AA-Ready-%E7%8A%B6%E6%80%81"><span class="toc-text">就绪(Ready)状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C-Running-%E7%8A%B6%E6%80%81"><span class="toc-text">执行(Running)状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BB%E5%A1%9E-Block-%E7%8A%B6%E6%80%81"><span class="toc-text">阻塞(Block)状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8C%82%E8%B5%B7%E6%A8%A1%E5%9E%8B"><span class="toc-text">进程挂起模型</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8C%82%E8%B5%B7"><span class="toc-text">进程挂起</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%82%E8%B5%B7%E6%93%8D%E4%BD%9C%E5%90%8E%E4%B8%89%E4%B8%AA%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">挂起操作后三个进程状态的转换</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-text">进程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8"><span class="toc-text">1.操作系统内核</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="toc-text">1.定义</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E5%86%85%E6%A0%B8%E6%94%AF%E6%92%91%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-text">2.内核支撑功能：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-text">3.资源管理功能：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">进程的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-text">1.进程创建</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%88%E6%AD%A2"><span class="toc-text">2.进程的终止</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%98%BB%E5%A1%9E%E5%92%8C%E5%94%A4%E9%86%92"><span class="toc-text">3.进程的阻塞和唤醒</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E5%BC%95%E8%B5%B7%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%98%BB%E5%A1%9E%E5%92%8C%E5%94%A4%E9%86%92%E7%9A%84%E4%BA%8B%E4%BB%B6%EF%BC%88block%E5%92%8Cwakeup%EF%BC%89"><span class="toc-text">1.引起进程的阻塞和唤醒的事件（block和wakeup）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E9%98%BB%E5%A1%9E%E8%BF%87%E7%A8%8B"><span class="toc-text">2.进程阻塞过程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E5%94%A4%E9%86%92%E8%BF%87%E7%A8%8B"><span class="toc-text">3.进程唤醒过程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%8C%82%E8%B5%B7%E5%92%8C%E6%BF%80%E6%B4%BB%EF%BC%88suspend%E5%92%8Cactive%EF%BC%89"><span class="toc-text">4.进程的挂起和激活（suspend和active）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%90%8C%E6%AD%A5"><span class="toc-text">进程的同步</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E4%B8%A4%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%88%B6%E7%BA%A6%E5%85%B3%E7%B3%BB"><span class="toc-text">1.两种形式的制约关系</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90"><span class="toc-text">2.临界资源</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E4%B8%B4%E7%95%8C%E5%8C%BA"><span class="toc-text">3.临界区</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6%E9%81%B5%E5%BE%AA%E7%9A%84%E8%A7%84%E5%88%99"><span class="toc-text">4.同步机制遵循的规则</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-%E7%A1%AC%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6"><span class="toc-text">5.硬件同步机制</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6"><span class="toc-text">6.信号量机制</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-%E7%AE%A1%E7%A8%8B%E6%9C%BA%E5%88%B6"><span class="toc-text">7.管程机制</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#8-%E7%94%A8%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%E8%A7%A3%E5%86%B3%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-text">8.用两种方法解决生产者消费者问题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-text">进程间的通信</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8%E5%99%A8%E7%B3%BB%E7%BB%9F"><span class="toc-text">1.共享存储器系统</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F"><span class="toc-text">2.管道通信系统</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E7%B3%BB%E7%BB%9F"><span class="toc-text">3.消息传递系统</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B"><span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E2%80%94%E4%BD%9C%E4%B8%BA%E8%B0%83%E5%BA%A6%E5%92%8C%E5%88%86%E6%B4%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8D%95%E4%BD%8D"><span class="toc-text">线程—作为调度和分派的基本单位</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E8%B0%83%E5%BA%A6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8D%95%E4%BD%8D"><span class="toc-text">1.调度的基本单位</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E5%B9%B6%E5%8F%91%E6%80%A7"><span class="toc-text">2.并发性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E6%8B%A5%E6%9C%89%E8%B5%84%E6%BA%90"><span class="toc-text">3.拥有资源</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="toc-text">4.独立性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-%E7%B3%BB%E7%BB%9F%E5%BC%80%E9%94%80"><span class="toc-text">5.系统开销</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-%E6%94%AF%E6%8C%81%E5%A4%9A%E5%A4%84%E7%90%86%E6%9C%BA%E7%B3%BB%E7%BB%9F"><span class="toc-text">6.支持多处理机系统</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-text">线程的状态和线程控制块</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E7%BA%BF%E7%A8%8B%E8%BF%90%E8%A1%8C%E7%9A%84%E4%B8%89%E4%B8%AA%E7%8A%B6%E6%80%81"><span class="toc-text">1.线程运行的三个状态</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97TCB"><span class="toc-text">2.线程控制块TCB</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">线程的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">1.线程的创建</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%BB%88%E6%AD%A2"><span class="toc-text">2.线程的终止</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E9%AA%8C"><span class="toc-text">进程线程编程实验</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E5%AE%9E%E9%AA%8C"><span class="toc-text">1.创建子进程实验</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E5%9C%A8%E5%AD%90%E8%BF%9B%E7%A8%8B%E4%B8%AD%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-text">2.在子进程中创建线程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E5%9C%A8%E5%AD%90%E8%BF%9B%E7%A8%8B%E4%B8%AD%E6%89%A7%E8%A1%8C%E4%B8%8D%E5%90%8C%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="toc-text">3.在子进程中执行不同的程序</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1-1"><span class="toc-text">进程间的通信</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+		  
+		  <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="1.进程与线程";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.remove("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="half";
+    cover_wrapper.style.display="";
+    
+  
+</script>
+
+        </div>
+        
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='song'
+      id='1498076242'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1" target="_blank" class="codename">Volantis</a>
+        as theme
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script>
+
+
+<!-- internal -->
+
+
+
+  
+  
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>Copy Text</a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>Copy Link</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>Open Link in New Tab</a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>Copy Image Link</a>
+        <hr id='hr-src'>
+      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
+      <hr>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' 
+        
+        
+        
+          onclick="document.execCommand('print')"
+        
+        >
+        <i class='fa fa-print fa-fw'></i> 打印页面
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default toggle-mode-btn' 
+        
+        
+        
+        >
+        <i class='fas fa-moon fa-fw'></i> Dark mode
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          <li class='music name'>
+            <p class='nav music-title fix-cursor-default'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+      // 有音乐播放器 see: layout/_third-party/aplayer/script.ejs
+      
+      if(volantis.APlayerLoaded){ // APlayer加载完成？
+        // 如果有aplayer，初始化一下
+        checkAPlayer();
+      }
+      
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');
+  </script>
+
+
+
+
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '1498076242';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+  // APlayer 需要在  MetingJS 之前加载
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+  window.volantis.APlayerLoaded=0 // APlayer加载完成状态
+  var checkAPlayer = setInterval(function () {
+    if (!window.APlayer) return // APlayer加载完成？
+	  if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+    clearInterval(checkAPlayer)
+	  if (!window.volantis.APlayerLoaded&&!window.MetingJSElement){ // APlayer只能加载一次
+      window.volantis.APlayerLoaded=1 // APlayer加载完成
+      loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js") // 加载 MetingJS
+	  }
+  }, 2500) // 按照网速调节差分2.5s
+  // rightmenu see: layout/_partial/rightmenu.ejs
+
+  
+    loadScript("/js/aplayer.js")
+  
+
+</script>
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"ked1Jt0wsuySat94CsJo2Ivp-gzGzoHsz","appKey":"aJuiz0DpxQYvfg8WOhecMB1F","meta":["nick"],"requiredFields":["nick"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script>
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://example.com' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+ 
+	   
+	    
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+ 
+	  
+    </div>
+  </body>
+</html>
