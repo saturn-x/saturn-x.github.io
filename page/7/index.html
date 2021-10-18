@@ -437,6 +437,251 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
+      <a href="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/">
+        Pwn-基础ROP
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <h1 id="基本ROP"><a href="#基本ROP" class="headerlink" title="基本ROP"></a>基本ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
+<p>之所以称之为 ROP，是因为核心在于利用了指令集中的 ret 指令，改变了指令流的执行顺序。ROP 攻击一般得满足如下条件</p>
+<ul>
+<li>程序存在溢出，并且可以控制返回地址。</li>
+<li>可以找到满足条件的 gadgets 以及相应 gadgets 的地址。</li>
+</ul>
+<p>如果 gadgets 每次的地址是不固定的，那我们就需要想办法动态获取对应的地址了。</p>
+<h5 id="rop构造原理：将返回地址改成“pop-，ret”指令的gadget，用来弹出后续的args，成为rop形式"><a href="#rop构造原理：将返回地址改成“pop-，ret”指令的gadget，用来弹出后续的args，成为rop形式" class="headerlink" title="rop构造原理：将返回地址改成“pop *，ret”指令的gadget，用来弹出后续的args，成为rop形式"></a>rop构造原理：将返回地址改成“pop *，ret”指令的gadget，用来弹出后续的args，成为rop形式</h5><p><img src="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201101141053667.png" class="lazyload" data-srcset="/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/image-20201101141053667.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201101141053667"></p>
+<p>对于x64程序来说，一般情况下， 函数的参数较少，通常主要是利用寄存器来传递参数，所以在进入函数之前，<strong>应先将寄存器设置好</strong>，对于理解rop也比较容易</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-10-18</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Pwn/">Pwn</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/10/18/Pwn/Pwn-%E5%9F%BA%E7%A1%80ROP/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/10/18/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/">
+        Pwn-程序保护机制
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        STACK Canary栈溢出保护1.当启用栈保护后，函数开始执行的时候会先往栈底插入 cookie 信息，当函数真正返回的时候会验证 cookie 信息是否合法 (栈帧销毁前测试该值是否被改变)，如果不合法就停止程序运行 (栈溢出发生)。攻击者在覆盖返回地址的时候往往也会将 cookie 信息给覆盖掉，导致栈保护检查失败而阻止 shellcode 的执行，避免漏洞利用成功。在 Linux ...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-10-18</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/NodeJs/">NodeJs</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/10/18/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/">
+        Pwn-栈溢出
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        实现栈溢出的两个条件:
+程序有向栈写入数据的行为
+程序并不限制写入数据的长度
+
+ESP和EBP两个寄存器如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要将程序控制权交给该指令。攻击指令可以是自定义的指令, 也可以利用系统内已有的函数及指令。
+函数调用经常是嵌套的, 在同一时刻, 堆栈中会有多个函数的信息. 每个未完成运行的函数占用一个独立的连续区域, 称作*...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-10-18</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Pwn/">Pwn</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/10/18/Pwn/Pwn-%E6%A0%88%E6%BA%A2%E5%87%BA/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/">
+        数据结构-二叉树
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        1.树的定义1.树的节点：使用树结构存储的每一个数据元素被称为”节点“。
+图中每一个圆圈代表一个节点
+如果一个节点没有父节点，那么这个节点就是整棵树的根节点
+2.节点的度和层次对于一个节点，拥有的子树数（节点有多少分支）称为节点的度。
+结点的层次：从一棵树的树根开始，树根所在层为第一层，根的孩子结点所在的层为第二层，依次类推。对于图 1（A）来说，A 结点在第一层，B、C、D 为第二层，E、...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-10-17</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/10/13/Android/Android-%E5%B9%B6%E5%8F%91%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%93%8D%E4%BD%9C/">
+        Android-并发多线程操作
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        CountDownLatch实现并发多线程操作1.Java中的concurrent包里面的CountDownLatch其实可以把它看作一个计数器，只不过这个计数器的操作是原子操作，同时只能有一个线程去操作这个计数器，也就是同时只能有一个线程去减这个计数器里面的值。12345678910111213141516171819202122232425262728293031323334353637...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-10-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Android/">Android</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/10/13/Android/Android-%E5%B9%B6%E5%8F%91%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%93%8D%E4%BD%9C/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2020/10/04/Android/Android-%E7%9B%B4%E8%BF%9E%E6%95%B0%E6%8D%AE%E5%BA%93/">
         Android-直连数据库
       </a>
@@ -650,243 +895,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div>
           <a class='readmore' href='/2020/09/22/Android/Android-%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/22/Android/Android-%E6%8E%A7%E4%BB%B6%E4%BD%BF%E7%94%A8/">
-        Android-控件使用
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        TextView123456789&lt;LinearLayout    android:layout_width=&quot;match_parent&quot;    android:layout_height=&quot;match_parent&quot;&gt;    &lt;TextView        android:layout_width=&quot;match_pare...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android/">Android</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/22/Android/Android-%E6%8E%A7%E4%BB%B6%E4%BD%BF%E7%94%A8/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/22/Android/Android-%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3Activity/">
-        Android-深入了解Activity
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        Activity的生存期onCreate( )onStart( )onResume( )onPause( )onStop( )onDestroy( )onRestart( )2.活动回收当在活动A基础启动B，再次返回A的过程，A可能会被回收。如果A此时被回收，此时不会执行onRestart( )方法，而是会重新执行活动A的onCreate( )方法，所以活动A这种情况下会被重新创建一次。
-如...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android/">Android</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/22/Android/Android-%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3Activity/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/21/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C-ip%E9%A2%98%E4%BB%A3%E7%A0%81/">
-        数据结构实验-ip题代码
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-21</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/21/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C-ip%E9%A2%98%E4%BB%A3%E7%A0%81/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/21/Android/Android-intent%E7%9A%84%E5%BA%94%E7%94%A8/">
-        Android-intent的应用
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        显式Intent创建另一个activity，然后再layout中创建一个新的second_layout
-
-其中代码：
-123456789101112&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;    android:orientation=&quot;vertical...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-21</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android/">Android</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/21/Android/Android-intent%E7%9A%84%E5%BA%94%E7%94%A8/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/20/Android/Android-activity%E5%88%9B%E5%BB%BA/">
-        Android-activity创建
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        创建一个空的activity项目在Project的路径如图所示：
-在该路径下创建新的窗口(不勾选任何xml文件 从头开始创建):
-创建完得代码：
-12345678910111213package com.example.activitytest;import androidx.appcompat.app.AppCompatActivity;import android.os.Bundle;p...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Android/">Android</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/20/Android/Android-activity%E5%88%9B%E5%BB%BA/'>
             Read More
           </a>
         </div>
@@ -1133,7 +1141,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/C%E3%80%81C/" style="font-size: 14px; color: #999">C、C++</a> <a href="/tags/GO/" style="font-size: 14px; color: #999">GO</a> <a href="/tags/Hadoop/" style="font-size: 14px; color: #999">Hadoop</a> <a href="/tags/Java/" style="font-size: 22px; color: #636363">Java</a> <a href="/tags/JavaScript/" style="font-size: 16px; color: #8b8b8b">JavaScript</a> <a href="/tags/Leetcode/" style="font-size: 14px; color: #999">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/Mysql/" style="font-size: 16px; color: #8b8b8b">Mysql</a> <a href="/tags/Pwn/" style="font-size: 22px; color: #636363">Pwn</a> <a href="/tags/Python/" style="font-size: 22px; color: #636363">Python</a> <a href="/tags/go/" style="font-size: 14px; color: #999">go</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 18px; color: #7e7e7e">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 16px; color: #8b8b8b">博客</a> <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" style="font-size: 14px; color: #999">实验报告</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 22px; color: #636363">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px; color: #707070">数据结构</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 18px; color: #7e7e7e">环境配置</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px; color: #7e7e7e">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 20px; color: #707070">计算机系统</a> <a href="/tags/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">语言基础</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/C%E3%80%81C/" style="font-size: 14px; color: #999">C、C++</a> <a href="/tags/GO/" style="font-size: 14px; color: #999">GO</a> <a href="/tags/Hadoop/" style="font-size: 14px; color: #999">Hadoop</a> <a href="/tags/Java/" style="font-size: 22px; color: #636363">Java</a> <a href="/tags/JavaScript/" style="font-size: 16px; color: #8b8b8b">JavaScript</a> <a href="/tags/Leetcode/" style="font-size: 14px; color: #999">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/Mysql/" style="font-size: 16px; color: #8b8b8b">Mysql</a> <a href="/tags/Pwn/" style="font-size: 22px; color: #636363">Pwn</a> <a href="/tags/Python/" style="font-size: 22px; color: #636363">Python</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/go/" style="font-size: 14px; color: #999">go</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 18px; color: #7e7e7e">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 16px; color: #8b8b8b">博客</a> <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" style="font-size: 14px; color: #999">实验报告</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 22px; color: #636363">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px; color: #707070">数据结构</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 18px; color: #7e7e7e">环境配置</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px; color: #7e7e7e">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 20px; color: #707070">计算机系统</a> <a href="/tags/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">语言基础</a>
     </div>
   </section>
 
