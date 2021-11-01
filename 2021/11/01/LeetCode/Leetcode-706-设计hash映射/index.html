@@ -22,9 +22,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>LeetCode-刷题1 - Hexo</title>
+  <title>Leetcode-706 设计hash映射 - Hexo</title>
   
-    <meta name="keywords" content="Leetcode,算法">
+    <meta name="keywords" content="LeetCode">
   
 
   
@@ -431,7 +431,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        LeetCode-刷题1
+        Leetcode-706 设计hash映射
       </h1>
       <div class='new-meta-box'>
         
@@ -455,7 +455,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 1, 2021</p>
+    <p>发布于：Nov 1, 2021</p>
   </a>
 </div>
 
@@ -466,7 +466,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="LeetCode-刷题1" data-path="/2021/06/01/LeetCode/LeetCode-%E5%88%B7%E9%A2%981/">
+      <div id="lc-pv" data-title="Leetcode-706 设计hash映射" data-path="/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -484,7 +484,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a>两数相加</h1>
+  <h1 id="1-暴力数组"><a href="#1-暴力数组" class="headerlink" title="1.暴力数组"></a>1.暴力数组</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHashMap</span> </span>&#123;</span><br><span class="line">    <span class="comment">//使用二维数组维护hashi表</span></span><br><span class="line">    <span class="keyword">int</span>[] nums=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1000001</span>];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyHashMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)</span><br><span class="line">            nums[i]=-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        nums[key%<span class="number">1000001</span>]=value;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nums[key%<span class="number">1000001</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        nums[key%<span class="number">1000001</span>]=-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyHashMap obj = new MyHashMap();</span></span><br><span class="line"><span class="comment"> * obj.put(key,value);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj.get(key);</span></span><br><span class="line"><span class="comment"> * obj.remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="2-使用数组链表法"><a href="#2-使用数组链表法" class="headerlink" title="2.使用数组链表法"></a>2.使用数组链表法</h1><p>使用一个链表数组，每一个hash(key)代表数组的索引；并new KeytoValue这个类去存放key、value；</p>
+<p>需要注意存放相同的key值的时候需要remove(key)防止key值相同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHashMap</span> </span>&#123;</span><br><span class="line">    <span class="comment">//new 一个存放这个的链表</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">keytoValue</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> key;</span><br><span class="line">        <span class="keyword">int</span> value;</span><br><span class="line">        keytoValue(<span class="keyword">int</span> key,<span class="keyword">int</span> value)&#123;</span><br><span class="line">            <span class="keyword">this</span>.key=key;<span class="keyword">this</span>.value=value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> base=<span class="number">769</span>;</span><br><span class="line">    LinkedList&lt;keytoValue&gt;[] linked=<span class="keyword">new</span> LinkedList[base];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyHashMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;base;i++)&#123;</span><br><span class="line">            linked[i]=<span class="keyword">new</span> LinkedList&lt;keytoValue&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        keytoValue cur=<span class="keyword">new</span> keytoValue(key,value);</span><br><span class="line">        <span class="keyword">int</span> index=hash(key);</span><br><span class="line">        remove(key);</span><br><span class="line">        linked[index].add(cur);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index=hash(key);</span><br><span class="line">        <span class="keyword">for</span>(keytoValue tmp:linked[index])&#123;</span><br><span class="line">            <span class="keyword">if</span>(tmp.key==key)&#123;</span><br><span class="line">                <span class="keyword">return</span> tmp.value;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//使用迭代器去删除掉</span></span><br><span class="line">        <span class="keyword">int</span> index=hash(key);</span><br><span class="line">        Iterator&lt;keytoValue&gt; it = linked[index].iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            keytoValue tmp = it.next();</span><br><span class="line">            <span class="keyword">if</span>(tmp.key==key)&#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(<span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value%base;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/image-20211101162435249.png" class="lazyload" data-srcset="/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/image-20211101162435249.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211101162435249" style="zoom:50%;">
+
+
   
   
     
@@ -501,7 +509,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2021/06/01/LeetCode/LeetCode-%E5%88%B7%E9%A2%981/>http://example.com/2021/06/01/LeetCode/LeetCode-%E5%88%B7%E9%A2%981/</a></p>
+                <p>本文永久链接是：<a href=http://example.com/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/>http://example.com/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/</a></p>
               
             
           </blockquote>
@@ -518,10 +526,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-01T22:40:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-11-01T18:32:01+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 1, 2021</p>
+    <p>更新于：Nov 1, 2021</p>
   </a>
 </div>
 
@@ -530,7 +538,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Leetcode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>算法</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/LeetCode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>LeetCode</p></a></div>
 
 
         
@@ -543,7 +551,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/06/01/LeetCode/LeetCode-%E5%88%B7%E9%A2%981/&title=LeetCode-刷题1 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/&title=Leetcode-706 设计hash映射 - Hexo&summary="
           
           >
           
@@ -555,7 +563,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/06/01/LeetCode/LeetCode-%E5%88%B7%E9%A2%981/&title=LeetCode-刷题1 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/&title=Leetcode-706 设计hash映射 - Hexo&summary="
           
           >
           
@@ -567,7 +575,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/06/01/LeetCode/LeetCode-%E5%88%B7%E9%A2%981/&title=LeetCode-刷题1 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/&title=Leetcode-706 设计hash映射 - Hexo&summary="
           
           >
           
@@ -597,19 +605,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/06/02/Hadoop%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/Hadoop%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Hadoop文件系统配置</p>
-          <p class='content'>JAVA环境配置由于Hadoop是基于java编写，所以先配置好java路径的变量
-下载
-linux配置profile文件
-</p>
+        <a class='prev' href='/2021/11/01/LeetCode/LeetCode591-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>LeetCode591-螺旋矩阵</p>
+          <p class='content'>题目要求
+
+
+题解一对于此题有四个方向轮流转，右下左上···四个方向轮流循环，而在每个方向中，比如向左，总是列+1，所以可以用一个二维矩阵表示方向
+ int[][] direct=new int...</p>
         </a>
       
       
-        <a class='next' href='/2021/05/31/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/'>
-          <p class='title'>Mysql-存储过程<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>存储过程（Stored Procedure）是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。
-存储过程是为了完成特定功能的 SQL 语句集，经编译创建并保存在数据库中，用户可通过...</p>
+        <a class='next' href='/2021/10/30/LeetCode/Leetcode136-260-%E6%89%BE%E5%87%BA%E5%8F%AA%E5%87%BA%E7%8E%B0%E8%BF%87%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/'>
+          <p class='title'>Leetcode136/260 找出只出现过一次的数字<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>136. 只出现一次的数字260. 只出现一次的数字 III两道题目都是找只出现过一次的数字，最简单的方式就是使用hashset直接判定是否已经存在
+1234567891011121314151...</p>
         </a>
       
     </div>
@@ -652,7 +661,7 @@ linux配置profile文件
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0"><span class="toc-text">两数相加</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%9A%B4%E5%8A%9B%E6%95%B0%E7%BB%84"><span class="toc-text">1.暴力数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E6%B3%95"><span class="toc-text">2.使用数组链表法</span></a></li></ol>
     </div>
   </section>
 
@@ -671,7 +680,7 @@ linux配置profile文件
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="LeetCode-刷题1";
+  pdata.postTitle="Leetcode-706 设计hash映射";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
