@@ -437,25 +437,40 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/2020/12/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E3%80%81%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/">
-        数据结构-排序、查找算法
+      <a href="/2021/06/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0-2/">
+        操作系统复习-2
       </a>
     </h2>
   
   <div class='md'>
     
       
-        一、排序算法
-冒泡排序、双向冒泡排序
-选择排序
-插入排序、二分法插入排序、希尔排序
-快速排序(递归与非递归)
-归并排序(递归与非递归)
-堆排序
+        进程的概念、组成、特征概念
 
-1.冒泡排序、双向冒泡排序
-冒泡排序通过两两不断比较，如果后者比前者大，那就继续比较，反之，交换两者的数值，直到最后一个元素，最后的到的数值应该就是未排序序列中的最大值。双向冒泡排序(按照其中一种情况)将序列的最大值往右移、序列的最小值往左移。
-普...
+
+组成
+
+
+特征
+
+进程状态与转换
+
+
+
+
+
+
+进程控制实现进程状态转换
+实现进程控制（原语）原语的原子性原语的执行具有原子性，即执行的过程只能一气呵成，期间不允许被中断。
+通过使用“关中断”和“开中断”这两个特权指令实现原子性
+进程控制相关的原语进程的创建1.创建原语
+申请空白PCB
+
+为新进程分配所需资源
+
+初始化PCB
+
+将PCB插入就绪队列：创建态-&g...
       
     
   </div>
@@ -463,15 +478,318 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2020-12-07</time>
+        <time>2021-06-20</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/06/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0-2/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/06/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0-1/">
+        操作系统复习-1
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        操作系统的特征并发、共享、虚拟、异步
+并发和共享是最基本的特征，两者互为存在条件
+并发并发指的是两个或多个事件在同一时间间隔发生，这些事件宏观上是同时发生的，但微观上是交替发生
+并行指的是两个或多个事件在同一时刻同时发生
+操作系统的并发性指的是计算机系统中”同时“运行多个程序，这些程序宏观上看是同时运行，而微观上看是交替运行的。操作系统就是伴随着”多道程序技术“出现的，操作系统和程序并发是一...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-06-20</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/06/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0-1/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/06/02/Hadoop%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/Hadoop%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/">
+        Hadoop文件系统配置
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        JAVA环境配置由于Hadoop是基于java编写，所以先配置好java路径的变量
+下载
+linux配置profile文件
+
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-06-02</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/06/02/Hadoop%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/Hadoop%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/05/31/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">
+        Mysql-存储过程
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        存储过程（Stored Procedure）是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。
+存储过程是为了完成特定功能的 SQL 语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行。
+类似设定在数据的函数可以设置参数和返回值
+
+游标定义
+
+DECLARE 光标名称 CURSOR FOR 查询语法
+
+打开游标
+
+OPEN 光标名称
+...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-05-31</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/05/31/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/05/30/GO/go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+        go基本语法
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        指针12345str:=&quot;Test&quot;//指针声明var p *string=&amp;str;fmt.Println(reflect.TypeOf(p))fmt.Println(p)
+
+指针通常在函数传递参数，或者给某个类型定义新的方法时使用。Go 语言中，参数是按值传递的，如果不使用指针，函数内部将会拷贝一份参数的副本，对参数的修改并不会影响到外部变量的值。如果参数使用...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-05-30</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/05/30/GO/go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/05/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/">
+        Mysql-并发控制
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        Mysql存储引擎MySQL最常用引擎：MyISAM和InnoDB，在MySQL 5.5.5以前，默认的存储引擎为MyISAM，之后版本默认为InnoDB。InnoDB对事物完整性更好以及有更高的并发性，下面了解一下他们之间的区别：
+
+
+
+对比项
+MyISAM
+InnoDB
+
+
+
+主外键
+不支持
+支持
+
+
+事务
+不支持
+支持
+
+
+行表锁
+锁。操作一条记录也会锁住整个表
+行锁。操作时只锁某一行...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-05-18</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/05/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/29/GO/GO%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/">
+        GO语言开发配置
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        环境配置基础语法变量声明:=语法是声明和初始化变量的简写形式
+var f string =“short”
+ f := &quot;short&quot;
+循环体123456789101112131415161718192021222324252627282930313233343536373839// `for` is Go&#x27;s only looping construct. He...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-04-29</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="sep"></span><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AE%97%E6%B3%95/">算法</a>
+          <a class="category-link" href="/categories/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">语言基础</a><span class="sep"></span><a class="category-link" href="/categories/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2020/12/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E3%80%81%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/'>
+          <a class='readmore' href='/2021/04/29/GO/GO%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/'>
             Read More
           </a>
         </div>
@@ -493,15 +811,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/2020/12/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-DATA-LAB/">
-        深入理解计算机系统-DATA-LAB
+      <a href="/2021/04/10/%E5%8C%BA%E5%9D%97%E9%93%BE/Solidity%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+        Solidity语言基础
       </a>
     </h2>
   
   <div class='md'>
     
       
-        1.bitXOr123456789101112/*  * bitXor - x^y using only ~ and &amp;  *   Example: bitXor(4, 5) = 1 *   Legal ops: ~ &amp; *   Max ops: 14 *   Rating: 1 */int bitXor(int x, int y) &#123;   return ~(~(~...
+        类型函数类型1function (&lt;parameter types&gt;) &#123;internal|external&#125; [pure|constant|view|payable] [returns (&lt;return types&gt;)]
+
+与参数类型相反，返回类型不能为空 —— 如果函数类型不需要返回，则需要删除整个 returns (&lt;return ty...
       
     
   </div>
@@ -509,15 +829,58 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2020-12-04</time>
+        <time>2021-04-10</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/10/%E5%8C%BA%E5%9D%97%E9%93%BE/Solidity%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/">
+        Linux-Docker安装以及使用
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        docker是什么Docker是一个开放源代码软件项目，让应用程序布署在软件容器下的工作可以自动化进行，借此在Linux操作系统上，提供一个额外的软件抽象层，以及操作系统层虚拟化的自动管理机制。Docker利用Linux核心中的资源分离机制，例如cgroups，以及Linux核心命名空间（name space），来建立独立的软件容器（containers）。这可以在单一Linux实体下运作，...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-04-05</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">深入理解计算机系统</a>
+          <a class="category-link" href="/categories/Linux/">Linux</a>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2020/12/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-DATA-LAB/'>
+          <a class='readmore' href='/2021/04/05/Linux/Linux-Docker%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/'>
             Read More
           </a>
         </div>
@@ -539,18 +902,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/2020/12/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86/">
-        深入理解计算机系统-信息的表示和处理
+      <a href="/2021/04/04/%E5%8D%9A%E5%AE%A2/Lychee-web%E7%9B%B8%E5%86%8C/">
+        Lychee-web相册
       </a>
     </h2>
   
   <div class='md'>
     
       
-        1.字数据的大小计算机都有一个字长，指明指针数据的标称大小，所以字长决定的最重要的系统参数就是虚拟地址空间的最大大小。对于一个字长为x位机器，虚拟地址的范围是0~2x-1,程序最多访问2x个字节。
-2.寻址和字节顺序小端法：机器在内存中按照从最低有效字节到最高有效字节的顺序存储对象
-大端法：机器在内存中按照从最高有效字节到最低有效字节的顺序存储对象
-存储变量0x1234567，高位字节的十六...
+        该图床使用docker以及docker-compose
+安装以上两个后https://github.com/LycheeOrg/Lychee-Docker
+1docker-compose up -d
+
+然后初始账号为lychee 密码lychee
+登录成功后
+
+
       
     
   </div>
@@ -558,346 +925,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2020-12-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">深入理解计算机系统</a>
+        <time>2021-04-04</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2020/12/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/24/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/">
-        密码学-分组密码体制
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        分组密码概述分组密码是许多系统安全的一个重要组成部分。可用于构造
-伪随机数生成器 
-流密码 
-消息认证码和杂凑函数 
-消息认证技术、数据完整性机制、实体认证协议以及单钥数字签字体制
-
-通常n=m。若n&gt;m，则为有数据扩展的分组密码；若n&lt;m，则为有数据压缩的分组密码
-安全性设计原则混淆原则混淆原则就是将密文、明文、密钥三者之间的统计关系和代数关系变得尽可能复杂，使得低手即使获得了...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/24/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/">
-        深入理解计算机系统-程序的机器级表示
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        1.程序编码1.gcc -0g -o p p1.c p2.c
-编译选项-Og告诉表一起使用生成符合原始C代码的整体结构的机器代码的优先优化等级，使用较高优化产生的代码会严重变形，以至于产生的机器代码和初始源代码之间的关系非常难以理解。实际使用中，从得到的程序性能考虑，较高级别的的优化-O1，-O2被认为是较好的选择。编译器产生两个源文件的汇编代码，名字分别叫做p1.s和p2.s。接下来编译器...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">深入理解计算机系统</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/">
-        数据结构-图的遍历
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        1.深度优先搜索1.定义图的类型
-其中matrix为一个二维指针，存一个二维数组用于临接矩阵，vex为int的一个一维数组，用于存顶点信息。
-vexnum为顶点的个数，arcnum为弧的个数
-123456789101112131415161718192021class MGraph&#123;  public:int **matrix;  public:int *vex;  //顶点数以及弧...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-17</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/14/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6-m%E5%BA%8F%E5%88%97%E4%BA%A7%E7%94%9F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%B6%E6%80%A7%E8%B4%A8/">
-        密码学-m序列产生原理及其性质
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        m序列的简介1、m序列是最长线性移位寄存器序列的简称。顾名思义，m序列是由多级移位寄存器或其延迟元件通过线性反馈产生的最长的码序列。在二进制移位寄存器中，若n为移位寄存器的级数，n级移位寄存器共有 2n 个状态，除去全0状态外还剩下 2n-1 中状态，因此它能产生的最大长度的码序列为 2n-1 位，也就是说，一个n级线性反馈移位寄存器产生的最长周期等于 2n-1 。在码分多址系统中主要采用两...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/14/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6-m%E5%BA%8F%E5%88%97%E4%BA%A7%E7%94%9F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%B6%E6%80%A7%E8%B4%A8/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/07/C%E3%80%81C++/c++%E6%96%87%E4%BB%B6%E6%B5%81%E7%9A%84%E8%AF%BB%E5%86%99/">
-        c++文件流的读写
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        从csv文件读入小数源码：
-1234567891011121314151617181920212223242526272829303132333435363738#include&lt;fstream&gt;#include&lt;sstream&gt;#include&lt;vector&gt;int main()&#123;    fstream r_in;    r_in.open(&...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-07</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/07/C%E3%80%81C++/c++%E6%96%87%E4%BB%B6%E6%B5%81%E7%9A%84%E8%AF%BB%E5%86%99/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/">
-        Pwn-程序内存布局
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        程序启动时，加载器会将程序文件数据加载到内存里，在运行过程中，程序也会开辟部分动态内存。在程序运行的生命周期中，内存中比较重要的四部分数据是程序数据、堆、库数据、栈。另外，内核空间也会映射到程序内存中。
-程序数据一般映射在内存的较低地址处，然后依次为堆数据、库数据及栈等，其中还映射一部分起保护作用的不可访问区域
-
-Proc程序数据代码段、数据段、BSS段程序数据主要包含三部分，其中代码段（T...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-30</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Pwn/">Pwn</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/30/Pwn/Pwn-%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/">
-        Pwn-常见利用方法
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        Shellcode 一般指获取shell代码，针对数据未开启可执行保护NX，可以将shellcode直接布置在堆栈等可写可执行区域保护NX，可以将shellcode直接布置在堆栈等可写可执行区域，然后劫持控制流，跳转过去即可。另外，可以通过其他手段如（rop）将数据区的NX关闭（mprotect设置页属性），或者将代码部分的也属性设置为可写，并在这里布置shellcode，然后执行shell...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-30</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Pwn/">Pwn</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/30/Pwn/Pwn-%E5%B8%B8%E8%A7%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95/'>
+          <a class='readmore' href='/2021/04/04/%E5%8D%9A%E5%AE%A2/Lychee-web%E7%9B%B8%E5%86%8C/'>
             Read More
           </a>
         </div>
@@ -924,7 +957,7 @@ Proc程序数据代码段、数据段、BSS段程序数据主要包含三部分�
           </a>
         
         <p class="current">
-          7 / 10
+          7 / 13
         </p>
         
           <a class="next" rel="next" href="/page/8/">
@@ -1144,7 +1177,7 @@ Proc程序数据代码段、数据段、BSS段程序数据主要包含三部分�
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/C%E3%80%81C/" style="font-size: 14px; color: #999">C、C++</a> <a href="/tags/GO/" style="font-size: 14px; color: #999">GO</a> <a href="/tags/Hadoop/" style="font-size: 14px; color: #999">Hadoop</a> <a href="/tags/Java/" style="font-size: 22px; color: #636363">Java</a> <a href="/tags/JavaScript/" style="font-size: 16px; color: #8b8b8b">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 22px; color: #636363">LeetCode</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/Mysql/" style="font-size: 16px; color: #8b8b8b">Mysql</a> <a href="/tags/Pwn/" style="font-size: 22px; color: #636363">Pwn</a> <a href="/tags/Python/" style="font-size: 22px; color: #636363">Python</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/go/" style="font-size: 14px; color: #999">go</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 18px; color: #7e7e7e">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 16px; color: #8b8b8b">博客</a> <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" style="font-size: 14px; color: #999">实验报告</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 22px; color: #636363">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px; color: #707070">数据结构</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 18px; color: #7e7e7e">环境配置</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16px; color: #8b8b8b">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 20px; color: #707070">计算机系统</a> <a href="/tags/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">语言基础</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/C%E3%80%81C/" style="font-size: 14px; color: #999">C、C++</a> <a href="/tags/GO/" style="font-size: 14px; color: #999">GO</a> <a href="/tags/Hadoop/" style="font-size: 14px; color: #999">Hadoop</a> <a href="/tags/Java/" style="font-size: 22px; color: #636363">Java</a> <a href="/tags/JavaScript/" style="font-size: 16px; color: #8b8b8b">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 22px; color: #636363">LeetCode</a> <a href="/tags/Leetcode/" style="font-size: 14px; color: #999">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/Mysql/" style="font-size: 16px; color: #8b8b8b">Mysql</a> <a href="/tags/Pwn/" style="font-size: 22px; color: #636363">Pwn</a> <a href="/tags/Python/" style="font-size: 22px; color: #636363">Python</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/go/" style="font-size: 14px; color: #999">go</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 18px; color: #7e7e7e">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 16px; color: #8b8b8b">博客</a> <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" style="font-size: 14px; color: #999">实验报告</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 22px; color: #636363">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px; color: #707070">数据结构</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 18px; color: #7e7e7e">环境配置</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16px; color: #8b8b8b">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 20px; color: #707070">计算机系统</a> <a href="/tags/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">语言基础</a>
     </div>
   </section>
 

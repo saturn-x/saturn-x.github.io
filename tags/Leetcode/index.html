@@ -452,6 +452,56 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
+      <a href="/2021/11/05/LeetCode/LeetCode5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/">
+        LeetCode5-最长回文串
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+动态规划动态规划最主要的是找出状态转移方程，通过小问题循环解决大问题，对于回文串这题目，如果str[l]==str[r]&amp;&amp;r-l&gt;3则其是否为回文串可由str[l+1]==str[r-1]决定，
+boolean[][] dp辅助矩阵行和列分别代表left以及right，图为cbbd输入字符串的辅助数组
+
+
+先填充对角线，然后按列进行填充，即是将行作为循环变量
+12...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-11-05</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/11/05/LeetCode/LeetCode5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/11/01/LeetCode/LeetCode591-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">
         LeetCode591-螺旋矩阵
       </a>
@@ -499,8 +549,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/">
-        Leetcode-706 设计hash映射
+      <a href="/2021/11/01/LeetCode/Leetcode706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/">
+        Leetcode706-设计hash映射
       </a>
     </h2>
   
@@ -520,7 +570,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       </div>
       
         <div>
-          <a class='readmore' href='/2021/11/01/LeetCode/Leetcode-706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/'>
+          <a class='readmore' href='/2021/11/01/LeetCode/Leetcode706-%E8%AE%BE%E8%AE%A1hash%E6%98%A0%E5%B0%84/'>
             Read More
           </a>
         </div>
@@ -543,7 +593,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     <h2 class="article-title" >
       <a href="/2021/10/30/LeetCode/Leetcode136-260-%E6%89%BE%E5%87%BA%E5%8F%AA%E5%87%BA%E7%8E%B0%E8%BF%87%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/">
-        Leetcode136/260 找出只出现过一次的数字
+        Leetcode136-260-找出只出现过一次的数字
       </a>
     </h2>
   
@@ -586,8 +636,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/2021/10/27/LeetCode/LeetCode-301-%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">
-        LeetCode-301 删除无效的括号
+      <a href="/2021/10/27/LeetCode/LeetCode301-%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">
+        LeetCode301-删除无效的括号
       </a>
     </h2>
   
@@ -608,50 +658,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       </div>
       
         <div>
-          <a class='readmore' href='/2021/10/27/LeetCode/LeetCode-301-%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/10/16/LeetCode/leetcode-282/">
-        leetcode-282
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        官方题解12345678910111213141516171819202122232425262728293031323334353637383940414243444546class Solution &#123;    int n;    String num;    int target;    List&lt;String&gt; ans;    public List&lt;Str...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-10-16</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/10/16/LeetCode/leetcode-282/'>
+          <a class='readmore' href='/2021/10/27/LeetCode/LeetCode301-%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/'>
             Read More
           </a>
         </div>
@@ -879,7 +886,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/C%E3%80%81C/" style="font-size: 14px; color: #999">C、C++</a> <a href="/tags/GO/" style="font-size: 14px; color: #999">GO</a> <a href="/tags/Hadoop/" style="font-size: 14px; color: #999">Hadoop</a> <a href="/tags/Java/" style="font-size: 22px; color: #636363">Java</a> <a href="/tags/JavaScript/" style="font-size: 16px; color: #8b8b8b">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 22px; color: #636363">LeetCode</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/Mysql/" style="font-size: 16px; color: #8b8b8b">Mysql</a> <a href="/tags/Pwn/" style="font-size: 22px; color: #636363">Pwn</a> <a href="/tags/Python/" style="font-size: 22px; color: #636363">Python</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/go/" style="font-size: 14px; color: #999">go</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 18px; color: #7e7e7e">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 16px; color: #8b8b8b">博客</a> <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" style="font-size: 14px; color: #999">实验报告</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 22px; color: #636363">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px; color: #707070">数据结构</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 18px; color: #7e7e7e">环境配置</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16px; color: #8b8b8b">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 20px; color: #707070">计算机系统</a> <a href="/tags/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">语言基础</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/C%E3%80%81C/" style="font-size: 14px; color: #999">C、C++</a> <a href="/tags/GO/" style="font-size: 14px; color: #999">GO</a> <a href="/tags/Hadoop/" style="font-size: 14px; color: #999">Hadoop</a> <a href="/tags/Java/" style="font-size: 22px; color: #636363">Java</a> <a href="/tags/JavaScript/" style="font-size: 16px; color: #8b8b8b">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 22px; color: #636363">LeetCode</a> <a href="/tags/Leetcode/" style="font-size: 14px; color: #999">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/Mysql/" style="font-size: 16px; color: #8b8b8b">Mysql</a> <a href="/tags/Pwn/" style="font-size: 22px; color: #636363">Pwn</a> <a href="/tags/Python/" style="font-size: 22px; color: #636363">Python</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/go/" style="font-size: 14px; color: #999">go</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 18px; color: #7e7e7e">区块链</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 16px; color: #8b8b8b">博客</a> <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" style="font-size: 14px; color: #999">实验报告</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 22px; color: #636363">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px; color: #707070">数据结构</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 18px; color: #7e7e7e">环境配置</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16px; color: #8b8b8b">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 20px; color: #707070">计算机系统</a> <a href="/tags/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">语言基础</a>
     </div>
   </section>
 

@@ -482,7 +482,53 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  
+  <h1 id="Webpack基本配置"><a href="#Webpack基本配置" class="headerlink" title="Webpack基本配置"></a>Webpack基本配置</h1><h3 id="设置webpack-config-js"><a href="#设置webpack-config-js" class="headerlink" title="设置webpack.config.js"></a>设置webpack.config.js</h3><p>设置对应的打包入口以及打包出口，_dirname可以拿到绝对目录，并且需要手动安装vue-loader<code>npm install vue-loader -D</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入path模块</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> VueLoaderPlugin = <span class="built_in">require</span>(<span class="string">&quot;vue-loader/lib/plugin&quot;</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&quot;development&quot;</span>,</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">        <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&quot;dist&quot;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//配置打包规则</span></span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [&#123;</span><br><span class="line">            <span class="attr">test</span>: <span class="regexp">/\.vue$/</span>, <span class="comment">//这里是正则表达式，只要是.vue结尾都用vue-loader解析</span></span><br><span class="line">            loader: <span class="string">&quot;vue-loader&quot;</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 插件配置</span></span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="keyword">new</span> VueLoaderPlugin() <span class="comment">//实例化VueLoaderPlugin插件</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置package-js"><a href="#设置package-js" class="headerlink" title="设置package.js"></a>设置package.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;build&quot;</span>: <span class="string">&quot;webpack&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="vue-loader"><a href="#vue-loader" class="headerlink" title="vue-loader"></a>vue-loader</h3><p>实现对.vue文件的打包</p>
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117175330829.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117175330829.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117175330829" style="zoom:50%;">
+
+<h3 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h3><p>安装</p>
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117191450901.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117191450901.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117191450901" style="zoom:67%;">
+
+<p>设置规则</p>
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117193537518.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117193537518.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117193537518" style="zoom:50%;">
+
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117193701304.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117193701304.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117193701304" style="zoom:50%;">
+
+<h3 id="css文件打包"><a href="#css文件打包" class="headerlink" title="css文件打包"></a>css文件打包</h3><p><code>npm i -D css-loader style-loader</code></p>
+<p>配置规则时从右到左（数组的顺序）</p>
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117194141948.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117194141948.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117194141948" style="zoom:50%;">
+
+<p>css-loader将多个互相引用的css文件打包成一个文件</p>
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117194822506.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117194822506.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117194822506" style="zoom:50%;">
+
+<p>style-loader则是将js文件中引用的css文件打包出来</p>
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117194852637.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117194852637.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117194852637" style="zoom:50%;">
+
+<h3 id="使用stylus"><a href="#使用stylus" class="headerlink" title="使用stylus"></a>使用stylus</h3><p><code>npm i -D stylus stylus-loader</code></p>
+<p>stylus-loader将<code>.stylus</code>后缀名的文件生成css文件，再给css-loader合并成一个css文件，最后导入所需要的js中</p>
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117195724754.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117195724754.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117195724754" style="zoom:67%;">
+
+<p><strong>一段简单的stylus语法</strong></p>
+<img src="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117200929053.png" class="lazyload" data-srcset="/2021/10/18/%E5%89%8D%E7%AB%AF/webpack%E4%BD%BF%E7%94%A8/image-20211117200929053.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211117200929053" style="zoom:67%;">
+
+<h2 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h2><p><code>npm i -D html-webpack-plugin</code></p>
+<p>在dist文件中生成html</p>
+<p><strong>在webpack.config.js配置</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>)</span><br><span class="line"><span class="attr">plugins</span>: [</span><br><span class="line">        <span class="keyword">new</span> VueLoaderPlugin(),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            <span class="attr">template</span>: <span class="string">&quot;./index.html&quot;</span> <span class="comment">//以xxx为模板</span></span><br><span class="line">        &#125;)</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dev-server"><a href="#Dev-server" class="headerlink" title="Dev-server"></a>Dev-server</h2><p>实时刷新更改后的文件</p>
+<p><code>npm i -D webpack-dev-server</code></p>
+<p><strong>webpack.config.js</strong></p>
+<p>webpack4.5以上的contentBase已经改成了static</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    <span class="attr">port</span>: <span class="string">&#x27;7070&#x27;</span>,</span><br><span class="line">    <span class="attr">static</span>: <span class="string">&quot;./dist&quot;</span>,</span><br><span class="line">    <span class="attr">open</span>: <span class="literal">true</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h2><p>将es6语法转换兼容es5语法</p>
+<p><code>npm i -D babel-loader @babel/core</code></p>
+
   
   
     
@@ -516,10 +562,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-18T15:14:18+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-11-17T21:18:50+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 18, 2021</p>
+    <p>更新于：Nov 17, 2021</p>
   </a>
 </div>
 
@@ -648,6 +694,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
 
 
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">Webpack基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEwebpack-config-js"><span class="toc-text">设置webpack.config.js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEpackage-js"><span class="toc-text">设置package.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-loader"><span class="toc-text">vue-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-loader"><span class="toc-text">file-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85"><span class="toc-text">css文件打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8stylus"><span class="toc-text">使用stylus</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-webpack-plugin"><span class="toc-text">html-webpack-plugin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dev-server"><span class="toc-text">Dev-server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel"><span class="toc-text">babel</span></a></li></ol></li></ol>
+    </div>
+  </section>
 
 
   
